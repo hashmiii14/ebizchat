@@ -9,31 +9,30 @@ import {
   Inbox,
   GitBranch,
   BarChart3,
-  Layers,
   Factory,
   Building2,
   ShoppingBag,
   GraduationCap,
   Briefcase,
-  ShieldCheck,
   ChevronDown,
   Sparkles,
-  PhoneCall,
-  BadgeCheck,
+  Megaphone,
+  Bot,
+  TrendingUp,
+  Heart,
+  Plane,
+  Landmark,
+  MoreHorizontal,
   Send,
-  Zap,
+  ShieldCheck,
 } from 'lucide-react';
-import WhatsAppSimulator from '../components/ui/WhatsAppSimulator';
 import {
-  TeamInboxMockup,
-  KanbanMockup,
-  WorkflowAutomationMockup,
-  CampaignAnalyticsMockup,
+  HeroVisualMockup,
+  AnalyticsOverviewMockup,
+  WorkflowBuilderMockup,
 } from '../components/ui/DashboardMockups';
-import SectionHeader from '../components/ui/SectionHeader';
-import { ORIZER_INFO } from '../data/orizerData';
 import { FAQ_DATA } from '../data/faqData';
-import { CASE_STUDIES } from '../data/blogData';
+import { ORIZER_INFO } from '../data/orizerData';
 
 export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
   const [openFaq, setOpenFaq] = useState(null);
@@ -43,550 +42,536 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
-      {/* ─── HERO SECTION ─── */}
-      <section className="relative pt-12 pb-20 lg:pt-16 lg:pb-28 overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white border-b border-slate-100">
-        {/* Subtle grid background pattern */}
-        <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(to_bottom,white,transparent)] pointer-events-none"></div>
-
+    <div className="flex flex-col min-h-screen bg-white text-slate-900">
+      {/* ───────────────────────────────────────────────────────────
+          1. HERO SECTION (EXACT REFERENCE MOCKUP)
+      ─────────────────────────────────────────────────────────── */}
+      <section className="relative pt-10 pb-20 lg:pt-16 lg:pb-24 overflow-hidden bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            {/* Hero Left Copy */}
-            <div className="lg:col-span-7 text-left space-y-6">
-              {/* Product Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs font-mono font-semibold tracking-wide shadow-subtle">
-                <BadgeCheck className="w-4 h-4 text-brand-600" />
-                <span>Orizer ERP · Official WhatsApp Business API Solution</span>
+            {/* Hero Left Column */}
+            <div className="lg:col-span-6 text-left space-y-5">
+              {/* Badge Pill */}
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-100/80 border border-slate-200/80 text-slate-600 text-xs font-medium">
+                <span>WhatsApp Business Platform Powered by AI</span>
               </div>
 
-              {/* Main Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.12]">
-                Turn Every Customer Conversation Into{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-emerald-500">
-                  Business Growth.
+              {/* Headline */}
+              <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-slate-900 leading-[1.12]">
+                The complete <br className="hidden sm:inline" />
+                WhatsApp solution <br />
+                for{' '}
+                <span className="text-emerald-500">
+                  modern businesses
                 </span>
               </h1>
 
-              {/* Sub-headline */}
-              <p className="text-lg sm:text-xl text-slate-600 font-normal leading-relaxed max-w-2xl">
-                Connect verified WhatsApp messaging, multi-channel lead capture, and CRM automation directly with your <strong>Orizer ERP</strong>. Accelerate deal closures, automate factory dispatch alerts, and empower your team with a unified shared inbox.
+              {/* Subtitle */}
+              <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed max-w-xl">
+                Engage, automate and grow with WhatsApp marketing, shared inbox, chatbots and sales automation — all in one powerful platform.
               </p>
 
-              {/* CTAs */}
-              <div className="flex flex-wrap items-center gap-3.5 pt-2">
+              {/* Dual Action Buttons */}
+              <div className="flex flex-wrap items-center gap-3 pt-1">
                 <button
                   onClick={onOpenContactModal}
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-btn transition-all active:scale-[0.98]"
+                  className="px-6 py-3 rounded-lg text-sm font-semibold text-white bg-emerald-500 hover:bg-emerald-600 shadow-sm transition-all active:scale-[0.98]"
                 >
-                  Get Started Free
-                  <ArrowRight className="w-4 h-4" />
+                  Start Free trial
                 </button>
                 <button
                   onClick={onOpenDemoModal}
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-semibold text-sm border border-slate-200 shadow-subtle transition-all active:scale-[0.98]"
+                  className="px-6 py-3 rounded-lg text-sm font-semibold text-emerald-600 bg-white hover:bg-slate-50 border border-emerald-400 transition-all active:scale-[0.98]"
                 >
-                  <Calendar className="w-4 h-4 text-brand-600" />
-                  Book a Live Demo
+                  Book a demo
                 </button>
               </div>
 
-              {/* Trust Micro-Bullets */}
-              <div className="pt-4 flex flex-wrap items-center gap-6 text-xs text-slate-500 font-medium">
+              {/* 3 Guarantees */}
+              <div className="pt-2 flex flex-wrap items-center gap-5 text-xs text-slate-500 font-medium">
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-brand-600" />
-                  <span>Meta Verified Cloud API</span>
+                  <span className="text-emerald-500 font-bold">✓</span>
+                  <span>14-day free trial</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-brand-600" />
-                  <span>Native Orizer ERP Sync</span>
+                  <span className="text-emerald-500 font-bold">✓</span>
+                  <span>No credit card required</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-brand-600" />
-                  <span>Zero Unsolicited Spam</span>
+                  <span className="text-emerald-500 font-bold">✓</span>
+                  <span>Cancel anytime</span>
                 </div>
               </div>
             </div>
 
-            {/* Hero Right Visual: Realistic Light-theme WhatsApp Simulator */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <WhatsAppSimulator />
+            {/* Hero Right Column: Layered Desktop + Floating iPhone Mockup */}
+            <div className="lg:col-span-6 w-full pt-4 lg:pt-0">
+              <HeroVisualMockup />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── TRUST & VERIFIED STATS STRIP ─── */}
-      <section className="py-10 bg-slate-900 text-white border-y border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {ORIZER_INFO.stats.map((stat) => (
-              <div key={stat.label} className="p-4">
-                <div className="text-3xl sm:text-4xl font-extrabold text-brand-400 font-mono tracking-tight">
-                  {stat.value}
-                </div>
-                <div className="text-xs sm:text-sm font-semibold text-white mt-1">
-                  {stat.label}
-                </div>
-                <div className="text-[11px] text-slate-400 mt-0.5">
-                  {stat.description}
-                </div>
-              </div>
-            ))}
+      {/* ───────────────────────────────────────────────────────────
+          2. LOGO CLOUD / SOCIAL PROOF
+      ─────────────────────────────────────────────────────────── */}
+      <section className="py-12 border-t border-b border-slate-100 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-xs uppercase tracking-wider text-slate-400 font-medium mb-8">
+            Trusted by 10,000+ businesses worldwide
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14 lg:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-300">
+            <span className="text-xl sm:text-2xl font-black tracking-widest text-slate-800 font-serif">
+              L'ORÉAL
+            </span>
+            <span className="text-lg sm:text-xl font-bold tracking-tight text-slate-700">
+              Chargebee
+            </span>
+            <span className="text-2xl sm:text-3xl font-extrabold tracking-tighter text-slate-800">
+              OYO
+            </span>
+            <span className="text-lg sm:text-xl font-black tracking-wider text-slate-800 uppercase">
+              DECATHLON
+            </span>
+            <span className="text-lg sm:text-xl font-semibold tracking-tight text-slate-700">
+              freshworks
+            </span>
+            <span className="text-lg sm:text-xl font-extrabold tracking-widest text-slate-800 uppercase">
+              CRED
+            </span>
           </div>
         </div>
       </section>
 
-      {/* ─── WHAT eBizChat DOES (THE VALUE PILLARS) ─── */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            badge="Core Platform Architecture"
-            title="Everything You Need to Automate Business Communication"
-            subtitle="eBizChat replaces fragmented personal chat apps, lost email inquiries, and manual data re-entry with a synchronized enterprise platform."
-          />
+      {/* ───────────────────────────────────────────────────────────
+          3. "EVERYTHING YOU NEED..." 4-FEATURE CARDS GRID
+      ─────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Header */}
+          <div className="max-w-2xl mx-auto mb-16">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Everything you need to build <br />
+              <span className="text-emerald-500">
+                stronger customer relationships
+              </span>
+            </h2>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Card 1 */}
-            <div className="p-8 rounded-2xl border border-slate-200 bg-white shadow-card hover:shadow-card-hover transition-all group">
-              <div className="w-12 h-12 rounded-xl bg-brand-50 border border-brand-100 text-brand-600 flex items-center justify-center mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors">
-                <MessageSquare className="w-6 h-6" />
+          {/* 4 Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Card 1: WhatsApp Marketing */}
+            <Link
+              to="/features/whatsapp-marketing"
+              className="p-8 rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-300 hover:shadow-lg transition-all duration-200 text-center flex flex-col items-center group"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                <Megaphone className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
-                Official WhatsApp Business API
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                Broadcast pre-approved promotional campaigns, automate transactional notifications with rich buttons, and secure verified Green Tick brand credibility.
+              <h3 className="text-lg font-bold text-slate-900 mb-2.5">WhatsApp Marketing</h3>
+              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                Create, personalize and send high-converting campaigns with rich media and templates.
               </p>
-              <Link
-                to="/features/whatsapp-marketing"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-600 group-hover:text-brand-700"
-              >
-                Explore WhatsApp Marketing →
-              </Link>
-            </div>
+            </Link>
 
-            {/* Card 2 */}
-            <div className="p-8 rounded-2xl border border-slate-200 bg-white shadow-card hover:shadow-card-hover transition-all group">
-              <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+            {/* Card 2: Shared Team Inbox */}
+            <Link
+              to="/features/team-inbox"
+              className="p-8 rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-300 hover:shadow-lg transition-all duration-200 text-center flex flex-col items-center group"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
                 <Inbox className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
-                Multi-Agent Shared Team Inbox
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                Unify sales, customer support, and plant dispatch under one official number. Prevent double replies with collision detection, internal notes, and tagging.
+              <h3 className="text-lg font-bold text-slate-900 mb-2.5">Shared Team Inbox</h3>
+              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                Manage and route all conversations from one place. Assign, collaborate and resolve faster.
               </p>
-              <Link
-                to="/features/team-inbox"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 group-hover:text-blue-700"
-              >
-                Explore Team Inbox →
-              </Link>
-            </div>
+            </Link>
 
-            {/* Card 3 */}
-            <div className="p-8 rounded-2xl border border-slate-200 bg-white shadow-card hover:shadow-card-hover transition-all group">
-              <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-                <Layers className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
-                Native Orizer ERP 2-Way Sync
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                Connect directly into Orizer ERP modules: dispatch LR numbers, customer ledger outstanding, purchase order approvals, and live inventory lookup.
-              </p>
-              <Link
-                to="/solutions/manufacturing"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 group-hover:text-emerald-700"
-              >
-                Explore Manufacturing Sync →
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── LEADGEN+ ENGINE PREVIEW ─── */}
-      <section className="py-20 bg-slate-50/70 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-5 text-left space-y-5">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 text-brand-800 text-xs font-mono font-bold">
-                LeadGen+ Acceleration
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight leading-tight">
-                Capture Inbound Leads. Qualify Instantly. Close in Days.
-              </h2>
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                Traditional website forms make prospects wait up to 24 hours. With <strong>LeadGen+</strong>, prospects trigger automated WhatsApp conversations where budget, quantity, and purchase timelines are verified in seconds.
-              </p>
-
-              <div className="space-y-3 pt-2">
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">
-                    1
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-900 text-sm">Multi-Channel Ingestion</h4>
-                    <p className="text-xs text-slate-500">Collect leads from WhatsApp click-to-chat ads, website widgets, and trade fair QR codes.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">
-                    2
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-900 text-sm">Automated Scoring & Routing</h4>
-                    <p className="text-xs text-slate-500">Qualify high-value buyers and route them to senior sales executives instantly.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">
-                    3
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-900 text-sm">Automated Quotation Nurturing</h4>
-                    <p className="text-xs text-slate-500">Follow up on pending quotations at 24h, 72h, and 7d without manual intervention.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-4">
-                <Link
-                  to="/leadgen"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs shadow-sm transition-all"
-                >
-                  Explore Complete LeadGen+ Journey
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
-
-            <div className="lg:col-span-7">
-              <KanbanMockup />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── SHARED TEAM INBOX SHOWCASE ─── */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            badge="Collaboration & CRM"
-            title="A Shared Team Inbox Engineered for Modern Enterprises"
-            subtitle="Give your frontline team full customer context with CRM metadata, Orizer ERP order records, and private internal notes side-by-side."
-          />
-
-          <TeamInboxMockup />
-        </div>
-      </section>
-
-      {/* ─── VISUAL WORKFLOW AUTOMATION ENGINE ─── */}
-      <section className="py-20 bg-slate-50/70 border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            badge="No-Code Workflow Engine"
-            title="Automate Repetitive B2B Follow-Ups & Dispatches"
-            subtitle="Visually design trigger-condition-action sequences that keep dealers informed, collect overdue payments, and eliminate phone follow-up delays."
-          />
-
-          <WorkflowAutomationMockup />
-        </div>
-      </section>
-
-      {/* ─── TELEMETRY & REPORTING ─── */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            badge="Business Intelligence"
-            title="Actionable Analytics & Executive MIS Reporting"
-            subtitle="Monitor campaign delivery rates, dealer engagement, and team response SLAs in real time with exportable executive summaries."
-          />
-
-          <CampaignAnalyticsMockup />
-        </div>
-      </section>
-
-      {/* ─── INDUSTRY SOLUTIONS PREVIEW (HEAVY MANUFACTURING FOCUS) ─── */}
-      <section className="py-20 bg-slate-50/70 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            badge="Industry Tailored"
-            title="Built for the Demands of Indian Manufacturing & B2B Enterprises"
-            subtitle="Rooted in Orizer's decades of manufacturing ERP expertise. Customized workflows designed for your specific vertical."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Manufacturing - Primary / Highlighted Card */}
-            <div className="md:col-span-2 p-8 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-float relative overflow-hidden flex flex-col justify-between">
-              <div className="relative z-10 space-y-4">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-500/20 text-brand-300 font-mono text-xs font-semibold border border-brand-500/30">
-                  <Factory className="w-3.5 h-3.5" />
-                  <span>Featured Solution · Native Orizer ERP Sync</span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight">
-                  Manufacturing & Discrete Engineering
-                </h3>
-                <p className="text-slate-300 text-sm leading-relaxed max-w-xl">
-                  Automate Lorry Receipt (LR) dispatch copies, driver contact notifications, tax invoice PDFs, dealer stock inquiries, and Quality Control (QC) inspection certificates straight from your shop floor.
-                </p>
-
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-700/60 text-xs">
-                  <div>
-                    <span className="text-brand-400 font-mono font-bold block text-lg">75%</span>
-                    <span className="text-slate-400">Fewer Dispatch Calls</span>
-                  </div>
-                  <div>
-                    <span className="text-brand-400 font-mono font-bold block text-lg">9 Days</span>
-                    <span className="text-slate-400">Faster Payment Recovery</span>
-                  </div>
-                  <div>
-                    <span className="text-brand-400 font-mono font-bold block text-lg">100%</span>
-                    <span className="text-slate-400">Verified ERP Grounding</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-8 relative z-10">
-                <Link
-                  to="/solutions/manufacturing"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-xs transition-colors"
-                >
-                  Explore Manufacturing Deep Dive
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Wholesale & Distribution */}
-            <div className="p-7 rounded-2xl bg-white border border-slate-200 shadow-card flex flex-col justify-between">
-              <div>
-                <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
-                  <Building2 className="w-5 h-5" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">Wholesale & Dealers</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Allow dealers to check stock availability, submit repeat orders, and receive monthly ledger statements directly on WhatsApp.
-                </p>
-              </div>
-              <div className="pt-6">
-                <Link
-                  to="/solutions/services"
-                  className="text-xs font-semibold text-brand-600 hover:underline inline-flex items-center gap-1"
-                >
-                  View Solution →
-                </Link>
-              </div>
-            </div>
-
-            {/* E-Commerce & Retail */}
-            <div className="p-7 rounded-2xl bg-white border border-slate-200 shadow-card flex flex-col justify-between">
-              <div>
-                <div className="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center mb-4">
-                  <ShoppingBag className="w-5 h-5" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">E-Commerce & D2C</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Recover abandoned shopping carts, verify Cash-on-Delivery (COD) orders with 1 tap, and dispatch tracking alerts.
-                </p>
-              </div>
-              <div className="pt-6">
-                <Link
-                  to="/solutions/ecommerce"
-                  className="text-xs font-semibold text-brand-600 hover:underline inline-flex items-center gap-1"
-                >
-                  View Solution →
-                </Link>
-              </div>
-            </div>
-
-            {/* Real Estate */}
-            <div className="p-7 rounded-2xl bg-white border border-slate-200 shadow-card flex flex-col justify-between">
-              <div>
-                <div className="w-10 h-10 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center mb-4">
-                  <Briefcase className="w-5 h-5" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">Real Estate & Builders</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Deliver digital brochures, qualify buyer budgets, and book on-site project walkthroughs with automated Google Maps directions.
-                </p>
-              </div>
-              <div className="pt-6">
-                <Link
-                  to="/solutions/real-estate"
-                  className="text-xs font-semibold text-brand-600 hover:underline inline-flex items-center gap-1"
-                >
-                  View Solution →
-                </Link>
-              </div>
-            </div>
-
-            {/* Education */}
-            <div className="p-7 rounded-2xl bg-white border border-slate-200 shadow-card flex flex-col justify-between">
-              <div>
-                <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">
-                  <GraduationCap className="w-5 h-5" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">Education & Institutes</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Automate admission counseling, entrance test inquiries, fee payment reminders, and campus circular broadcasts.
-                </p>
-              </div>
-              <div className="pt-6">
-                <Link
-                  to="/solutions/education"
-                  className="text-xs font-semibold text-brand-600 hover:underline inline-flex items-center gap-1"
-                >
-                  View Solution →
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── REAL CUSTOMER PROOF / ENTERPRISE CASE STUDY ─── */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            badge="Proven Production Results"
-            title="Real-World Production Impact at Apex Industrial Dynamics"
-            subtitle="A leading heavy engineering OEM operating across 350+ dealer locations in Western India."
-          />
-
-          <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 sm:p-12 shadow-card">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-7 space-y-4 text-left">
-                <div className="flex items-center gap-2 text-xs font-mono font-semibold text-brand-700 uppercase">
-                  <CheckCircle2 className="w-4 h-4 text-brand-600" />
-                  <span>Verified Production Deployment · Ahmedabad, Gujarat</span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-snug">
-                  "eBizChat connected our plant dispatch directly to our dealers' pockets. The reduction in phone calls alone saved our sales desk 18 hours every week."
-                </h3>
-                <p className="text-xs text-slate-500 font-mono">
-                  — Director of Operations, Apex Industrial Dynamics
-                </p>
-                <div className="pt-4 flex flex-wrap gap-2 text-xs">
-                  <span className="px-2.5 py-1 rounded-md bg-white border border-slate-200 font-mono text-slate-700">
-                    Orizer Inventory Module
-                  </span>
-                  <span className="px-2.5 py-1 rounded-md bg-white border border-slate-200 font-mono text-slate-700">
-                    PPC Automation
-                  </span>
-                  <span className="px-2.5 py-1 rounded-md bg-white border border-slate-200 font-mono text-slate-700">
-                    Auto-Dispatch Webhook
-                  </span>
-                </div>
-              </div>
-
-              <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4">
-                <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-subtle">
-                  <div className="text-2xl font-bold text-brand-600 font-mono">72%</div>
-                  <div className="text-xs text-slate-600 font-medium mt-0.5">Faster Quote-to-PO Cycle</div>
-                </div>
-                <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-subtle">
-                  <div className="text-2xl font-bold text-brand-600 font-mono">85%</div>
-                  <div className="text-xs text-slate-600 font-medium mt-0.5">Dealers Self-Serving Stock Data</div>
-                </div>
-                <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-subtle">
-                  <div className="text-2xl font-bold text-brand-600 font-mono">₹42 Lakh</div>
-                  <div className="text-xs text-slate-600 font-medium mt-0.5">Receivables Cleared in 60 Days</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── FREQUENTLY ASKED QUESTIONS PREVIEW ─── */}
-      <section className="py-20 bg-slate-50/70 border-t border-slate-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            badge="Got Questions?"
-            title="Frequently Asked Questions"
-            subtitle="Everything you need to know about getting started with Orizer eBizChat."
-          />
-
-          <div className="space-y-3 text-left">
-            {FAQ_DATA.slice(0, 5).map((item, index) => {
-              const isOpen = openFaq === index;
-              return (
-                <div
-                  key={item.question}
-                  className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-subtle"
-                >
-                  <button
-                    onClick={() => toggleFaq(index)}
-                    className="w-full px-6 py-4 flex items-center justify-between text-left font-semibold text-sm sm:text-base text-slate-900 hover:text-brand-600 transition-colors"
-                  >
-                    <span>{item.question}</span>
-                    <ChevronDown
-                      className={`w-4 h-4 text-slate-400 flex-shrink-0 ml-4 transition-transform duration-200 ${
-                        isOpen ? 'rotate-180 text-brand-600' : ''
-                      }`}
-                    />
-                  </button>
-                  {isOpen && (
-                    <div className="px-6 pb-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-                      {item.answer}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="mt-8 text-center">
+            {/* Card 3: No-code Chatbots */}
             <Link
-              to="/faq"
-              className="text-xs font-semibold text-brand-600 hover:text-brand-700 hover:underline inline-flex items-center gap-1"
+              to="/features/chatbot"
+              className="p-8 rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-300 hover:shadow-lg transition-all duration-200 text-center flex flex-col items-center group"
             >
-              Browse all FAQs and compliance docs →
+              <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                <Bot className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2.5">No-code Chatbots</h3>
+              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                Build smart workflows and chatbots in minutes with our drag-and-drop builder.
+              </p>
+            </Link>
+
+            {/* Card 4: Sales Automation */}
+            <Link
+              to="/features/automation"
+              className="p-8 rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-300 hover:shadow-lg transition-all duration-200 text-center flex flex-col items-center group"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                <TrendingUp className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2.5">Sales Automation</h3>
+              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                Automate follow-ups, qualify leads and close more deals on autopilot.
+              </p>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ─── FINAL CONVERSION CTA ─── */}
-      <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-slate-100/5 pointer-events-none"></div>
+      {/* ───────────────────────────────────────────────────────────
+          4. SPLIT FEATURE 1: TEAM INBOX & ANALYTICS OVERVIEW
+      ─────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-24 bg-slate-50/50 border-t border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Copy */}
+            <div className="lg:col-span-5 space-y-5 text-left">
+              <span className="text-xs font-bold font-mono uppercase tracking-wider text-emerald-600">
+                THE INBOX & PLATFORM
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                Designed for teams. <br />
+                Built for growth.
+              </h2>
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                From startups to enterprises, eBizChat helps you deliver exceptional customer experiences on WhatsApp at scale.
+              </p>
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/20 text-brand-300 font-mono text-xs font-semibold border border-brand-500/30">
-            <Sparkles className="w-3.5 h-3.5 text-brand-400" />
-            <span>Ready to Automate Customer Engagement?</span>
+              {/* Bullet Points */}
+              <div className="space-y-3 pt-2">
+                <div className="flex items-center gap-2.5 text-sm text-slate-700">
+                  <span className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-[10px] font-bold">✓</span>
+                  <span>Official WhatsApp Business API</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-sm text-slate-700">
+                  <span className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-[10px] font-bold">✓</span>
+                  <span>Enterprise-grade security & reliability</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-sm text-slate-700">
+                  <span className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-[10px] font-bold">✓</span>
+                  <span>Scalable for growing teams</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-sm text-slate-700">
+                  <span className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-[10px] font-bold">✓</span>
+                  <span>Deep integrations with your favorite tools</span>
+                </div>
+              </div>
+
+              <div className="pt-3">
+                <Link
+                  to="/features"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-emerald-600 bg-white hover:bg-slate-100 border border-slate-300 shadow-sm transition-all"
+                >
+                  Explore all features
+                </Link>
+              </div>
+            </div>
+
+            {/* Right: Analytics Overview Mockup */}
+            <div className="lg:col-span-7">
+              <AnalyticsOverviewMockup />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          5. SPLIT FEATURE 2: VISUAL AUTOMATION & WORKFLOW BUILDER
+      ─────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left: Workflow Builder Mockup */}
+            <div className="lg:col-span-7 order-2 lg:order-1">
+              <WorkflowBuilderMockup />
+            </div>
+
+            {/* Right Copy */}
+            <div className="lg:col-span-5 space-y-5 text-left order-1 lg:order-2">
+              <span className="text-xs font-bold font-mono uppercase tracking-wider text-emerald-600">
+                AI-POWERED AUTOMATION
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                Automate conversations. <br />
+                Delight customers.
+              </h2>
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                Use AI to understand intent, route conversations, and provide instant answers 24/7.
+              </p>
+
+              {/* Bullet Points */}
+              <div className="space-y-3 pt-2">
+                <div className="flex items-center gap-2.5 text-sm text-slate-700">
+                  <span className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-[10px] font-bold">✓</span>
+                  <span>AI-powered auto-responses</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-sm text-slate-700">
+                  <span className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-[10px] font-bold">✓</span>
+                  <span>Smart routing & lead qualification</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-sm text-slate-700">
+                  <span className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-[10px] font-bold">✓</span>
+                  <span>Multi-flow automation</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-sm text-slate-700">
+                  <span className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-[10px] font-bold">✓</span>
+                  <span>Multi-language support</span>
+                </div>
+              </div>
+
+              <div className="pt-3">
+                <button
+                  onClick={onOpenDemoModal}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-emerald-600 bg-white hover:bg-slate-100 border border-slate-300 shadow-sm transition-all"
+                >
+                  Build your first workflow
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          6. SOLUTIONS FOR EVERY INDUSTRY
+      ─────────────────────────────────────────────────────────── */}
+      <section className="py-16 bg-slate-50/50 border-t border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="mb-10">
+            <span className="text-xs font-bold font-mono uppercase tracking-wider text-emerald-600 block mb-1">
+              INDUSTRIES
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              Solutions for <span className="text-emerald-500">every industry</span>
+            </h2>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
-            Connect Your Business to WhatsApp with{' '}
-            <span className="text-brand-400">Orizer eBizChat</span>.
-          </h2>
+          {/* Horizontal Industry Row */}
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            <Link
+              to="/solutions/ecommerce"
+              className="flex flex-col items-center justify-center w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-md transition-all group"
+            >
+              <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 group-hover:bg-emerald-50 group-hover:text-emerald-600 mb-2 transition-colors">
+                <ShoppingBag className="w-5 h-5" />
+              </div>
+              <span className="text-xs font-semibold text-slate-700 group-hover:text-slate-900">
+                E-commerce
+              </span>
+            </Link>
 
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal">
-            Schedule a 30-minute personalized walkthrough with an Orizer ERP specialist. See how your inventory, orders, and sales pipelines connect seamlessly to WhatsApp.
+            <Link
+              to="/solutions/manufacturing"
+              className="flex flex-col items-center justify-center w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-white border-2 border-emerald-400 shadow-sm hover:shadow-md transition-all group"
+            >
+              <div className="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 mb-2">
+                <Factory className="w-5 h-5" />
+              </div>
+              <span className="text-xs font-bold text-slate-900">
+                Manufacturing
+              </span>
+            </Link>
+
+            <Link
+              to="/solutions/services"
+              className="flex flex-col items-center justify-center w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-md transition-all group"
+            >
+              <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 group-hover:bg-emerald-50 group-hover:text-emerald-600 mb-2 transition-colors">
+                <Heart className="w-5 h-5" />
+              </div>
+              <span className="text-xs font-semibold text-slate-700 group-hover:text-slate-900">
+                Healthcare
+              </span>
+            </Link>
+
+            <Link
+              to="/solutions/education"
+              className="flex flex-col items-center justify-center w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-md transition-all group"
+            >
+              <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 group-hover:bg-emerald-50 group-hover:text-emerald-600 mb-2 transition-colors">
+                <GraduationCap className="w-5 h-5" />
+              </div>
+              <span className="text-xs font-semibold text-slate-700 group-hover:text-slate-900">
+                Education
+              </span>
+            </Link>
+
+            <Link
+              to="/solutions/real-estate"
+              className="flex flex-col items-center justify-center w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-md transition-all group"
+            >
+              <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 group-hover:bg-emerald-50 group-hover:text-emerald-600 mb-2 transition-colors">
+                <Building2 className="w-5 h-5" />
+              </div>
+              <span className="text-xs font-semibold text-slate-700 group-hover:text-slate-900">
+                Real Estate
+              </span>
+            </Link>
+
+            <Link
+              to="/solutions/services"
+              className="flex flex-col items-center justify-center w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-md transition-all group"
+            >
+              <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 group-hover:bg-emerald-50 group-hover:text-emerald-600 mb-2 transition-colors">
+                <Plane className="w-5 h-5" />
+              </div>
+              <span className="text-xs font-semibold text-slate-700 group-hover:text-slate-900">
+                Travel
+              </span>
+            </Link>
+
+            <Link
+              to="/solutions/services"
+              className="flex flex-col items-center justify-center w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-md transition-all group"
+            >
+              <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 group-hover:bg-emerald-50 group-hover:text-emerald-600 mb-2 transition-colors">
+                <Landmark className="w-5 h-5" />
+              </div>
+              <span className="text-xs font-semibold text-slate-700 group-hover:text-slate-900">
+                Finance
+              </span>
+            </Link>
+
+            <Link
+              to="/solutions"
+              className="flex flex-col items-center justify-center w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-md transition-all group"
+            >
+              <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 group-hover:bg-emerald-50 group-hover:text-emerald-600 mb-2 transition-colors">
+                <MoreHorizontal className="w-5 h-5" />
+              </div>
+              <span className="text-xs font-semibold text-slate-700 group-hover:text-slate-900">
+                and more
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          7. ORIZER ENTERPRISE HERITAGE & MANUFACTURING SPOTLIGHT
+      ─────────────────────────────────────────────────────────── */}
+      <section className="py-16 bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="p-8 sm:p-10 rounded-3xl bg-slate-50 border border-slate-200 flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div className="space-y-3 text-left max-w-xl">
+              <span className="text-xs font-mono font-bold uppercase text-emerald-600 tracking-wider">
+                ORIZER ERP LINAGE · 220+ ENTERPRISE IMPLEMENTATIONS
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                Built For Factories, Warehouses & Multi-Branch Sales Teams.
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Seamlessly sync with your factory shop floor, generate gate passes, auto-deliver GST invoice PDFs on dispatch, and track customer payments via WhatsApp.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 w-full lg:w-auto">
+              <div className="text-center p-3">
+                <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-mono">220+</div>
+                <div className="text-xs text-slate-500 mt-1 font-medium">Enterprise Projects</div>
+              </div>
+              <div className="text-center p-3">
+                <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-mono">2,810+</div>
+                <div className="text-xs text-slate-500 mt-1 font-medium">Daily Active Users</div>
+              </div>
+              <div className="text-center p-3">
+                <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-mono">494+</div>
+                <div className="text-xs text-slate-500 mt-1 font-medium">Industry Awards</div>
+              </div>
+              <div className="text-center p-3">
+                <div className="text-2xl sm:text-3xl font-extrabold text-emerald-600 font-mono">99.98%</div>
+                <div className="text-xs text-slate-500 mt-1 font-medium">Uptime SLA</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          8. HIGH-IMPACT GREEN CALL-TO-ACTION BANNER
+      ─────────────────────────────────────────────────────────── */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative rounded-3xl bg-gradient-to-r from-emerald-500 via-emerald-600 to-teal-700 p-8 sm:p-12 lg:p-14 overflow-hidden shadow-xl text-white">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+              {/* Left Title */}
+              <div className="max-w-lg text-left">
+                <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+                  Ready to transform your <br />
+                  WhatsApp conversations?
+                </h2>
+              </div>
+
+              {/* Right CTAs */}
+              <div className="flex flex-col items-center lg:items-end gap-3.5">
+                <p className="text-emerald-100 text-xs sm:text-sm font-medium">
+                  Join thousands of businesses growing faster with eBizChat by Orizer.
+                </p>
+                <div className="flex flex-wrap items-center gap-3">
+                  <button
+                    onClick={onOpenContactModal}
+                    className="px-6 py-2.5 rounded-lg bg-white text-emerald-800 hover:bg-slate-100 font-semibold text-sm shadow-sm transition-all active:scale-[0.98]"
+                  >
+                    Start Free trial
+                  </button>
+                  <button
+                    onClick={onOpenDemoModal}
+                    className="px-6 py-2.5 rounded-lg bg-transparent text-white border border-white hover:bg-white/10 font-medium text-sm transition-all active:scale-[0.98]"
+                  >
+                    Book a demo
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          9. FREQUENTLY ASKED QUESTIONS ACCORDION
+      ─────────────────────────────────────────────────────────── */}
+      <section className="py-16 bg-slate-50/50 border-t border-slate-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-2">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-500 mb-10">
+            Everything you need to know about official WhatsApp API, CRM sync, and Orizer ERP connectivity.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-            <button
-              onClick={onOpenDemoModal}
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm shadow-btn transition-all active:scale-[0.98]"
-            >
-              <Calendar className="w-4 h-4" />
-              Book a Discovery Demo
-            </button>
-            <button
-              onClick={onOpenContactModal}
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm border border-slate-700 transition-all active:scale-[0.98]"
-            >
-              Get Started Free
-              <ArrowRight className="w-4 h-4" />
-            </button>
+          <div className="space-y-3 text-left">
+            {FAQ_DATA.slice(0, 5).map((faq, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-subtle"
+              >
+                <button
+                  onClick={() => toggleFaq(index)}
+                  className="w-full px-5 py-4 flex items-center justify-between text-left font-semibold text-slate-900 text-sm focus:outline-none"
+                >
+                  <span>{faq.question}</span>
+                  <ChevronDown
+                    className={`w-4 h-4 text-slate-400 transition-transform duration-200 flex-shrink-0 ${
+                      openFaq === index ? 'rotate-180 text-emerald-600' : ''
+                    }`}
+                  />
+                </button>
+                {openFaq === index && (
+                  <div className="px-5 pb-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
 
-          <div className="pt-6 text-xs text-slate-400 font-mono">
-            Direct HelpDesk: <a href={`tel:${ORIZER_INFO.contact.mainPhoneRaw}`} className="text-white hover:underline">{ORIZER_INFO.contact.mainPhone}</a> · {ORIZER_INFO.contact.emails.sales}
+          <div className="mt-8">
+            <Link
+              to="/faq"
+              className="text-xs font-semibold text-emerald-600 hover:text-emerald-700 underline"
+            >
+              View all 20+ Frequently Asked Questions →
+            </Link>
           </div>
         </div>
       </section>

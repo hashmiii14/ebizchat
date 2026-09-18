@@ -90,21 +90,18 @@ export default function Navbar({ onOpenDemoModal, onOpenContactModal }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo & Brand Identity */}
-          <Link to="/" className="flex items-center gap-3 group focus:outline-none">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-700 to-brand-500 flex items-center justify-center text-white font-bold text-xl shadow-btn transition-transform group-hover:scale-105">
-              <span>O</span>
+          <Link to="/" className="flex items-center gap-2.5 group focus:outline-none">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-sm transition-transform group-hover:scale-105">
+              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12C2 13.85 2.5 15.58 3.38 17.07L2.05 21.95L7.07 20.64C8.52 21.5 10.2 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM17.5 15.5C17.2 16.3 16 16.9 15.1 17C14.5 17.1 13.7 17.1 11.2 16.1C8 14.8 6 11.5 5.8 11.3C5.6 11.1 4.5 9.6 4.5 8.1C4.5 6.6 5.3 5.9 5.6 5.6C5.9 5.3 6.3 5.2 6.7 5.2C6.9 5.2 7 5.2 7.2 5.2C7.6 5.2 7.8 5.3 8 5.7C8.3 6.4 8.9 7.9 9 8.1C9.1 8.3 9.1 8.5 9 8.7C8.9 8.9 8.8 9.1 8.6 9.3C8.4 9.5 8.2 9.7 8.1 9.9C7.9 10.1 7.7 10.3 7.9 10.7C8.1 11.1 8.9 12.4 10.1 13.5C11.6 14.8 12.8 15.2 13.2 15.4C13.5 15.5 13.8 15.5 14 15.3C14.3 15 14.7 14.4 15 14C15.2 13.7 15.5 13.7 15.8 13.8C16.1 13.9 17.7 14.7 18 14.8C18.3 15 18.5 15.1 18.6 15.2C18.6 15.3 18.6 15.9 18.3 16.7L17.5 15.5Z" />
+              </svg>
             </div>
-            <div className="flex flex-col">
-              <div className="flex items-center gap-1.5">
-                <span className="text-xl font-bold tracking-tight text-slate-900 font-sans">
-                  Orizer
-                </span>
-                <span className="text-xl font-bold tracking-tight text-brand-600 font-sans">
-                  eBizChat
-                </span>
-              </div>
-              <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500 font-medium">
-                Business Automation
+            <div className="flex items-center">
+              <span className="text-2xl font-extrabold tracking-tight text-slate-900 font-sans">
+                EBIZ
+              </span>
+              <span className="text-2xl font-extrabold tracking-tight text-emerald-600 font-sans">
+                CHAT
               </span>
             </div>
           </Link>
@@ -198,20 +195,24 @@ export default function Navbar({ onOpenDemoModal, onOpenContactModal }) {
           </nav>
 
           {/* Action CTAs */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-4">
+            <button
+              onClick={onOpenContactModal}
+              className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors px-1"
+            >
+              Log in
+            </button>
             <button
               onClick={onOpenDemoModal}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 transition-all active:scale-[0.98]"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-300 transition-all active:scale-[0.98]"
             >
-              <Calendar className="w-4 h-4 text-brand-600" />
-              Book a Demo
+              Book a demo
             </button>
             <button
               onClick={onOpenContactModal}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-brand-600 hover:bg-brand-700 shadow-btn transition-all active:scale-[0.98]"
+              className="inline-flex items-center gap-1.5 px-4.5 py-2 rounded-lg text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all active:scale-[0.98]"
             >
-              Get Started
-              <ArrowRight className="w-4 h-4" />
+              Start Free trial
             </button>
           </div>
 
