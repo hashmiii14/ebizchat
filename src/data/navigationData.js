@@ -1,6 +1,11 @@
 export const NAVIGATION_LINKS = [
   {
-    name: "Product",
+    name: "Lead Generation",
+    path: "/leadgen",
+    hash: "#lead-generation",
+  },
+  {
+    name: "Features",
     path: "/features",
     hasDropdown: true,
     dropdownItems: [
@@ -92,6 +97,10 @@ export const NAVIGATION_LINKS = [
     ],
   },
   {
+    name: "Pricing",
+    path: "/pricing",
+  },
+  {
     name: "Resources",
     path: "/resources",
     hasDropdown: true,
@@ -121,14 +130,6 @@ export const NAVIGATION_LINKS = [
         icon: "Award",
       },
     ],
-  },
-  {
-    name: "Pricing",
-    path: "/pricing",
-  },
-  {
-    name: "Partners",
-    path: "/about",
   },
 ];
 

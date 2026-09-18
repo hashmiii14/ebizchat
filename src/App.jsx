@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 // Layout Components
-import AnnouncementBar from './components/layout/AnnouncementBar';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 
@@ -65,7 +64,6 @@ export default function App() {
     <div className="flex flex-col min-h-screen bg-white text-slate-900 selection:bg-brand-500 selection:text-white font-sans">
       <PageLoader />
       <ScrollToTop />
-      <AnnouncementBar />
       <Navbar onOpenDemoModal={openDemoModal} onOpenContactModal={openContactModal} />
 
       <main className="flex-1">
