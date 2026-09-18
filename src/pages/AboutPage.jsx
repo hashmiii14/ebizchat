@@ -99,6 +99,59 @@ export default function AboutPage({ onOpenDemoModal, onOpenContactModal }) {
               </p>
             </div>
           </div>
+
+          {/* Orizer Industrial ERP & Analytics Visual Showcase */}
+          <div className="pt-8">
+            <div className="text-center max-w-xl mx-auto mb-8">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-600">
+                ECOSYSTEM VISUALS
+              </span>
+              <h3 className="text-2xl font-bold text-slate-900 mt-1">
+                Industrial Roots. Next-Gen Frontline Messaging.
+              </h3>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-md bg-white group">
+                <div className="h-52 overflow-hidden bg-slate-100">
+                  <img
+                    src="/images/bi-dashboard.jpg"
+                    alt="Orizer Business Intelligence ERP Dashboard"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-5 text-left">
+                  <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full uppercase">
+                    Orizer Analytics Core
+                  </span>
+                  <h4 className="text-sm font-bold text-slate-900 mt-2">Executive Business Intelligence</h4>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                    Live operational reporting, plant dispatch KPIs, and customer credit ledger integration.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-md bg-white group">
+                <div className="h-52 overflow-hidden bg-slate-100">
+                  <img
+                    src="/images/factory.jpg"
+                    alt="Orizer Manufacturing & Industrial Plant Automation"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-5 text-left">
+                  <span className="text-[10px] font-mono font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded-full uppercase">
+                    Industrial Heritage
+                  </span>
+                  <h4 className="text-sm font-bold text-slate-900 mt-2">Factory Floor to Customer Handshake</h4>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                    Proven in manufacturing hubs across Gujarat and India, automating dispatch, LR, and inventory.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -83,10 +83,10 @@ export const NAVIGATION_LINKS = [
         icon: "Building2",
       },
       {
-        title: "Travel & Hospitality",
-        description: "PDF itineraries, flight/hotel booking vouchers, and review collection",
-        path: "/solutions/services",
-        icon: "Briefcase",
+        title: "Healthcare & Clinics",
+        description: "24/7 OPD appointment bookings, secure diagnostic report delivery, and patient reminders",
+        path: "/solutions/healthcare",
+        icon: "Heart",
       },
       {
         title: "Professional Services & B2B",

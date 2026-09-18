@@ -225,6 +225,92 @@ export default function ContactPage({ onOpenDemoModal }) {
           </div>
         </div>
       </section>
+
+      {/* Embedded Google Map & Office Directions Section */}
+      <section className="py-16 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
+              HEADQUARTERS & DIRECTIONS
+            </span>
+            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+              Visit Us in Vapi, Gujarat
+            </h2>
+            <p className="mt-2 text-slate-600 text-sm">
+              Our engineering, deployment, and customer onboarding headquarters are centrally located in Vapi.
+            </p>
+          </div>
+
+          <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-slate-50 grid grid-cols-1 lg:grid-cols-12">
+            {/* Map Iframe */}
+            <div className="lg:col-span-8 min-h-[380px] sm:min-h-[440px] relative bg-slate-100">
+              <iframe
+                title="Orizer ERP Headquarters Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3739.736341270273!2d72.91583!3d20.39347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0cf31885f8ddb%3A0x8bb89255a4325a66!2sMohid%20Tower%2C%20Daman%20Rd%2C%20Chala%2C%20Vapi%2C%20Gujarat%20396191!5e0!3m2!1sen!2sin!4v1710800000000!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '380px' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Office Information Panel */}
+            <div className="lg:col-span-4 p-6 sm:p-8 bg-white flex flex-col justify-between space-y-6 text-left border-t lg:border-t-0 lg:border-l border-slate-200">
+              <div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-mono text-[11px] font-semibold mb-3">
+                  <Building2 className="w-3.5 h-3.5" />
+                  <span>Orizer Infotech Pvt. Ltd.</span>
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Orizer Campus</h3>
+                <p className="text-xs text-slate-600 leading-relaxed font-normal mb-4">
+                  {ORIZER_INFO.contact.office.fullAddress}
+                </p>
+
+                <div className="space-y-2.5 pt-2 border-t border-slate-100 text-xs">
+                  <div className="flex items-center gap-2 text-slate-700">
+                    <Clock className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <span>Mon – Sat: 9:00 AM – 6:00 PM IST</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-slate-700">
+                    <Phone className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <a href="tel:+919898236655" className="hover:text-emerald-600 font-mono font-semibold">
+                      +91 98982 36655
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-2 text-slate-700">
+                    <MessageSquare className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <a href="https://wa.me/919998391947" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-600 font-mono font-semibold">
+                      +91 99983 91947 (WhatsApp)
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2">
+                <div className="font-semibold text-slate-900 flex items-center gap-1.5">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                  <span>Verified Industrial Partner</span>
+                </div>
+                <p className="text-[11px] text-slate-500">
+                  Visitor parking available. Prior appointments recommended for live architectural demos.
+                </p>
+                <a
+                  href="https://maps.google.com/?q=Mohid+Tower+Daman+Road+Chala+Vapi+Gujarat+396191"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-emerald-600 font-bold text-[11px] hover:underline pt-1"
+                >
+                  <span>Open in Google Maps App</span>
+                  <ArrowRight className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

@@ -21,6 +21,7 @@ import {
   FileText,
   HelpCircle,
   Award,
+  Heart,
 } from 'lucide-react';
 import BrandLogo from '../ui/BrandLogo';
 import { NAVIGATION_LINKS } from '../../data/navigationData';
@@ -43,6 +44,7 @@ const ICON_MAP = {
   FileText,
   HelpCircle,
   Award,
+  Heart,
 };
 
 export default function Navbar() {

@@ -208,4 +208,47 @@ export const SOLUTIONS_DATA = {
       { metric: "4.9/5", label: "Client Onboarding Experience Score" },
     ],
   },
+
+  healthcare: {
+    slug: "healthcare",
+    industry: "Healthcare, Hospitals & Diagnostic Clinics",
+    headline: "Automate Patient Appointments, Diagnostic Reports & Follow-Up Reminders",
+    subheadline: "Provide compassionate patient communication. Automate OPD appointment slots, send lab test reports securely, and deliver medication reminders over verified WhatsApp.",
+    painPoints: [
+      "Front-desk reception phone lines constantly busy with routine OPD booking calls.",
+      "Patients making repeated clinic visits just to collect printed diagnostic test reports.",
+      "High consultation no-show rates causing underutilized physician schedules.",
+      "Lack of structured post-discharge follow-ups and care guidance.",
+    ],
+    howHelps: "eBizChat allows patients to book, reschedule, or cancel doctor consultations 24/7 with instant WhatsApp confirmation. When diagnostic tests are verified, secure PDF reports are dispatched automatically to the patient's verified number, eliminating hospital queue congestion.",
+    keyFeatures: [
+      "24/7 OPD Doctor Appointment Booking & Instant Confirmation",
+      "Automated Appointment Reminder Nudges with 1-Click Rescheduling",
+      "Secure Diagnostic Lab & Radiology PDF Report Delivery",
+      "Pre-Procedure Fasting & Preparation Instructions",
+      "Post-Consultation Prescription & Medication Reminders",
+      "Feedback Collection & Telehealth Consultation Link Dispatch",
+    ],
+    useCases: [
+      {
+        title: "24/7 OPD Appointment Booking",
+        desc: "Patients select department, preferred physician, and available consultation slots via interactive WhatsApp buttons, receiving calendar invites and token numbers instantly.",
+      },
+      {
+        title: "Secure Lab Report PDF Dispatch",
+        desc: "The moment pathology results are validated, patients receive a secure, password-protected PDF directly on WhatsApp, saving time and paper.",
+      },
+      {
+        title: "Vaccination & Preventive Care Reminders",
+        desc: "Automated age-appropriate vaccination alerts and periodic chronic health checkup reminders that keep patients engaged and healthy.",
+      },
+    ],
+    results: [
+      { metric: "42%", label: "Reduction in Consultation No-Shows" },
+      { metric: "85%", label: "Instant WhatsApp Lab Report Delivery" },
+      { metric: "65%", label: "Less Front-Desk Phone Congestion" },
+      { metric: "4.9/5", label: "Patient Communication Satisfaction" },
+    ],
+  },
 };
+

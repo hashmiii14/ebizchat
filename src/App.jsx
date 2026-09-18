@@ -29,6 +29,7 @@ import EcommercePage from './pages/solutions/EcommercePage';
 import EducationPage from './pages/solutions/EducationPage';
 import RealEstatePage from './pages/solutions/RealEstatePage';
 import ServicesPage from './pages/solutions/ServicesPage';
+import HealthcarePage from './pages/solutions/HealthcarePage';
 
 import PricingPage from './pages/PricingPage';
 import ResourcesPage from './pages/ResourcesPage';
@@ -84,6 +85,10 @@ export default function App() {
           />
           <Route
             path="/leadgen"
+            element={<LeadGenPage onOpenDemoModal={openDemoModal} onOpenContactModal={openContactModal} />}
+          />
+          <Route
+            path="/lead-generation"
             element={<LeadGenPage onOpenDemoModal={openDemoModal} onOpenContactModal={openContactModal} />}
           />
 
@@ -146,6 +151,10 @@ export default function App() {
             path="/solutions/services"
             element={<ServicesPage onOpenDemoModal={openDemoModal} onOpenContactModal={openContactModal} />}
           />
+          <Route
+            path="/solutions/healthcare"
+            element={<HealthcarePage onOpenDemoModal={openDemoModal} onOpenContactModal={openContactModal} />}
+          />
 
           {/* Core Routes */}
           <Route
@@ -164,6 +173,10 @@ export default function App() {
           />
           <Route
             path="/about"
+            element={<AboutPage onOpenDemoModal={openDemoModal} onOpenContactModal={openContactModal} />}
+          />
+          <Route
+            path="/about-orizer"
             element={<AboutPage onOpenDemoModal={openDemoModal} onOpenContactModal={openContactModal} />}
           />
           <Route

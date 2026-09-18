@@ -1436,6 +1436,90 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       </section>
 
       {/* ───────────────────────────────────────────────────────────
+          15. CONTACT / MAP SECTION (Requirement #15: Mohid Tower, Vapi, Gujarat)
+      ─────────────────────────────────────────────────────────── */}
+      <section id="contact-map" className="py-20 lg:py-24 border-b border-slate-100 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
+              GET IN TOUCH
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Connect with Our <span className="text-emerald-600">Headquarters</span>
+            </h2>
+            <p className="mt-3 text-slate-600 text-sm sm:text-base">
+              Visit our corporate offices in Vapi, Gujarat or connect with our WhatsApp automation specialists.
+            </p>
+          </div>
+
+          <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-slate-50 grid grid-cols-1 lg:grid-cols-12">
+            {/* Left: Responsive Map */}
+            <div className="lg:col-span-7 min-h-[360px] sm:min-h-[420px] relative bg-slate-100">
+              <iframe
+                title="Orizer ERP Headquarters Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3739.736341270273!2d72.91583!3d20.39347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0cf31885f8ddb%3A0x8bb89255a4325a66!2sMohid%20Tower%2C%20Daman%20Rd%2C%20Chala%2C%20Vapi%2C%20Gujarat%20396191!5e0!3m2!1sen!2sin!4v1710800000000!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '360px' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Right: Office details & Fast Action */}
+            <div className="lg:col-span-5 p-6 sm:p-8 bg-white flex flex-col justify-between space-y-6 text-left border-t lg:border-t-0 lg:border-l border-slate-200">
+              <div className="space-y-4">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-mono text-[11px] font-semibold">
+                  <Building2 className="w-3.5 h-3.5" />
+                  <span>Orizer Infotech Pvt. Ltd.</span>
+                </div>
+                <h3 className="text-xl font-bold text-slate-900">Orizer ERP Campus</h3>
+                <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                  {ORIZER_INFO.contact.office.fullAddress}
+                </p>
+
+                <div className="space-y-2.5 pt-2 border-t border-slate-100 text-xs">
+                  <div className="flex items-center gap-2 text-slate-700">
+                    <Clock className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <span>Mon – Sat: 9:00 AM – 6:00 PM IST (Sunday closed)</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-slate-700">
+                    <Phone className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <a href="tel:+919898236655" className="hover:text-emerald-600 font-mono font-semibold">
+                      +91 98982 36655 (HelpDesk)
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-2 text-slate-700">
+                    <MessageSquare className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <a href="https://wa.me/919998391947" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-600 font-mono font-semibold">
+                      +91 99983 91947 (WhatsApp Direct)
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-2 border-t border-slate-100 flex flex-col sm:flex-row gap-3">
+                <button
+                  onClick={onOpenDemoModal}
+                  className="flex-1 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs transition-colors text-center"
+                >
+                  Book Live Demo
+                </button>
+                <button
+                  onClick={onOpenContactModal}
+                  className="flex-1 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs transition-colors text-center"
+                >
+                  Send Inquiry
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
           16. FINAL CTA BANNER (Requirement #22)
       ─────────────────────────────────────────────────────────── */}
       <section className="py-20 lg:py-24 bg-white">

@@ -6,6 +6,7 @@ import {
   GraduationCap,
   Building2,
   Briefcase,
+  Heart,
   ArrowRight,
   CheckCircle2,
   Calendar,
@@ -33,6 +34,14 @@ export default function SolutionsPage({ onOpenDemoModal, onOpenContactModal }) {
       badge: 'High Velocity Retail',
       featured: false,
       color: 'bg-purple-50 text-purple-600 border-purple-200',
+    },
+    {
+      key: 'healthcare',
+      icon: Heart,
+      data: SOLUTIONS_DATA.healthcare,
+      badge: 'Clinics & Hospitals',
+      featured: false,
+      color: 'bg-rose-50 text-rose-600 border-rose-200',
     },
     {
       key: 'education',
