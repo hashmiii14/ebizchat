@@ -1,7 +1,7 @@
 export const NAVIGATION_LINKS = [
   {
     name: "Lead Generation",
-    path: "/leadgen",
+    path: "/lead-generation",
     hash: "#lead-generation",
   },
   {

@@ -33,7 +33,7 @@ export default function SolutionsPage({ onOpenDemoModal, onOpenContactModal }) {
       data: SOLUTIONS_DATA.ecommerce,
       badge: 'High Velocity Retail',
       featured: false,
-      color: 'bg-purple-50 text-purple-600 border-purple-200',
+      color: 'bg-teal-50 text-teal-600 border-teal-200',
     },
     {
       key: 'healthcare',

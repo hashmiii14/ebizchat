@@ -217,7 +217,7 @@ export default function LeadGenPage({ onOpenDemoModal, onOpenContactModal }) {
             </div>
 
             <div className="p-6 rounded-2xl border border-slate-200 bg-white shadow-subtle space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
                 QR
               </div>
               <h4 className="font-bold text-slate-900 text-base">Trade Fair & Catalog QR Codes</h4>

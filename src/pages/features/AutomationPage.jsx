@@ -33,7 +33,7 @@ export default function AutomationPage({ onOpenDemoModal, onOpenContactModal }) 
       <section className="pt-12 pb-20 lg:pt-16 lg:pb-24 bg-gradient-to-b from-slate-50 via-white to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-mono font-semibold">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-mono font-semibold">
               <GitBranch className="w-3.5 h-3.5" />
               <span>{feat.badge}</span>
             </div>
@@ -66,7 +66,7 @@ export default function AutomationPage({ onOpenDemoModal, onOpenContactModal }) 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-100 max-w-2xl mx-auto">
               {feat.stats.map((s) => (
                 <div key={s.label}>
-                  <div className="font-mono font-bold text-2xl text-indigo-600">{s.value}</div>
+                  <div className="font-mono font-bold text-2xl text-emerald-600">{s.value}</div>
                   <div className="text-xs text-slate-500 mt-0.5">{s.label}</div>
                 </div>
               ))}

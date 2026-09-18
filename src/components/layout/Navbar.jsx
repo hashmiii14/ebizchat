@@ -81,22 +81,9 @@ export default function Navbar() {
     }, 160);
   };
 
-  const handleLinkClick = (link, e) => {
-    if (link.name === 'Pricing') {
-      if (location.pathname === '/') {
-        e.preventDefault();
-        const el = document.getElementById('pricing');
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-      setMobileMenuOpen(false);
-    }
-  };
-
   const isCurrentRoute = (link) => {
-    if (link.path === '/leadgen') {
-      return location.pathname === '/leadgen';
+    if (link.path === '/lead-generation' || link.path === '/leadgen') {
+      return location.pathname === '/lead-generation' || location.pathname === '/leadgen';
     }
     if (link.path === '/pricing') {
       return location.pathname === '/pricing';
@@ -115,7 +102,7 @@ export default function Navbar() {
         location.pathname === '/case-studies'
       );
     }
-    return false;
+    return location.pathname === link.path;
   };
 
   return (
@@ -141,7 +128,6 @@ export default function Navbar() {
           <nav className="hidden md:flex items-center gap-1 sm:gap-1.5 lg:gap-2 xl:gap-3">
             {NAVIGATION_LINKS.map((link) => {
               const isActive = isCurrentRoute(link);
-              const targetPath = link.name === 'Pricing' ? (location.pathname === '/' ? '#pricing' : '/#pricing') : link.path;
 
               if (link.hasDropdown) {
                 const isOpen = activeDropdown === link.name;
@@ -153,8 +139,7 @@ export default function Navbar() {
                     onMouseLeave={handleMouseLeave}
                   >
                     <Link
-                      to={targetPath}
-                      onClick={(e) => handleLinkClick(link, e)}
+                      to={link.path}
                       className={`px-3.5 lg:px-4 py-2 rounded-xl text-[14px] lg:text-[15px] font-semibold tracking-[-0.01em] transition-all flex items-center gap-1.5 focus:outline-none ${
                         isActive || isOpen
                           ? 'text-emerald-600 bg-emerald-50 font-bold'
@@ -229,8 +214,7 @@ export default function Navbar() {
               return (
                 <Link
                   key={link.name}
-                  to={targetPath}
-                  onClick={(e) => handleLinkClick(link, e)}
+                  to={link.path}
                   className={`px-3.5 lg:px-4 py-2 rounded-xl text-[14px] lg:text-[15px] font-semibold tracking-[-0.01em] transition-all flex items-center gap-1.5 focus:outline-none ${
                     isActive
                       ? 'text-emerald-600 bg-emerald-50 font-bold'
@@ -319,13 +303,11 @@ export default function Navbar() {
                 );
               }
 
-              const targetPath = link.name === 'Pricing' ? (location.pathname === '/' ? '#pricing' : '/#pricing') : link.path;
-
               return (
                 <Link
                   key={link.name}
-                  to={targetPath}
-                  onClick={(e) => handleLinkClick(link, e)}
+                  to={link.path}
+                  onClick={() => setMobileMenuOpen(false)}
                   className={`block px-2 py-2.5 rounded-xl text-base font-bold border-b border-slate-100 transition-colors ${
                     isActive ? 'text-emerald-600' : 'text-slate-900 hover:text-emerald-600'
                   }`}

@@ -37,7 +37,7 @@ export default function ResourcesPage({ onOpenDemoModal, onOpenContactModal }) {
       path: '/case-studies',
       icon: Award,
       badge: 'Proven ROI',
-      color: 'bg-purple-50 text-purple-600 border-purple-200',
+      color: 'bg-teal-50 text-teal-600 border-teal-200',
     },
   ];
 

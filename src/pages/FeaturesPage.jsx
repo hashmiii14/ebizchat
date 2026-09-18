@@ -36,7 +36,7 @@ export default function FeaturesPage({ onOpenDemoModal, onOpenContactModal }) {
     {
       key: 'chatbot',
       icon: Bot,
-      color: 'bg-purple-50 text-purple-600 border-purple-200',
+      color: 'bg-emerald-50 text-emerald-600 border-emerald-200',
       data: FEATURES_DATA.chatbot,
     },
     {
@@ -48,7 +48,7 @@ export default function FeaturesPage({ onOpenDemoModal, onOpenContactModal }) {
     {
       key: 'automation',
       icon: GitBranch,
-      color: 'bg-indigo-50 text-indigo-600 border-indigo-200',
+      color: 'bg-emerald-50 text-emerald-600 border-emerald-200',
       data: FEATURES_DATA.automation,
     },
     {

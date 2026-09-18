@@ -183,7 +183,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
             </div>
 
             {/* Right Column: Large realistic product visual (Web App + Chat + Leads + Floating iPhone) */}
-            <div className="lg:col-span-6 w-full pt-4 lg:pt-0">
+            <div className="lg:col-span-6 w-full pt-4 lg:pt-0 pb-6 sm:pb-10 lg:pb-6">
               <HeroVisualMockup />
             </div>
           </div>
@@ -298,21 +298,21 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
               </div>
             </div>
 
-            {/* Right Product Screenshot: Appointment Scheduling Showcase */}
+            {/* Right Product Screenshot: Unified Lead Funnel & Communication Pipeline */}
             <div className="lg:col-span-6 flex justify-center">
               <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200/80 bg-white w-full max-w-lg group">
                 <img
-                  src="/images/appointment-scheduling.png"
-                  alt="eBizChat WhatsApp Appointment Scheduling & Lead Workflow"
+                  src="/images/lead-funnel-pipeline.png"
+                  alt="eBizChat WhatsApp Communication & Full Lead Conversion Pipeline"
                   className="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
                   loading="lazy"
                 />
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900/85 via-slate-900/40 to-transparent p-4 text-white text-left">
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent p-4 text-white text-left">
                   <div className="text-xs font-bold flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>Automated Appointment Scheduling Flow</span>
+                    <span>Unified Lead Capture & Sales Pipeline</span>
                   </div>
-                  <div className="text-[11px] text-emerald-200">Instant slot selection, automated reminders & zero human effort</div>
+                  <div className="text-[11px] text-emerald-200 mt-0.5">Multi-channel lead intake, automated qualification & live team routing</div>
                 </div>
               </div>
             </div>
@@ -1146,23 +1146,53 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
               </div>
             </div>
 
-            {/* Right: Real Operational Alerts Visual Showcase */}
-            <div className="lg:col-span-6">
+            {/* Right: Orizer ERP Enterprise Visual Showcase */}
+            <div className="lg:col-span-6 space-y-4">
+              {/* Primary Card: Real-time ERP BI Dashboard */}
               <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-white group">
-                <img
-                  src="/images/transactional-notifications.png"
-                  alt="Orizer ERP WhatsApp Transactional Alerts"
-                  className="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
-                  loading="lazy"
-                />
+                <div className="relative">
+                  <img
+                    src="/images/bi-dashboard.jpg"
+                    alt="Orizer ERP Business Intelligence & Production Analytics Dashboard"
+                    className="w-full h-56 sm:h-64 object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-sm text-white text-[10px] font-mono font-semibold flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Live ERP BI Sync</span>
+                  </div>
+                </div>
                 <div className="p-4 bg-slate-900 text-white text-left">
                   <div className="text-xs font-bold flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>Orizer ERP Real-Time Dispatch & Invoicing Engine</span>
+                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                    <span>Orizer ERP Business Intelligence & Production Analytics</span>
                   </div>
                   <div className="text-[11px] text-emerald-200 mt-0.5">
-                    Automated e-way bills, lorry receipts (LR) & GST invoice PDF attachments
+                    Real-time data synchronization for stock alerts, dispatches, and dealer billing
                   </div>
+                </div>
+              </div>
+
+              {/* Secondary Card: Shop-floor & Manufacturing Deployment */}
+              <div className="rounded-2xl overflow-hidden shadow-md border border-slate-200 bg-white flex flex-col sm:flex-row items-center group">
+                <div className="w-full sm:w-48 h-36 flex-shrink-0 overflow-hidden">
+                  <img
+                    src="/images/factory.jpg"
+                    alt="Orizer Industrial Shop-Floor Execution"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-4 text-left flex-1">
+                  <div className="text-[11px] font-mono text-emerald-600 font-bold uppercase tracking-wider">
+                    Shop-Floor & Warehouse Reliability
+                  </div>
+                  <h4 className="text-xs sm:text-sm font-bold text-slate-900 mt-0.5">
+                    Built for Real Heavy Manufacturing Operations
+                  </h4>
+                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
+                    Designed to withstand high-volume dispatches, automated lorry receipts, and uninterrupted dealer communication across Gujarat and India.
+                  </p>
                 </div>
               </div>
             </div>

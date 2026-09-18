@@ -391,7 +391,7 @@ export function WorkflowAutomationMockup() {
 
         {/* Step 4: Delayed Action */}
         <div className="w-full md:w-1/4 bg-slate-50 border border-slate-200 rounded-xl p-3.5 relative shadow-subtle">
-          <span className="px-1.5 py-0.5 rounded bg-purple-100 text-purple-800 text-[9px] font-mono font-bold uppercase mb-2 inline-block">
+          <span className="px-1.5 py-0.5 rounded bg-teal-100 text-teal-800 text-[9px] font-mono font-bold uppercase mb-2 inline-block">
             4. Smart Nudge
           </span>
           <div className="font-bold text-slate-900 text-xs mb-1">Wait 48h → Delivery Check</div>
@@ -698,63 +698,136 @@ export function HeroVisualMockup() {
         </div>
       </div>
 
-      {/* Floating iPhone Mockup with Campaign Analytics */}
-      <div className="hidden sm:block absolute -bottom-6 -right-3 sm:-right-5 w-[215px] bg-slate-950 rounded-[38px] p-2.5 shadow-2xl border border-slate-800 z-20 transition-transform hover:scale-105 duration-300">
-        {/* Notch / Dynamic Island */}
-        <div className="w-16 h-3.5 bg-black rounded-full mx-auto mb-2 flex items-center justify-center">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-        </div>
+      {/* iPhone 16 Pro Mockup (WhatsApp Business Verified Experience) */}
+      <div className="mt-6 sm:mt-0 sm:absolute sm:-bottom-8 sm:-right-4 lg:-right-6 xl:-right-8 w-[250px] sm:w-[255px] xl:w-[270px] mx-auto z-20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl select-none">
+        {/* Outer Titanium Frame with Physical Side Buttons */}
+        <div className="relative bg-slate-900 rounded-[48px] p-[9px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.15)] ring-1 ring-black/40">
+          {/* Physical Side Buttons (Mute / Action / Volume on Left, Power on Right) */}
+          <div className="hidden sm:block absolute -left-[3px] top-20 w-[3px] h-6 bg-slate-700 rounded-l-sm"></div>
+          <div className="hidden sm:block absolute -left-[3px] top-28 w-[3px] h-10 bg-slate-700 rounded-l-sm"></div>
+          <div className="hidden sm:block absolute -left-[3px] top-40 w-[3px] h-10 bg-slate-700 rounded-l-sm"></div>
+          <div className="hidden sm:block absolute -right-[3px] top-28 w-[3px] h-14 bg-slate-700 rounded-r-sm"></div>
 
-        {/* Screen Content */}
-        <div className="bg-white rounded-[28px] p-3 text-[10px] text-slate-900 overflow-hidden">
-          <div className="flex items-center justify-between text-[9px] text-slate-400 font-mono mb-1.5">
-            <span>Campaigns</span>
-            <span className="px-1.5 py-0.2 rounded-full bg-emerald-100 text-emerald-800 font-semibold text-[8px]">
-              Completed
-            </span>
-          </div>
+          {/* OLED Screen Bezel */}
+          <div className="bg-[#0b141a] rounded-[40px] overflow-hidden text-slate-100 flex flex-col border border-black/80">
+            {/* iOS Status Bar & Dynamic Island */}
+            <div className="pt-2 px-5 pb-1 flex items-center justify-between text-[10px] font-semibold text-white/90 bg-[#128C7E]">
+              <span className="font-mono text-[11px] tracking-tight">9:41</span>
 
-          <div className="font-bold text-[11px] text-slate-900 mb-0.5 truncate">
-            Diwali Summer Sale
-          </div>
-          <div className="text-[9px] text-slate-400 mb-2">Target Audience: All VIP Dealers</div>
+              {/* Dynamic Island Pill */}
+              <div className="w-[84px] h-[20px] bg-black rounded-full flex items-center justify-between px-2 shadow-inner">
+                <div className="w-2.5 h-2.5 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center">
+                  <div className="w-1 h-1 rounded-full bg-slate-700"></div>
+                </div>
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+              </div>
 
-          {/* 4 Metrics in Grid */}
-          <div className="grid grid-cols-2 gap-1.5 mb-2.5">
-            <div className="bg-slate-50 p-1.5 rounded-lg border border-slate-100 text-center">
-              <div className="text-[8px] text-slate-500">Sent</div>
-              <div className="font-bold text-[11px] text-slate-900 font-mono">12,450</div>
+              {/* iOS Icons */}
+              <div className="flex items-center gap-1 text-[9px]">
+                <span className="font-bold text-[8px]">5G</span>
+                <div className="w-4 h-2 border border-white/80 rounded-xs p-0.5 flex items-center">
+                  <div className="h-full w-full bg-emerald-400 rounded-2xs"></div>
+                </div>
+              </div>
             </div>
-            <div className="bg-emerald-50/70 p-1.5 rounded-lg border border-emerald-100 text-center">
-              <div className="text-[8px] text-emerald-800">Delivered</div>
-              <div className="font-bold text-[11px] text-emerald-700 font-mono">95.5%</div>
-            </div>
-            <div className="bg-slate-50 p-1.5 rounded-lg border border-slate-100 text-center">
-              <div className="text-[8px] text-slate-500">Read</div>
-              <div className="font-bold text-[11px] text-slate-900 font-mono">77.7%</div>
-            </div>
-            <div className="bg-emerald-50/70 p-1.5 rounded-lg border border-emerald-100 text-center">
-              <div className="text-[8px] text-emerald-800">Clicked</div>
-              <div className="font-bold text-[11px] text-emerald-700 font-mono">37.0%</div>
-            </div>
-          </div>
 
-          {/* Regional Performance */}
-          <div className="text-[8px] font-bold text-slate-500 uppercase tracking-wider mb-1">
-            Top Regions
-          </div>
-          <div className="space-y-1 text-[9px] text-slate-600">
-            <div className="flex items-center justify-between">
-              <span>🇮🇳 India</span>
-              <span className="font-mono font-bold text-slate-900">68%</span>
+            {/* WhatsApp App Header (Meta Verified Green Badge) */}
+            <div className="px-3 py-2 bg-[#075E54] text-white flex items-center justify-between shadow-xs">
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 rounded-full bg-white/10 border border-emerald-400/40 flex items-center justify-center text-[10px] font-extrabold text-white">
+                  eB
+                </div>
+                <div>
+                  <div className="font-bold text-[11px] flex items-center gap-1 leading-none text-white">
+                    <span>eBizChat Business</span>
+                    {/* Meta Official Green Verification Badge */}
+                    <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 text-slate-950 flex items-center justify-center text-[8px] font-black" title="Verified WhatsApp Business">
+                      ✓
+                    </span>
+                  </div>
+                  <div className="text-[9px] text-emerald-200 mt-0.5 leading-none">
+                    Official Business Account
+                  </div>
+                </div>
+              </div>
+
+              {/* Video / Call Action Icons */}
+              <div className="flex items-center gap-2 text-white/80">
+                <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center">
+                  <svg className="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z" />
+                  </svg>
+                </div>
+                <MoreHorizontal className="w-3.5 h-3.5" />
+              </div>
             </div>
-            <div className="flex items-center justify-between">
-              <span>🇦🇪 UAE</span>
-              <span className="font-mono font-bold text-slate-900">18%</span>
+
+            {/* WhatsApp Chat Body */}
+            <div className="p-2.5 bg-[#efeae2] space-y-2 text-[10px] min-h-[220px]">
+              {/* Date Pill */}
+              <div className="flex justify-center">
+                <span className="px-2 py-0.5 rounded-md bg-white/80 shadow-2xs text-[8px] font-semibold text-slate-600 uppercase tracking-wider">
+                  Today
+                </span>
+              </div>
+
+              {/* Outgoing Message (Customer Inquiry) */}
+              <div className="flex justify-end">
+                <div className="max-w-[88%] bg-[#d9fdd3] text-slate-800 rounded-xl rounded-tr-xs p-2 shadow-2xs">
+                  <p className="leading-snug text-[10px]">
+                    Hi! Please share the LR copy and live dispatch status for PO #OZ-8821.
+                  </p>
+                  <div className="flex items-center justify-end gap-1 text-[8px] text-slate-500 mt-0.5">
+                    <span>09:40 AM</span>
+                    <span className="text-emerald-700 font-bold">✓✓</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Incoming Bot Message (Instant Automation) */}
+              <div className="flex justify-start">
+                <div className="max-w-[92%] bg-white text-slate-800 rounded-xl rounded-tl-xs p-2 shadow-2xs">
+                  <div className="text-[9px] font-bold text-emerald-800 flex items-center gap-1 mb-1">
+                    <span>🤖 Orizer ERP Bot</span>
+                    <span className="text-[8px] text-slate-400 font-normal">· Instant</span>
+                  </div>
+                  <p className="leading-snug text-[10px]">
+                    Hello Apex Dynamics! Your consignment is in transit via <span className="font-semibold text-slate-900">V-Trans (Tracking #VT-99201)</span>.
+                  </p>
+
+                  {/* Attached PDF Preview Card */}
+                  <div className="mt-1.5 p-2 rounded-lg bg-slate-50 border border-slate-200/90 flex items-center gap-2">
+                    <div className="w-7 h-7 rounded-md bg-rose-500 text-white flex items-center justify-center font-bold text-[9px] flex-shrink-0">
+                      PDF
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="font-bold text-slate-900 truncate text-[10px]">
+                        LR_Consignment_8821.pdf
+                      </div>
+                      <div className="text-[8px] text-slate-500">184 KB · Verified Digital Signature</div>
+                    </div>
+                  </div>
+
+                  {/* Interactive Quick Buttons */}
+                  <div className="mt-2 pt-1.5 border-t border-slate-100 flex flex-col gap-1">
+                    <button className="w-full py-1 rounded-md bg-emerald-50 text-emerald-700 font-bold text-[9px] text-center hover:bg-emerald-100 transition-colors border border-emerald-200">
+                      📍 Live GPS Tracking
+                    </button>
+                    <button className="w-full py-1 rounded-md bg-slate-100 text-slate-700 font-semibold text-[9px] text-center hover:bg-slate-200 transition-colors">
+                      📞 Connect with Dispatch Manager
+                    </button>
+                  </div>
+
+                  <div className="flex items-center justify-end text-[8px] text-slate-400 mt-1">
+                    <span>09:41 AM</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="flex items-center justify-between">
-              <span>🇺🇸 USA</span>
-              <span className="font-mono font-bold text-slate-900">9%</span>
+
+            {/* Bottom iOS Home Indicator */}
+            <div className="py-1.5 bg-[#f0f2f5] flex items-center justify-center">
+              <div className="w-20 h-1 bg-slate-400/80 rounded-full"></div>
             </div>
           </div>
         </div>
@@ -1032,7 +1105,7 @@ export function LeadPipelineMockup() {
           value: "₹4,50,000",
           time: "1h ago",
           tag: "50+ User License",
-          tagColor: "bg-purple-50 text-purple-700",
+          tagColor: "bg-teal-50 text-teal-700",
           rep: "Priya S."
         },
         {

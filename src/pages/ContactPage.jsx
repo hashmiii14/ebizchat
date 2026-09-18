@@ -114,7 +114,7 @@ export default function ContactPage({ onOpenDemoModal }) {
 
                 {/* Email Channels */}
                 <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-subtle flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center flex-shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
