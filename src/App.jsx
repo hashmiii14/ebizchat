@@ -34,6 +34,7 @@ import HealthcarePage from './pages/solutions/HealthcarePage';
 import PricingPage from './pages/PricingPage';
 import ResourcesPage from './pages/ResourcesPage';
 import BlogPage from './pages/BlogPage';
+import BlogPostPage from './pages/BlogPostPage';
 import FAQPage from './pages/FAQPage';
 import CaseStudiesPage from './pages/CaseStudiesPage';
 import AboutPage from './pages/AboutPage';
@@ -166,6 +167,10 @@ export default function App() {
             element={<ResourcesPage onOpenDemoModal={openDemoModal} onOpenContactModal={openContactModal} />}
           />
           <Route path="/blog" element={<BlogPage />} />
+          <Route
+            path="/blog/:slug"
+            element={<BlogPostPage onOpenDemoModal={openDemoModal} onOpenContactModal={openContactModal} />}
+          />
           <Route path="/faq" element={<FAQPage onOpenContactModal={openContactModal} />} />
           <Route
             path="/case-studies"

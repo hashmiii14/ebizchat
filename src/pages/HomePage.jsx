@@ -63,6 +63,8 @@ import {
 } from '../components/ui/DashboardMockups';
 import { ORIZER_INFO } from '../data/orizerData';
 import { PRICING_DATA } from '../data/pricingData';
+import { BLOG_POSTS } from '../data/blogData';
+import SEOHead from '../components/ui/SEOHead';
 
 export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
   // Interactive Product Showcase tab state
@@ -73,9 +75,6 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
 
   // FAQ accordion state
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
-
-  // Billing toggle state
-  const [billingCycle, setBillingCycle] = useState('monthly');
 
   const toggleFaq = (index) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
@@ -119,6 +118,11 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
 
   return (
     <div className="flex flex-col min-h-screen bg-white text-slate-900 selection:bg-emerald-500 selection:text-white font-sans overflow-x-hidden">
+      <SEOHead
+        title="eBizChat - WhatsApp Business Platform & CRM Automation | Orizer"
+        description="Enterprise WhatsApp Business platform by Orizer. Multi-agent shared inbox, visual Kanban pipelines, no-code chat automation, and 2-way ERP sync."
+        canonical="https://ebizchat.vercel.app/"
+      />
       {/* ───────────────────────────────────────────────────────────
           1. HERO SECTION (Cunnekt Quality & Layout)
       ─────────────────────────────────────────────────────────── */}
@@ -1201,115 +1205,73 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          13. TRANSPARENT PRICING PLANS (Requirement #19)
+          13. TRANSPARENT PRICING PACKAGES
       ─────────────────────────────────────────────────────────── */}
       <section id="pricing" className="py-20 lg:py-24 border-b border-slate-100 bg-slate-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="max-w-2xl mx-auto mb-10">
+          <div className="max-w-2xl mx-auto mb-12">
             <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
               TRANSPARENT PRICING
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Simple, Predictable Plans for <span className="text-emerald-600">Every Business</span>
+              Simple, Tailored Plans for <span className="text-emerald-600">Every Business</span>
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
-              No hidden setup fees. Scale as your customer conversations expand.
+              Predictable enterprise software subscriptions with direct Meta Cloud API wholesale rates and 100% data ownership.
             </p>
-          </div>
-
-          {/* Billing Switcher Toggle */}
-          <div className="flex items-center justify-center gap-3 mb-12">
-            <span className={`text-xs font-semibold ${billingCycle === 'monthly' ? 'text-slate-900' : 'text-slate-500'}`}>
-              Monthly
-            </span>
-            <button
-              onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')}
-              className="w-12 h-6 rounded-full bg-slate-200 p-0.5 transition-colors relative"
-            >
-              <div
-                className={`w-5 h-5 rounded-full bg-emerald-600 transition-transform ${
-                  billingCycle === 'yearly' ? 'translate-x-6' : 'translate-x-0'
-                }`}
-              />
-            </button>
-            <span className={`text-xs font-semibold flex items-center gap-1.5 ${billingCycle === 'yearly' ? 'text-slate-900' : 'text-slate-500'}`}>
-              <span>Annual</span>
-              <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold font-mono">
-                Save 20%
-              </span>
-            </span>
           </div>
 
           {/* 4 Plan Cards: Starter | Growth | Professional | Enterprise */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left items-stretch">
-            {PRICING_DATA.plans.map((plan) => {
-              const price =
-                typeof plan.monthlyPrice === 'number'
-                  ? billingCycle === 'yearly'
-                    ? plan.annualPrice
-                    : plan.monthlyPrice
-                  : plan.monthlyPrice;
-
-              return (
-                <div
-                  key={plan.id}
-                  className={`bg-white rounded-2xl p-6 sm:p-7 flex flex-col justify-between border transition-all ${
-                    plan.popular
-                      ? 'border-emerald-500 shadow-xl shadow-emerald-500/10 ring-2 ring-emerald-500/20'
-                      : 'border-slate-200 shadow-xs hover:border-slate-300'
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">
-                        {plan.badge}
+            {PRICING_DATA.plans.map((plan) => (
+              <div
+                key={plan.id}
+                className={`bg-white rounded-2xl p-6 sm:p-7 flex flex-col justify-between border transition-all ${
+                  plan.popular
+                    ? 'border-emerald-500 shadow-xl shadow-emerald-500/10 ring-2 ring-emerald-500/20'
+                    : 'border-slate-200 shadow-xs hover:border-slate-300'
+                }`}
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">
+                      {plan.badge}
+                    </span>
+                    {plan.popular && (
+                      <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px] font-mono">
+                        POPULAR
                       </span>
-                      {plan.popular && (
-                        <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px] font-mono">
-                          POPULAR
-                        </span>
-                      )}
+                    )}
+                  </div>
+
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">{plan.name}</h3>
+                  <p className="text-xs text-slate-500 min-h-[44px] leading-relaxed mb-6 font-normal">
+                    {plan.description}
+                  </p>
+
+                  <div className="mb-6 pb-6 border-b border-slate-100">
+                    <div className="text-2xl font-extrabold text-slate-900 font-mono tracking-tight">
+                      {plan.pricingDisplay}
                     </div>
-
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">{plan.name}</h3>
-                    <p className="text-xs text-slate-500 min-h-[36px] leading-relaxed mb-6 font-normal">
-                      {plan.description}
-                    </p>
-
-                    <div className="mb-6 pb-6 border-b border-slate-100">
-                      <div className="flex items-baseline gap-1">
-                        {typeof price === 'number' && (
-                          <span className="text-2xl font-bold text-slate-900 font-mono">₹</span>
-                        )}
-                        <span className="text-4xl font-extrabold text-slate-900 font-mono tracking-tight">
-                          {typeof price === 'number' ? price.toLocaleString('en-IN') : price}
-                        </span>
-                        {typeof price === 'number' && (
-                          <span className="text-xs text-slate-500 font-medium">/ month</span>
-                        )}
-                      </div>
-                      <div className="text-[10px] text-slate-400 font-mono mt-1">
-                        {typeof price === 'number'
-                          ? billingCycle === 'yearly'
-                            ? 'Billed annually'
-                            : 'Billed monthly'
-                          : 'Custom enterprise deployment'}
-                      </div>
-                    </div>
-
-                    <div className="space-y-2.5 mb-6">
-                      <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                        Included Features:
-                      </span>
-                      {plan.features.slice(0, 6).map((feat, i) => (
-                        <div key={i} className="flex items-start gap-2 text-xs text-slate-700">
-                          <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-                          <span>{feat}</span>
-                        </div>
-                      ))}
+                    <div className="text-[11px] text-emerald-700 font-medium mt-1">
+                      {plan.pricingSub}
                     </div>
                   </div>
 
+                  <div className="space-y-2.5 mb-6">
+                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                      Included Capabilities:
+                    </span>
+                    {plan.features.slice(0, 6).map((feat, i) => (
+                      <div key={i} className="flex items-start gap-2 text-xs text-slate-700">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                        <span>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-2 pt-2">
                   <button
                     onClick={onOpenContactModal}
                     className={`w-full py-3 rounded-xl text-xs font-bold transition-all ${
@@ -1321,8 +1283,18 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                     {plan.ctaText}
                   </button>
                 </div>
-              );
-            })}
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              to="/pricing"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 font-bold text-xs shadow-xs transition-colors"
+            >
+              <span>View Full Feature Comparison Matrix</span>
+              <ArrowRight className="w-3.5 h-3.5 text-emerald-600" />
+            </Link>
           </div>
         </div>
       </section>
@@ -1399,6 +1371,77 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          14.5 BLOG & INSIGHTS PREVIEW
+      ─────────────────────────────────────────────────────────── */}
+      <section id="blog-preview" className="py-20 lg:py-24 border-b border-slate-100 bg-slate-50/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+            <div className="max-w-2xl text-left">
+              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
+                EXPERT PLAYBOOKS & STRATEGY
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                Latest Insights & <span className="text-emerald-600">WhatsApp Playbooks</span>
+              </h2>
+              <p className="mt-3 text-slate-600 text-sm sm:text-base">
+                Actionable engineering guides, B2B lead generation benchmarks, and ERP automation architectures from the eBizChat team.
+              </p>
+            </div>
+
+            <Link
+              to="/blog"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 font-bold text-xs shadow-xs transition-all self-start md:self-auto group"
+            >
+              <span>Explore All Articles ({BLOG_POSTS.length})</span>
+              <ArrowRight className="w-3.5 h-3.5 text-emerald-600 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+            {BLOG_POSTS.slice(0, 3).map((post) => (
+              <article
+                key={post.slug}
+                className="bg-white rounded-2xl border border-slate-200 shadow-xs hover:shadow-card-hover hover:border-emerald-500 transition-all flex flex-col justify-between overflow-hidden group"
+              >
+                <div className="p-6 sm:p-7">
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-mono font-semibold border border-emerald-200">
+                      {post.category}
+                    </span>
+                    <span className="text-slate-400 text-xs flex items-center gap-1 font-mono">
+                      <Clock className="w-3.5 h-3.5" />
+                      {post.readTime}
+                    </span>
+                  </div>
+
+                  <Link to={`/blog/${post.slug}`}>
+                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition-colors leading-snug mb-3">
+                      {post.title}
+                    </h3>
+                  </Link>
+
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3 mb-6 font-normal">
+                    {post.excerpt}
+                  </p>
+                </div>
+
+                <div className="px-6 py-4 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <span className="text-slate-500 font-medium">{post.author}</span>
+                  <Link
+                    to={`/blog/${post.slug}`}
+                    className="font-bold text-emerald-700 hover:text-emerald-800 inline-flex items-center gap-1 group-hover:underline"
+                  >
+                    <span>Read Article</span>
+                    <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                  </Link>
+                </div>
+              </article>
             ))}
           </div>
         </div>

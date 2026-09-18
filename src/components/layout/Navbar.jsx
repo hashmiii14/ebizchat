@@ -47,7 +47,7 @@ const ICON_MAP = {
   Heart,
 };
 
-export default function Navbar() {
+export default function Navbar({ onOpenDemoModal, onOpenContactModal }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [expandedMobileItem, setExpandedMobileItem] = useState(null);
@@ -62,6 +62,18 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Lock body scrolling when mobile menu is open to prevent background bleed
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   // Close menus on route changes
   useEffect(() => {
@@ -227,23 +239,50 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Mobile Menu Toggle (Only visible on mobile/tablet) */}
+          {/* Desktop Right Action CTA */}
+          <div className="hidden md:flex items-center gap-2">
+            <button
+              onClick={onOpenDemoModal}
+              className="px-3.5 py-2 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+            >
+              Book Demo
+            </button>
+            <button
+              onClick={onOpenContactModal}
+              className="px-4 py-2 rounded-xl text-[13px] font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm shadow-emerald-600/20 transition-all active:scale-95 inline-flex items-center gap-1.5"
+            >
+              <span>Get Started</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          {/* Mobile Menu Toggle (Visible on mobile/tablet) */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-slate-800 hover:text-slate-900 hover:bg-slate-100 focus:outline-none transition-colors"
+              className="p-2.5 rounded-xl text-slate-800 hover:text-slate-900 hover:bg-slate-100 active:bg-slate-200 focus:outline-none transition-colors"
               aria-label="Toggle Navigation Menu"
+              aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-6 h-6 text-slate-900" /> : <Menu className="w-6 h-6 text-slate-900" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Drawer Menu (Strictly minimal - contains ONLY the 5 navigation links) */}
+      {/* Mobile Backdrop Blur Overlay */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-x-0 top-20 bg-white/98 backdrop-blur-xl border-b border-slate-200 shadow-2xl max-h-[calc(100vh-5rem)] overflow-y-auto z-50 animate-in slide-in-from-top-2 duration-150">
-          <div className="p-4 space-y-2">
+        <div
+          className="md:hidden fixed inset-0 top-20 bg-slate-950/40 backdrop-blur-xs z-40 animate-in fade-in-0 duration-200"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Mobile Drawer Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden fixed inset-x-0 top-20 bg-white border-b border-slate-200 shadow-2xl max-h-[calc(100dvh-5rem)] overflow-y-auto z-50 animate-in slide-in-from-top-2 duration-200">
+          <div className="p-4 space-y-1">
             {NAVIGATION_LINKS.map((link) => {
               const isActive = isCurrentRoute(link);
 
@@ -316,6 +355,28 @@ export default function Navbar() {
                 </Link>
               );
             })}
+
+            {/* Mobile Action Buttons */}
+            <div className="pt-4 mt-3 border-t border-slate-100 grid grid-cols-2 gap-2.5">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (onOpenDemoModal) onOpenDemoModal();
+                }}
+                className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-900 font-semibold text-xs transition-colors text-center"
+              >
+                Book Demo
+              </button>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (onOpenContactModal) onOpenContactModal();
+                }}
+                className="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-colors text-center"
+              >
+                Get Started
+              </button>
+            </div>
           </div>
         </div>
       )}
