@@ -207,7 +207,7 @@ export default function LeadGenPage({ onOpenDemoModal, onOpenContactModal }) {
             </div>
 
             <div className="p-6 rounded-2xl border border-slate-200 bg-white shadow-subtle space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+              <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center font-bold">
                 WEB
               </div>
               <h4 className="font-bold text-slate-900 text-base">Website Floating Widget</h4>

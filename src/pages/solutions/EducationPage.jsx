@@ -32,7 +32,7 @@ export default function EducationPage({ onOpenDemoModal, onOpenContactModal }) {
       <section className="pt-12 pb-20 lg:pt-16 lg:pb-24 bg-gradient-to-b from-slate-50 via-white to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-mono font-semibold">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs font-mono font-semibold">
               <GraduationCap className="w-3.5 h-3.5" />
               <span>{sol.industry}</span>
             </div>
@@ -65,7 +65,7 @@ export default function EducationPage({ onOpenDemoModal, onOpenContactModal }) {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-100 max-w-2xl mx-auto">
               {sol.results.map((r) => (
                 <div key={r.label}>
-                  <div className="font-mono font-bold text-2xl text-blue-600">{r.metric}</div>
+                  <div className="font-mono font-bold text-2xl text-brand-600">{r.metric}</div>
                   <div className="text-xs text-slate-500 mt-0.5">{r.label}</div>
                 </div>
               ))}
@@ -89,7 +89,7 @@ export default function EducationPage({ onOpenDemoModal, onOpenContactModal }) {
                 key={uc.title}
                 className="p-8 rounded-2xl bg-white border border-slate-200 shadow-card text-left space-y-3"
               >
-                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center font-bold">
+                <div className="w-10 h-10 rounded-xl bg-brand-50 text-brand-700 flex items-center justify-center font-bold">
                   <CheckCircle2 className="w-5 h-5" />
                 </div>
                 <h4 className="text-lg font-bold text-slate-900">{uc.title}</h4>

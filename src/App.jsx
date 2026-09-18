@@ -41,12 +41,22 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsPage from './pages/TermsPage';
 import NotFoundPage from './pages/NotFoundPage';
 
-// Scroll to top on route change
+// Scroll to top or to hash element on route change
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
+    if (hash) {
+      setTimeout(() => {
+        const id = hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+      return;
+    }
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname, hash]);
   return null;
 }
 
@@ -61,7 +71,7 @@ export default function App() {
   const closeContactModal = () => setIsContactModalOpen(false);
 
   return (
-    <div className="flex flex-col min-h-screen bg-white text-slate-900 selection:bg-brand-500 selection:text-white font-sans">
+    <div className="flex flex-col min-h-screen bg-white text-slate-900 selection:bg-emerald-500 selection:text-white font-sans overflow-x-hidden w-full relative">
       <PageLoader />
       <ScrollToTop />
       <Navbar onOpenDemoModal={openDemoModal} onOpenContactModal={openContactModal} />

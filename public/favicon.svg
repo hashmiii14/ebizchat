@@ -1,21 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
   <defs>
-    <linearGradient id="ebizGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#10B981" />
-      <stop offset="100%" stop-color="#047857" />
-    </linearGradient>
-    <linearGradient id="bubbleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="100%" stop-color="#ECFDF5" />
+      <stop offset="100%" stop-color="#059669" />
     </linearGradient>
   </defs>
-  <!-- Background Rounded Shield / Tile -->
-  <rect width="64" height="64" rx="16" fill="url(#ebizGrad)" />
-  <!-- WhatsApp / Conversation Bubble -->
-  <path d="M32 14C22.059 14 14 22.059 14 32C14 35.343 14.922 38.48 16.516 41.172L15 49L23.078 47.438C25.688 48.969 28.734 49.859 32 49.859C41.941 49.859 50 41.797 50 31.859C50 21.922 41.941 14 32 14Z" fill="url(#bubbleGrad)" />
-  <!-- Chat Convo Lines / Orizer S-wave in Emerald -->
-  <path d="M24 28C24 26.895 24.895 26 26 26H38C39.105 26 40 26.895 40 28C40 29.105 39.105 30 38 30H26C24.895 30 24 29.105 24 28Z" fill="#059669" />
-  <path d="M24 34C24 32.895 24.895 32 26 32H34C35.105 32 36 32.895 36 34C36 35.105 35.105 36 34 36H26C24.895 36 24 35.105 24 34Z" fill="#10B981" />
-  <!-- Subtle online status dot -->
-  <circle cx="43" cy="21" r="3.5" fill="#34D399" stroke="#047857" stroke-width="1.5" />
+  <!-- Background circle tile for crisp browser tab visibility -->
+  <rect width="64" height="64" rx="16" fill="#0f172a" />
+  <!-- Main C-shape speech bubble from official logo -->
+  <path d="M32 12C20.95 12 12 20.95 12 32C12 35.9 13.1 39.5 15 42.6L13 51L21.7 48.7C24.7 50.8 28.2 52 32 52C43.05 52 52 43.05 52 32C52 20.95 43.05 12 32 12Z" fill="url(#logoGrad)"/>
+  <!-- 3 White Chat dots inside the C bubble -->
+  <circle cx="25" cy="32" r="2.8" fill="#FFFFFF" />
+  <circle cx="32" cy="32" r="2.8" fill="#FFFFFF" />
+  <circle cx="39" cy="32" r="2.8" fill="#FFFFFF" />
 </svg>
+

@@ -34,7 +34,7 @@ export default function LeadManagementPage({ onOpenDemoModal, onOpenContactModal
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 text-left space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-mono font-semibold">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs font-mono font-semibold">
                 <Filter className="w-3.5 h-3.5" />
                 <span>{feat.badge}</span>
               </div>
@@ -67,7 +67,7 @@ export default function LeadManagementPage({ onOpenDemoModal, onOpenContactModal
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-100">
                 {feat.stats.map((s) => (
                   <div key={s.label}>
-                    <div className="font-mono font-bold text-2xl text-blue-600">{s.value}</div>
+                    <div className="font-mono font-bold text-2xl text-brand-600">{s.value}</div>
                     <div className="text-xs text-slate-500 mt-0.5">{s.label}</div>
                   </div>
                 ))}
@@ -121,7 +121,7 @@ export default function LeadManagementPage({ onOpenDemoModal, onOpenContactModal
                 key={st.step}
                 className="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-subtle text-left space-y-2"
               >
-                <span className="font-mono text-3xl font-extrabold text-blue-600 block">
+                <span className="font-mono text-3xl font-extrabold text-brand-600 block">
                   {st.step}
                 </span>
                 <h4 className="font-bold text-slate-900 text-base">{st.name}</h4>

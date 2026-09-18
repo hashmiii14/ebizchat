@@ -30,7 +30,7 @@ export default function FeaturesPage({ onOpenDemoModal, onOpenContactModal }) {
     {
       key: 'leadManagement',
       icon: Filter,
-      color: 'bg-blue-50 text-blue-600 border-blue-200',
+      color: 'bg-teal-50 text-teal-600 border-teal-200',
       data: FEATURES_DATA.leadManagement,
     },
     {

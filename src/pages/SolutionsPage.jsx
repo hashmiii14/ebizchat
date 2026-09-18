@@ -40,7 +40,7 @@ export default function SolutionsPage({ onOpenDemoModal, onOpenContactModal }) {
       data: SOLUTIONS_DATA.education,
       badge: 'Institutes & EdTech',
       featured: false,
-      color: 'bg-blue-50 text-blue-600 border-blue-200',
+      color: 'bg-teal-50 text-teal-600 border-teal-200',
     },
     {
       key: 'realEstate',

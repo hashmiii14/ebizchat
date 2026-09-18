@@ -83,7 +83,7 @@ export function TeamInboxMockup() {
                 <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-emerald-100 text-emerald-800 font-medium">
                   PO #OZ-8821
                 </span>
-                <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-blue-100 text-blue-800 font-medium">
+                <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-slate-100 text-slate-700 font-medium">
                   Rep: Suresh K.
                 </span>
               </div>
@@ -265,7 +265,7 @@ export function KanbanMockup() {
     {
       title: "Qualified / Specs Reviewed",
       count: 3,
-      color: "border-blue-400",
+      color: "border-teal-500",
       leads: [
         { name: "Shivani Engineering", val: "₹4,20,000", time: "2h ago", source: "Catalog Inquiry" },
       ],
@@ -369,7 +369,7 @@ export function WorkflowAutomationMockup() {
 
         {/* Step 2: Condition */}
         <div className="w-full md:w-1/4 bg-slate-50 border border-slate-200 rounded-xl p-3.5 relative shadow-subtle">
-          <span className="px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 text-[9px] font-mono font-bold uppercase mb-2 inline-block">
+          <span className="px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 text-[9px] font-mono font-bold uppercase mb-2 inline-block">
             2. Logic Check
           </span>
           <div className="font-bold text-slate-900 text-xs mb-1">Customer Opt-in & GST Valid?</div>
@@ -972,7 +972,7 @@ export function WorkflowBuilderMockup() {
 
             {/* Branch 2: Not Interested */}
             <div className="bg-white rounded-xl p-2.5 text-left border border-slate-200/90 shadow-xs">
-              <span className="px-1.5 py-0.2 rounded bg-blue-100 text-blue-800 text-[9px] font-bold uppercase mb-1 inline-block">
+              <span className="px-1.5 py-0.2 rounded bg-slate-100 text-slate-700 text-[9px] font-bold uppercase mb-1 inline-block">
                 Not Interested
               </span>
               <div className="font-bold text-slate-900 text-[11px]">Send Follow-up Message</div>
@@ -984,3 +984,150 @@ export function WorkflowBuilderMockup() {
     </div>
   );
 }
+
+/**
+ * 4. LeadPipelineMockup: Real SaaS Kanban Board for WhatsApp Lead Generation
+ */
+export function LeadPipelineMockup() {
+  const columns = [
+    {
+      title: "Inbound Leads",
+      count: 14,
+      color: "border-emerald-500",
+      leads: [
+        {
+          name: "Siddharth Verma",
+          company: "Rajeshwari Textiles",
+          phone: "+91 98251 •••••",
+          source: "Click-to-WhatsApp Ad",
+          value: "₹2,40,000",
+          time: "2m ago",
+          tag: "PPC ERP Inquiry",
+          tagColor: "bg-emerald-50 text-emerald-700",
+          rep: "Priya S."
+        },
+        {
+          name: "Amit Patel",
+          company: "Baroda Valves Ltd",
+          phone: "+91 97241 •••••",
+          source: "Website QR Scan",
+          value: "₹1,80,000",
+          time: "15m ago",
+          tag: "Inventory Sync",
+          tagColor: "bg-teal-50 text-teal-700",
+          rep: "Rohan M."
+        }
+      ]
+    },
+    {
+      title: "AI Qualified",
+      count: 8,
+      color: "border-teal-500",
+      leads: [
+        {
+          name: "Karan Mehta",
+          company: "Precision Forgings",
+          phone: "+91 94260 •••••",
+          source: "WhatsApp Chatbot",
+          value: "₹4,50,000",
+          time: "1h ago",
+          tag: "50+ User License",
+          tagColor: "bg-purple-50 text-purple-700",
+          rep: "Priya S."
+        },
+        {
+          name: "Deepak Shah",
+          company: "Navrang Chem (Vapi)",
+          phone: "+91 99099 •••••",
+          source: "Direct Referral",
+          value: "₹3,20,000",
+          time: "3h ago",
+          tag: "Orizer ERP Bundle",
+          tagColor: "bg-amber-50 text-amber-700",
+          rep: "Suresh K."
+        }
+      ]
+    },
+    {
+      title: "Quotation Sent",
+      count: 5,
+      color: "border-amber-500",
+      leads: [
+        {
+          name: "Vikram Singhania",
+          company: "Apex Polymers Pvt Ltd",
+          phone: "+91 98980 •••••",
+          source: "Trade Expo 2026",
+          value: "₹6,80,000",
+          time: "Yesterday",
+          tag: "PDF Quotation #OZ-914",
+          tagColor: "bg-emerald-50 text-emerald-700",
+          rep: "Suresh K."
+        }
+      ]
+    }
+  ];
+
+  return (
+    <div className="bg-white rounded-2xl border border-slate-200/90 shadow-[0_12px_36px_-10px_rgba(15,23,42,0.08)] p-4 sm:p-5 text-xs select-none overflow-hidden">
+      {/* Top Header */}
+      <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+        <div className="flex items-center gap-2">
+          <div className="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs">
+            ⚡
+          </div>
+          <div>
+            <span className="font-bold text-slate-900 text-xs sm:text-sm">WhatsApp Lead Pipeline</span>
+            <span className="text-[10px] text-slate-400 block sm:inline sm:ml-2 font-mono">Live ERP Sync (27 Active Leads)</span>
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-200/80 text-emerald-700 font-semibold text-[10px] flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            Auto-Qualify: ON
+          </span>
+        </div>
+      </div>
+
+      {/* 3-Column Kanban Board */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        {columns.map((col) => (
+          <div key={col.title} className="bg-slate-50/70 rounded-xl p-3 border border-slate-100">
+            {/* Column Header */}
+            <div className={`flex items-center justify-between pb-2 border-b-2 ${col.color} mb-2.5`}>
+              <span className="font-bold text-slate-800 text-[11px]">{col.title}</span>
+              <span className="w-4 h-4 rounded-full bg-slate-200 text-slate-700 font-bold text-[9px] flex items-center justify-center">
+                {col.count}
+              </span>
+            </div>
+
+            {/* Lead Cards */}
+            <div className="space-y-2">
+              {col.leads.map((lead) => (
+                <div key={lead.name} className="bg-white rounded-lg p-2.5 border border-slate-200/80 shadow-xs hover:border-emerald-300 transition-colors">
+                  <div className="flex items-start justify-between gap-1">
+                    <div>
+                      <div className="font-bold text-slate-900 text-[11px] leading-tight">{lead.name}</div>
+                      <div className="text-[10px] text-slate-500">{lead.company}</div>
+                    </div>
+                    <span className="font-bold text-emerald-700 font-mono text-[10px] whitespace-nowrap bg-emerald-50 px-1.5 py-0.5 rounded">
+                      {lead.value}
+                    </span>
+                  </div>
+
+                  <div className="mt-2 pt-1.5 border-t border-slate-100 flex items-center justify-between text-[9px] text-slate-400">
+                    <span className={`px-1.5 py-0.2 rounded font-semibold ${lead.tagColor}`}>
+                      {lead.tag}
+                    </span>
+                    <span className="font-mono">{lead.time}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+

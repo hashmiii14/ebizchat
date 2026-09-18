@@ -29,7 +29,7 @@ export default function ResourcesPage({ onOpenDemoModal, onOpenContactModal }) {
       path: '/faq',
       icon: HelpCircle,
       badge: 'Knowledgebase',
-      color: 'bg-blue-50 text-blue-600 border-blue-200',
+      color: 'bg-emerald-50 text-emerald-600 border-emerald-200',
     },
     {
       title: 'Enterprise Case Studies',

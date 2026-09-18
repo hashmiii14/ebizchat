@@ -52,10 +52,11 @@ export default function Footer() {
             <p className="text-slate-500 text-xs leading-relaxed max-w-xs">
               The all-in-one WhatsApp platform for marketing, sales and customer support.
             </p>
-            <div className="text-[11px] text-[#55585f] space-y-1 pt-1 font-mono">
-              <p className="font-semibold text-[#0e0f10]">Orizer ERP Headquarters:</p>
+            <div className="text-[11px] text-slate-500 space-y-1 pt-1 font-mono">
+              <p className="font-semibold text-slate-900">Orizer ERP Headquarters:</p>
               <p>Mohid Tower, Daman Road, Chala, Vapi, Gujarat 396191</p>
-              <p>Phone: <a href="tel:+919624513385" className="text-[#00a48c] hover:underline font-bold">+91 96245 13385</a></p>
+              <p>HelpDesk: <a href="tel:+919898236655" className="text-emerald-600 hover:underline font-bold">+91 98982 36655</a></p>
+              <p>WhatsApp: <a href="https://wa.me/919998391947" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline font-bold">+91 99983 91947</a></p>
             </div>
             {/* Social Icons */}
             <div className="flex items-center gap-2 pt-2">

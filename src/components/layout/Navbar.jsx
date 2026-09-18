@@ -79,6 +79,19 @@ export default function Navbar() {
     }, 160);
   };
 
+  const handleLinkClick = (link, e) => {
+    if (link.name === 'Pricing') {
+      if (location.pathname === '/') {
+        e.preventDefault();
+        const el = document.getElementById('pricing');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+      setMobileMenuOpen(false);
+    }
+  };
+
   const isCurrentRoute = (link) => {
     if (link.path === '/leadgen') {
       return location.pathname === '/leadgen';
@@ -126,6 +139,7 @@ export default function Navbar() {
           <nav className="hidden md:flex items-center gap-1 sm:gap-1.5 lg:gap-2 xl:gap-3">
             {NAVIGATION_LINKS.map((link) => {
               const isActive = isCurrentRoute(link);
+              const targetPath = link.name === 'Pricing' ? (location.pathname === '/' ? '#pricing' : '/#pricing') : link.path;
 
               if (link.hasDropdown) {
                 const isOpen = activeDropdown === link.name;
@@ -137,35 +151,30 @@ export default function Navbar() {
                     onMouseLeave={handleMouseLeave}
                   >
                     <Link
-                      to={link.path}
+                      to={targetPath}
+                      onClick={(e) => handleLinkClick(link, e)}
                       className={`px-3.5 lg:px-4 py-2 rounded-xl text-[14px] lg:text-[15px] font-semibold tracking-[-0.01em] transition-all flex items-center gap-1.5 focus:outline-none ${
                         isActive || isOpen
-                          ? 'text-[#00a48c] bg-[#00a48c]/10 font-bold'
-                          : 'text-[#1a1c1e] hover:text-[#00a48c] hover:bg-black/[0.03]'
+                          ? 'text-emerald-600 bg-emerald-50 font-bold'
+                          : 'text-slate-800 hover:text-emerald-600 hover:bg-slate-50'
                       }`}
                       aria-expanded={isOpen}
                     >
                       <span>{link.name}</span>
                       <ChevronDown
                         className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                          isOpen ? 'rotate-180 text-[#00a48c]' : 'text-neutral-400 group-hover:text-neutral-700'
+                          isOpen ? 'rotate-180 text-emerald-600' : 'text-slate-400 group-hover:text-slate-700'
                         }`}
                       />
                     </Link>
 
-                    {/* Clean Mega Dropdown Menu */}
+                    {/* Clean Mega Dropdown Menu (Strictly constrained width to avoid any viewport overflow) */}
                     {isOpen && (
                       <div
-                        className={`absolute top-full right-0 lg:left-1/2 lg:-translate-x-1/2 pt-2 z-50 ${
-                          link.dropdownItems?.length > 4 ? 'w-[620px]' : 'w-[520px]'
-                        }`}
+                        className="absolute top-full right-0 lg:left-1/2 lg:-translate-x-1/2 pt-2 z-50 w-[calc(100vw-2rem)] sm:w-[500px] max-w-[540px]"
                       >
-                        <div className="bg-white rounded-2xl shadow-[0_16px_40px_-10px_rgba(0,0,0,0.12)] border border-black/[0.08] p-3 ring-1 ring-black/5 animate-in fade-in-50 zoom-in-95 duration-150">
-                          <div
-                            className={`grid ${
-                              link.dropdownItems?.length > 4 ? 'grid-cols-2' : 'grid-cols-2'
-                            } gap-1.5`}
-                          >
+                        <div className="bg-white rounded-2xl shadow-[0_16px_40px_-10px_rgba(0,0,0,0.12)] border border-slate-200/90 p-3 ring-1 ring-black/5 animate-in fade-in-50 zoom-in-95 duration-150">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
                             {link.dropdownItems.map((item) => {
                               const IconComponent = ICON_MAP[item.icon] || ArrowRight;
                               const isItemActive = location.pathname === item.path;
@@ -176,15 +185,15 @@ export default function Navbar() {
                                   onClick={() => setActiveDropdown(null)}
                                   className={`group flex items-start gap-3 p-2.5 rounded-xl transition-all ${
                                     isItemActive
-                                      ? 'bg-[#00a48c]/10 text-[#00a48c]'
-                                      : 'hover:bg-neutral-50 text-slate-800'
+                                      ? 'bg-emerald-50 text-emerald-600'
+                                      : 'hover:bg-slate-50 text-slate-800'
                                   }`}
                                 >
                                   <div
                                     className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors mt-0.5 ${
                                       isItemActive
-                                        ? 'bg-[#00a48c] text-white'
-                                        : 'bg-emerald-50 text-[#00a48c] group-hover:bg-[#00a48c] group-hover:text-white'
+                                        ? 'bg-emerald-600 text-white'
+                                        : 'bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white'
                                     }`}
                                   >
                                     <IconComponent className="w-4 h-4" />
@@ -193,14 +202,14 @@ export default function Navbar() {
                                     <div
                                       className={`text-xs font-bold transition-colors flex items-center justify-between ${
                                         isItemActive
-                                          ? 'text-[#00a48c]'
-                                          : 'text-[#0e0f10] group-hover:text-[#00a48c]'
+                                          ? 'text-emerald-600'
+                                          : 'text-slate-900 group-hover:text-emerald-600'
                                       }`}
                                     >
                                       <span className="truncate">{item.title}</span>
-                                      <ArrowRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[#00a48c]" />
+                                      <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-emerald-600 flex-shrink-0" />
                                     </div>
-                                    <p className="text-[11px] text-neutral-500 line-clamp-2 mt-0.5 leading-snug font-normal">
+                                    <p className="text-[11px] text-slate-500 line-clamp-2 mt-0.5 leading-relaxed font-normal">
                                       {item.description}
                                     </p>
                                   </div>
@@ -218,11 +227,12 @@ export default function Navbar() {
               return (
                 <Link
                   key={link.name}
-                  to={link.path}
+                  to={targetPath}
+                  onClick={(e) => handleLinkClick(link, e)}
                   className={`px-3.5 lg:px-4 py-2 rounded-xl text-[14px] lg:text-[15px] font-semibold tracking-[-0.01em] transition-all flex items-center gap-1.5 focus:outline-none ${
                     isActive
-                      ? 'text-[#00a48c] bg-[#00a48c]/10 font-bold'
-                      : 'text-[#1a1c1e] hover:text-[#00a48c] hover:bg-black/[0.03]'
+                      ? 'text-emerald-600 bg-emerald-50 font-bold'
+                      : 'text-slate-800 hover:text-emerald-600 hover:bg-slate-50'
                   }`}
                 >
                   <span>{link.name}</span>
@@ -235,7 +245,7 @@ export default function Navbar() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-neutral-800 hover:text-black hover:bg-black/5 focus:outline-none transition-colors"
+              className="p-2 rounded-xl text-slate-800 hover:text-slate-900 hover:bg-slate-100 focus:outline-none transition-colors"
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -246,7 +256,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu (Strictly minimal - contains ONLY the 5 navigation links) */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-x-0 top-20 bg-white/98 backdrop-blur-xl border-b border-black/[0.08] shadow-2xl max-h-[calc(100vh-5rem)] overflow-y-auto z-50 animate-in slide-in-from-top-2 duration-150">
+        <div className="md:hidden fixed inset-x-0 top-20 bg-white/98 backdrop-blur-xl border-b border-slate-200 shadow-2xl max-h-[calc(100vh-5rem)] overflow-y-auto z-50 animate-in slide-in-from-top-2 duration-150">
           <div className="p-4 space-y-2">
             {NAVIGATION_LINKS.map((link) => {
               const isActive = isCurrentRoute(link);
@@ -254,13 +264,13 @@ export default function Navbar() {
               if (link.hasDropdown) {
                 const isExpanded = expandedMobileItem === link.name;
                 return (
-                  <div key={link.name} className="border-b border-black/[0.05] pb-2">
+                  <div key={link.name} className="border-b border-slate-100 pb-2">
                     <div className="flex items-center justify-between">
                       <Link
                         to={link.path}
                         onClick={() => setMobileMenuOpen(false)}
                         className={`py-2 px-2 text-base font-bold transition-colors ${
-                          isActive ? 'text-[#00a48c]' : 'text-neutral-900 hover:text-[#00a48c]'
+                          isActive ? 'text-emerald-600' : 'text-slate-900 hover:text-emerald-600'
                         }`}
                       >
                         {link.name}
@@ -269,12 +279,12 @@ export default function Navbar() {
                         onClick={() =>
                           setExpandedMobileItem(isExpanded ? null : link.name)
                         }
-                        className="p-2 text-neutral-500 hover:text-neutral-900"
+                        className="p-2 text-slate-500 hover:text-slate-900"
                         aria-label={`Expand ${link.name} sub-links`}
                       >
                         <ChevronDown
                           className={`w-4 h-4 transition-transform duration-200 ${
-                            isExpanded ? 'rotate-180 text-[#00a48c]' : ''
+                            isExpanded ? 'rotate-180 text-emerald-600' : ''
                           }`}
                         />
                       </button>
@@ -292,11 +302,11 @@ export default function Navbar() {
                               onClick={() => setMobileMenuOpen(false)}
                               className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm transition-colors ${
                                 isSubActive
-                                  ? 'bg-[#00a48c]/10 text-[#00a48c] font-semibold'
-                                  : 'text-neutral-700 hover:text-[#00a48c] hover:bg-neutral-50'
+                                  ? 'bg-emerald-50 text-emerald-600 font-semibold'
+                                  : 'text-slate-700 hover:text-emerald-600 hover:bg-slate-50'
                               }`}
                             >
-                              <IconComponent className="w-4 h-4 text-[#00a48c]" />
+                              <IconComponent className="w-4 h-4 text-emerald-600" />
                               <span>{sub.title}</span>
                             </Link>
                           );
@@ -307,13 +317,15 @@ export default function Navbar() {
                 );
               }
 
+              const targetPath = link.name === 'Pricing' ? (location.pathname === '/' ? '#pricing' : '/#pricing') : link.path;
+
               return (
                 <Link
                   key={link.name}
-                  to={link.path}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-2 py-2.5 rounded-xl text-base font-bold border-b border-black/[0.05] transition-colors ${
-                    isActive ? 'text-[#00a48c]' : 'text-neutral-900 hover:text-[#00a48c]'
+                  to={targetPath}
+                  onClick={(e) => handleLinkClick(link, e)}
+                  className={`block px-2 py-2.5 rounded-xl text-base font-bold border-b border-slate-100 transition-colors ${
+                    isActive ? 'text-emerald-600' : 'text-slate-900 hover:text-emerald-600'
                   }`}
                 >
                   {link.name}
