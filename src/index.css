@@ -2,42 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg: #f7f6f3;
+  --surface: #ffffff;
+  --headline: #0e0f10;
+  --body: #55585f;
+  --muted: #9a9da3;
+  --teal: #00a48c;
+  --teal-bright: #00d4b2;
+  --orange: #ff3b00;
+  --line: rgba(14, 15, 16, 0.08);
+}
+
 @layer base {
   * {
-    border-color: #e2e8f0;
+    border-color: rgba(14, 15, 16, 0.08);
+    box-sizing: border-box;
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
   }
   body {
-    background-color: #ffffff;
-    color: #0f172a;
+    background-color: var(--bg);
+    color: var(--headline);
+    font-family: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
     overflow-x: hidden;
   }
 }
 
-/* Subtle light-mode grid patterns for SaaS aesthetics */
-.bg-grid-slate-100 {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='%23f1f5f9'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+/* ─────────────────────────────────────────────────────────────
+   ORIZER GRAIN OVERLAY & EDITORIAL EFFECTS
+───────────────────────────────────────────────────────────── */
+.grain:before {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
+  content: "";
+  inset: 0;
+  opacity: .03;
+  pointer-events: none;
+  position: fixed;
+  z-index: 60;
 }
 
-.bg-dot-slate-200 {
-  background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
-  background-size: 24px 24px;
+.outline-text {
+  -webkit-text-stroke: 1.2px rgba(14, 15, 16, 0.25);
+  color: transparent;
 }
 
-/* Custom scrollbars for chat and code views */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+/* Custom scrollbars from orizer.netlify.app */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: #f1f5f9;
-  border-radius: 4px;
+::-webkit-scrollbar-track {
+  background: #eceae5;
 }
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
+::-webkit-scrollbar-thumb {
+  background: #cfccc4;
+  border-radius: 999px;
 }
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+::-webkit-scrollbar-thumb:hover {
+  background: #00a48c;
+}
+
+/* Custom selection */
+::selection {
+  background: #ff3b00;
+  color: #ffffff;
 }
 
 /* Hide scrollbar utility */
@@ -50,26 +82,35 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SMOOTH ENTRANCE & INTERACTION ANIMATIONS
+   CONTINUOUS & INTERACTIVE ANIMATIONS
 ───────────────────────────────────────────────────────────── */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes meshPulse {
+  0%, 100% {
+    transform: scale(1) translate(0px, 0px);
+    opacity: 0.55;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  50% {
+    transform: scale(1.15) translate(20px, -20px);
+    opacity: 0.8;
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.animate-mesh {
+  animation: meshPulse 9s ease-in-out infinite alternate;
 }
 
 @keyframes floatSlow {
@@ -79,6 +120,10 @@
   50% {
     transform: translateY(-8px);
   }
+}
+
+.animate-float-slow {
+  animation: floatSlow 4s ease-in-out infinite;
 }
 
 @keyframes pulseSubtle {
@@ -92,27 +137,45 @@
   }
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.4s ease-out forwards;
-}
-
-.animate-float-slow {
-  animation: floatSlow 4s ease-in-out infinite;
-}
-
 .animate-pulse-subtle {
   animation: pulseSubtle 3s ease-in-out infinite;
 }
 
+@keyframes pingSlow {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  75%, 100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.animate-ping-slow {
+  animation: pingSlow 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-bg {
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
 /* Tactile Card Hover Elevation */
 .card-hover {
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
 }
 .card-hover:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px -10px rgba(15, 23, 42, 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px -12px rgba(14, 15, 16, 0.08);
 }

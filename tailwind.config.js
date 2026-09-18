@@ -7,6 +7,32 @@ export default {
   theme: {
     extend: {
       colors: {
+        bg: '#f7f6f3',
+        surface: '#ffffff',
+        headline: '#0e0f10',
+        body: '#55585f',
+        muted: '#9a9da3',
+        teal: {
+          DEFAULT: '#00a48c',
+          50: '#e6f7f5',
+          100: '#ccf0eb',
+          200: '#99e0d6',
+          300: '#66d1c2',
+          400: '#33c1ad',
+          500: '#00a48c',
+          600: '#008a76',
+          700: '#006f5f',
+          800: '#005448',
+          900: '#003a32',
+          bright: '#00d4b2',
+        },
+        orange: {
+          DEFAULT: '#ff3b00',
+          50: '#fff1ec',
+          100: '#ffe3d9',
+          500: '#ff3b00',
+          600: '#e03400',
+        },
         brand: {
           50: '#ecfdf5',
           100: '#d1fae5',
@@ -23,11 +49,6 @@ export default {
         slate: {
           850: '#151f32',
         },
-        surface: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-        },
         whatsapp: {
           light: '#25D366',
           teal: '#075E54',
@@ -40,15 +61,19 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'Inter', 'Geist', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        mono: ['Geist Mono', 'Fira Code', 'monospace'],
+        display: ['"Clash Display"', 'Plus Jakarta Sans', 'sans-serif'],
+        body: ['Satoshi', 'Inter', 'sans-serif'],
+        sans: ['Satoshi', 'Plus Jakarta Sans', 'Inter', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'Geist Mono', 'monospace'],
       },
       boxShadow: {
         'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
         'card': '0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.04)',
-        'card-hover': '0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04)',
-        'float': '0 20px 30px -10px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-        'btn': '0 1px 2px 0 rgba(16, 185, 129, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.25)',
+        'card-hover': '0 12px 30px -10px rgba(0, 0, 0, 0.08), 0 4px 10px -4px rgba(0, 0, 0, 0.04)',
+        'float': '0 20px 40px -15px rgba(0, 0, 0, 0.12)',
+        'teal-glow': '0 0 24px 6px rgba(0, 164, 140, 0.25)',
+        'orange-glow': '0 0 18px 4px rgba(255, 59, 0, 0.25)',
+        'btn': '0 1px 2px 0 rgba(0, 164, 140, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.25)',
       },
     },
   },

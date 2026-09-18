@@ -70,13 +70,14 @@ export default function BrandLogo({
       {/* Typography */}
       {variant !== 'minimal' && (
         <div className="flex flex-col leading-none">
-          <div className={`font-extrabold tracking-tight ${currentSize.text} font-sans flex items-center`}>
+          <div className={`font-bold tracking-tight ${currentSize.text} font-display flex items-center`}>
             <span className={textColor}>eBiz</span>
-            <span className={accentColor}>Chat</span>
+            <span className="text-[#00a48c]">Chat</span>
           </div>
           {showTagline && (
-            <span className={`${currentSize.tagline} font-mono font-semibold tracking-wider ${taglineColor} uppercase mt-0.5`}>
-              by Orizer
+            <span className={`${currentSize.tagline} font-mono font-semibold tracking-wider ${taglineColor} uppercase mt-0.5 flex items-center gap-1`}>
+              <span>by Orizer</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#ff3b00] inline-block animate-pulse"></span>
             </span>
           )}
         </div>

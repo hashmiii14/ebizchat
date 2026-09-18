@@ -99,8 +99,8 @@ export default function Navbar({ onOpenDemoModal, onOpenContactModal }) {
     <header
       className={`sticky top-0 z-50 transition-all duration-200 ${
         scrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200'
-          : 'bg-white border-b border-slate-100'
+          ? 'bg-[#f7f6f3]/95 backdrop-blur-md shadow-sm border-b border-black/[0.08]'
+          : 'bg-[#f7f6f3]/85 backdrop-blur-sm border-b border-black/[0.06]'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -114,7 +114,7 @@ export default function Navbar({ onOpenDemoModal, onOpenContactModal }) {
             <BrandLogo size="md" showTagline={true} />
           </Link>
 
-          {/* Desktop Navigation (ONLY: Lead Generation, Features, Solutions, Pricing, Resources - NO HOME) */}
+          {/* Desktop Navigation (Product, Solutions, Resources, Pricing, Partners) */}
           <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2">
             {NAVIGATION_LINKS.map((link) => {
               const isCurrentRoute =
@@ -134,8 +134,8 @@ export default function Navbar({ onOpenDemoModal, onOpenContactModal }) {
                       onClick={(e) => handleNavClick(link, e)}
                       className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-colors flex items-center gap-1.5 focus:outline-none cursor-pointer ${
                         isCurrentRoute || isOpen
-                          ? 'text-emerald-700 bg-emerald-50/70'
-                          : 'text-slate-700 hover:text-slate-950 hover:bg-slate-50'
+                          ? 'text-[#00a48c] bg-[#00a48c]/10 font-bold'
+                          : 'text-[#55585f] hover:text-[#0e0f10] hover:bg-black/5'
                       }`}
                       aria-expanded={isOpen}
                     >
@@ -207,35 +207,35 @@ export default function Navbar({ onOpenDemoModal, onOpenContactModal }) {
           <div className="hidden lg:flex items-center gap-3">
             <a
               href={`tel:${ORIZER_INFO.contact.mainPhoneRaw}`}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold font-mono text-slate-700 hover:text-emerald-600 px-2.5 py-2 rounded-lg transition-colors border border-transparent hover:border-slate-200"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold font-mono text-[#55585f] hover:text-[#00a48c] px-2.5 py-2 rounded-lg transition-colors border border-transparent hover:border-black/5"
               title="Call Sales Directly"
             >
-              <PhoneCall className="w-3.5 h-3.5 text-emerald-600" />
+              <PhoneCall className="w-3.5 h-3.5 text-[#00a48c]" />
               <span>+91 96245 13385</span>
             </a>
 
             {/* Login Link */}
             <button
               onClick={onOpenContactModal}
-              className="text-xs font-bold text-slate-700 hover:text-emerald-700 px-2 py-2 rounded-lg transition-colors flex items-center gap-1.5"
+              className="text-xs font-bold text-[#0e0f10] hover:text-[#00a48c] px-2.5 py-2 rounded-lg transition-colors flex items-center gap-1.5"
             >
-              <LogIn className="w-3.5 h-3.5 text-slate-500" />
+              <LogIn className="w-3.5 h-3.5 text-[#9a9da3]" />
               <span>Log in</span>
             </button>
 
             {/* Book Demo Button */}
             <button
               onClick={onOpenDemoModal}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-300 transition-all active:scale-[0.98]"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-[#0e0f10] hover:text-[#0e0f10] bg-white hover:bg-neutral-50 border border-black/15 shadow-sm transition-all active:scale-[0.98]"
             >
-              <Calendar className="w-3.5 h-3.5 text-emerald-600" />
+              <Calendar className="w-3.5 h-3.5 text-[#00a48c]" />
               <span>Book a demo</span>
             </button>
 
             {/* Start Free Trial Button */}
             <button
               onClick={onOpenContactModal}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all active:scale-[0.98]"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-[#00a48c] hover:bg-[#008a76] shadow-sm shadow-[#00a48c]/25 transition-all active:scale-[0.98]"
             >
               <span>Start Free trial</span>
               <ArrowRight className="w-3.5 h-3.5" />
