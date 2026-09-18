@@ -1,31 +1,14 @@
 export const NAVIGATION_LINKS = [
   {
-    name: "Lead Generation",
-    path: "/leadgen",
-    hash: "#lead-generation",
-  },
-  {
-    name: "Features",
+    name: "Product",
     path: "/features",
     hasDropdown: true,
     dropdownItems: [
       {
-        title: "Marketing & Sales",
+        title: "WhatsApp Marketing",
         description: "WhatsApp broadcasts, targeted campaigns, and dynamic catalog messaging",
         path: "/features/whatsapp-marketing",
         icon: "Megaphone",
-      },
-      {
-        title: "Lead Management & CRM",
-        description: "Multi-channel intake, automated qualification, and visual Kanban pipelines",
-        path: "/features/lead-management",
-        icon: "Filter",
-      },
-      {
-        title: "Intelligent Chatbot",
-        description: "Hybrid keyword & AI agent for 24/7 instant customer qualification",
-        path: "/features/chatbot",
-        icon: "Bot",
       },
       {
         title: "Shared Team Inbox",
@@ -34,10 +17,22 @@ export const NAVIGATION_LINKS = [
         icon: "Inbox",
       },
       {
-        title: "Workflow Automation",
+        title: "No-Code Chatbots",
+        description: "Hybrid keyword & AI agent for 24/7 instant customer qualification",
+        path: "/features/chatbot",
+        icon: "Bot",
+      },
+      {
+        title: "Sales Automation",
         description: "Visual drag-and-drop trigger, condition, and action builder",
         path: "/features/automation",
         icon: "GitBranch",
+      },
+      {
+        title: "Lead Management & CRM",
+        description: "Multi-channel intake, automated qualification, and visual Kanban pipelines",
+        path: "/features/lead-management",
+        icon: "Filter",
       },
       {
         title: "Analytics & Intelligence",
@@ -65,7 +60,7 @@ export const NAVIGATION_LINKS = [
         icon: "Factory",
       },
       {
-        title: "E-Commerce & D2C",
+        title: "E-Commerce & Retail",
         description: "Abandoned cart recovery, COD confirmation, and automated order tracking",
         path: "/solutions/ecommerce",
         icon: "ShoppingBag",
@@ -83,16 +78,18 @@ export const NAVIGATION_LINKS = [
         icon: "Building2",
       },
       {
+        title: "Travel & Hospitality",
+        description: "PDF itineraries, flight/hotel booking vouchers, and review collection",
+        path: "/solutions/services",
+        icon: "Briefcase",
+      },
+      {
         title: "Professional Services & B2B",
         description: "Client onboarding, automated meeting scheduling, and quotation follow-ups",
         path: "/solutions/services",
         icon: "Briefcase",
       },
     ],
-  },
-  {
-    name: "Pricing",
-    path: "/pricing",
   },
   {
     name: "Resources",
@@ -125,58 +122,54 @@ export const NAVIGATION_LINKS = [
       },
     ],
   },
+  {
+    name: "Pricing",
+    path: "/pricing",
+  },
+  {
+    name: "Partners",
+    path: "/about",
+  },
 ];
 
 export const FOOTER_SECTIONS = [
   {
     title: "Product",
     links: [
-      { label: "Features Overview", path: "/features" },
-      { label: "LeadGen+ Engine", path: "/leadgen" },
-      { label: "WhatsApp Marketing", path: "/features/whatsapp-marketing" },
-      { label: "Shared Team Inbox", path: "/features/team-inbox" },
-      { label: "Workflow Automation", path: "/features/automation" },
-      { label: "Pricing & Plans", path: "/pricing" },
+      { label: "Features", path: "/features" },
+      { label: "Integrations", path: "/features/integrations" },
+      { label: "WhatsApp API", path: "/features/whatsapp-marketing" },
+      { label: "Security", path: "/about" },
+      { label: "Pricing", path: "/pricing" },
     ],
   },
   {
     title: "Solutions",
     links: [
-      { label: "Manufacturing ERP Sync", path: "/solutions/manufacturing" },
-      { label: "E-Commerce & Retail", path: "/solutions/ecommerce" },
-      { label: "Education & Training", path: "/solutions/education" },
-      { label: "Real Estate & Builders", path: "/solutions/real-estate" },
-      { label: "B2B Professional Services", path: "/solutions/services" },
-      { label: "All Industry Solutions", path: "/solutions" },
+      { label: "Marketing", path: "/features/whatsapp-marketing" },
+      { label: "Sales", path: "/features/lead-management" },
+      { label: "Support", path: "/features/team-inbox" },
+      { label: "Automation", path: "/features/automation" },
+      { label: "Chatbots", path: "/features/chatbot" },
     ],
   },
   {
     title: "Resources",
     links: [
-      { label: "Resource Center", path: "/resources" },
-      { label: "Product Guides & Docs", path: "/resources" },
-      { label: "Industry Blog", path: "/blog" },
-      { label: "Customer Case Studies", path: "/case-studies" },
-      { label: "FAQs & Knowledgebase", path: "/faq" },
+      { label: "FAQs", path: "/faq" },
+      { label: "Blog", path: "/blog" },
+      { label: "Case Studies", path: "/case-studies" },
+      { label: "Webinars", path: "/resources" },
+      { label: "Help Center", path: "/contact" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About Orizer", path: "/about" },
-      { label: "Orizer ERP Official", href: "https://orizer.in/" },
+      { label: "About Us", path: "/about" },
+      { label: "Careers", path: "/about" },
+      { label: "Partners", path: "/contact" },
       { label: "Contact Us", path: "/contact" },
-      { label: "Book a Demo", path: "/contact?tab=demo" },
-      { label: "HelpDesk Support", path: "/contact" },
-    ],
-  },
-  {
-    title: "Legal & Trust",
-    links: [
-      { label: "Privacy Policy", path: "/privacy" },
-      { label: "Terms of Service", path: "/terms" },
-      { label: "Data Security Standards", path: "/about#security" },
-      { label: "Meta Business Compliance", path: "/faq#compliance" },
     ],
   },
 ];

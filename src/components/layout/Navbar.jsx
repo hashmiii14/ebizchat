@@ -217,10 +217,10 @@ export default function Navbar({ onOpenDemoModal, onOpenContactModal }) {
             {/* Login Link */}
             <button
               onClick={onOpenContactModal}
-              className="text-xs font-bold text-slate-700 hover:text-emerald-700 px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5"
+              className="text-xs font-bold text-slate-700 hover:text-emerald-700 px-2 py-2 rounded-lg transition-colors flex items-center gap-1.5"
             >
               <LogIn className="w-3.5 h-3.5 text-slate-500" />
-              <span>Login</span>
+              <span>Log in</span>
             </button>
 
             {/* Book Demo Button */}
@@ -229,15 +229,15 @@ export default function Navbar({ onOpenDemoModal, onOpenContactModal }) {
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-300 transition-all active:scale-[0.98]"
             >
               <Calendar className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Book Demo</span>
+              <span>Book a demo</span>
             </button>
 
-            {/* Get Started Button */}
+            {/* Start Free Trial Button */}
             <button
               onClick={onOpenContactModal}
               className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all active:scale-[0.98]"
             >
-              <span>Get Started</span>
+              <span>Start Free trial</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -248,7 +248,7 @@ export default function Navbar({ onOpenDemoModal, onOpenContactModal }) {
               onClick={onOpenContactModal}
               className="px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm"
             >
-              Get Started
+              Start Free trial
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
