@@ -6,9 +6,10 @@ import AnnouncementBar from './components/layout/AnnouncementBar';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 
-// Modals
+// Modals & Floating Widgets
 import DemoModal from './components/ui/DemoModal';
 import ContactModal from './components/ui/ContactModal';
+import QuickContactFloat from './components/ui/QuickContactFloat';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -169,9 +170,10 @@ export default function App() {
 
       <Footer />
 
-      {/* Global Modals */}
+      {/* Global Modals & Floating Quick Contact Suite */}
       <DemoModal isOpen={isDemoModalOpen} onClose={closeDemoModal} />
       <ContactModal isOpen={isContactModalOpen} onClose={closeContactModal} />
+      <QuickContactFloat />
     </div>
   );
 }

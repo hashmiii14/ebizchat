@@ -195,22 +195,24 @@ export default function Navbar({ onOpenDemoModal, onOpenContactModal }) {
           </nav>
 
           {/* Action CTAs */}
-          <div className="hidden lg:flex items-center gap-4">
-            <button
-              onClick={onOpenContactModal}
-              className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors px-1"
+          <div className="hidden lg:flex items-center gap-3">
+            <a
+              href={`tel:${ORIZER_INFO.contact.mainPhoneRaw}`}
+              className="inline-flex items-center gap-1.5 text-xs font-semibold font-mono text-slate-700 hover:text-emerald-600 px-2 py-1.5 rounded-lg transition-colors border border-transparent hover:border-slate-200"
+              title="Call Sales Directly"
             >
-              Log in
-            </button>
+              <PhoneCall className="w-3.5 h-3.5 text-emerald-600" />
+              <span>+91 96245 13385</span>
+            </a>
             <button
               onClick={onOpenDemoModal}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-300 transition-all active:scale-[0.98]"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-300 transition-all active:scale-[0.98]"
             >
               Book a demo
             </button>
             <button
               onClick={onOpenContactModal}
-              className="inline-flex items-center gap-1.5 px-4.5 py-2 rounded-lg text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all active:scale-[0.98]"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all active:scale-[0.98]"
             >
               Start Free trial
             </button>
