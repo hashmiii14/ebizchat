@@ -1432,7 +1432,9 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                 </div>
 
                 <div className="px-6 py-4 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between text-xs">
-                  <span className="text-slate-500 font-medium">{post.author}</span>
+                  <span className="text-slate-500 font-medium">
+                    {typeof post.author === 'object' ? post.author.name : post.author}
+                  </span>
                   <Link
                     to={`/blog/${post.slug}`}
                     className="font-bold text-emerald-700 hover:text-emerald-800 inline-flex items-center gap-1 group-hover:underline"
