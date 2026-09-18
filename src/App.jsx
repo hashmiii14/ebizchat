@@ -10,6 +10,7 @@ import Footer from './components/layout/Footer';
 import DemoModal from './components/ui/DemoModal';
 import ContactModal from './components/ui/ContactModal';
 import QuickContactFloat from './components/ui/QuickContactFloat';
+import PageLoader from './components/ui/PageLoader';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -62,6 +63,7 @@ export default function App() {
 
   return (
     <div className="flex flex-col min-h-screen bg-white text-slate-900 selection:bg-brand-500 selection:text-white font-sans">
+      <PageLoader />
       <ScrollToTop />
       <AnnouncementBar />
       <Navbar onOpenDemoModal={openDemoModal} onOpenContactModal={openContactModal} />

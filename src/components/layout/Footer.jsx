@@ -10,6 +10,7 @@ import {
   Send,
 } from 'lucide-react';
 import { submitForm } from '../../services/formService';
+import BrandLogo from '../ui/BrandLogo';
 
 export default function Footer() {
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -44,25 +45,18 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-6">
           {/* Brand Column */}
-          <div className="lg:col-span-3 space-y-4">
-            <Link to="/" className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white font-bold text-xs shadow-sm">
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12C2 13.85 2.5 15.58 3.38 17.07L2.05 21.95L7.07 20.64C8.52 21.5 10.2 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM17.5 15.5C17.2 16.3 16 16.9 15.1 17C14.5 17.1 13.7 17.1 11.2 16.1C8 14.8 6 11.5 5.8 11.3C5.6 11.1 4.5 9.6 4.5 8.1C4.5 6.6 5.3 5.9 5.6 5.6C5.9 5.3 6.3 5.2 6.7 5.2C6.9 5.2 7 5.2 7.2 5.2C7.6 5.2 7.8 5.3 8 5.7C8.3 6.4 8.9 7.9 9 8.1C9.1 8.3 9.1 8.5 9 8.7C8.9 8.9 8.8 9.1 8.6 9.3C8.4 9.5 8.2 9.7 8.1 9.9C7.9 10.1 7.7 10.3 7.9 10.7C8.1 11.1 8.9 12.4 10.1 13.5C11.6 14.8 12.8 15.2 13.2 15.4C13.5 15.5 13.8 15.5 14 15.3C14.3 15 14.7 14.4 15 14C15.2 13.7 15.5 13.7 15.8 13.8C16.1 13.9 17.7 14.7 18 14.8C18.3 15 18.5 15.1 18.6 15.2C18.6 15.3 18.6 15.9 18.3 16.7L17.5 15.5Z" />
-                </svg>
-              </div>
-              <div className="flex items-center">
-                <span className="text-xl font-extrabold tracking-tight text-slate-900 font-sans">
-                  EBIZ
-                </span>
-                <span className="text-xl font-extrabold tracking-tight text-emerald-600 font-sans">
-                  CHAT
-                </span>
-              </div>
+          <div className="lg:col-span-3 space-y-3.5">
+            <Link to="/" className="inline-block">
+              <BrandLogo size="md" showTagline={true} />
             </Link>
             <p className="text-slate-500 text-xs leading-relaxed max-w-xs">
-              The all-in-one WhatsApp platform for marketing, sales and customer support. Powered by Orizer ERP.
+              eBizChat is the enterprise WhatsApp platform for automated customer journeys, multi-channel lead generation, and team collaboration.
             </p>
+            <div className="text-[11px] text-slate-500 space-y-1 pt-1 font-mono">
+              <p className="font-semibold text-slate-700">Orizer ERP Headquarters:</p>
+              <p>Mohid Tower, Daman Road, Chala, Vapi, Gujarat 396191</p>
+              <p>Phone: <a href="tel:+919624513385" className="text-emerald-700 hover:underline">+91 96245 13385</a></p>
+            </div>
             {/* Social Icons */}
             <div className="flex items-center gap-2 pt-1">
               <a

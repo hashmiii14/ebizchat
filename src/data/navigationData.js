@@ -1,12 +1,8 @@
 export const NAVIGATION_LINKS = [
   {
-    name: "Home",
-    path: "/",
-  },
-  {
-    name: "LeadGen+",
+    name: "Lead Generation",
     path: "/leadgen",
-    badge: "High ROI",
+    hash: "#lead-generation",
   },
   {
     name: "Features",
