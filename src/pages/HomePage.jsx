@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowRight,
   Check,
@@ -41,85 +42,147 @@ import {
   Database,
   Download,
   Truck,
+  Filter,
+  RefreshCw,
+  Cpu,
+  Share2,
+  Briefcase,
+  Sliders,
+  Radio,
+  Lock,
+  Workflow,
 } from 'lucide-react';
 import {
   HeroVisualMockup,
-  AnalyticsOverviewMockup,
+  TeamInboxMockup,
+  KanbanMockup,
   WorkflowBuilderMockup,
   LeadPipelineMockup,
+  AnalyticsOverviewMockup,
+  CampaignAnalyticsMockup,
 } from '../components/ui/DashboardMockups';
 import { ORIZER_INFO } from '../data/orizerData';
+import { PRICING_DATA } from '../data/pricingData';
 
 export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
-  const [activeSolutionTab, setActiveSolutionTab] = useState('sales');
+  // Interactive Product Showcase tab state
+  const [productShowcaseTab, setProductShowcaseTab] = useState('inbox');
+
+  // Key Features tab state (Cunnekt-style)
+  const [keyFeaturesTab, setKeyFeaturesTab] = useState('chatbot');
+
+  // FAQ accordion state
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
+
+  // Billing toggle state
   const [billingCycle, setBillingCycle] = useState('monthly');
 
   const toggleFaq = (index) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
+  // Exact 8 questions requested in prompt
+  const faqList = [
+    {
+      q: 'What is eBizChat?',
+      a: 'eBizChat is an enterprise-grade WhatsApp Business platform by Orizer that turns everyday customer conversations into real business opportunities. It combines multi-agent shared inboxes, visual lead generation pipelines, no-code chat automation, and native ERP/CRM connectivity into a single unified workspace.',
+    },
+    {
+      q: 'Who is eBizChat for?',
+      a: 'eBizChat is engineered for modern commercial enterprises, including manufacturing plants, wholesale distributors, retail and e-commerce brands, healthcare providers, real estate builders, and education institutes looking to eliminate lead leakage and automate WhatsApp operations.',
+    },
+    {
+      q: 'How does WhatsApp automation work?',
+      a: 'eBizChat connects directly to the official Meta WhatsApp Business Cloud API. When a customer sends a message or clicks a WhatsApp ad, our intelligent engine qualifies their intent, triggers multi-step conditional replies, schedules reminders, or hands off hot opportunities to live team agents.',
+    },
+    {
+      q: 'Can eBizChat help with lead generation?',
+      a: 'Yes. eBizChat automatically captures incoming prospect contact numbers, UTM campaign sources, and requirement details without form friction. It scores prospect intent in 3 quick WhatsApp prompts and places the deal directly onto a visual Kanban CRM board with assigned reps.',
+    },
+    {
+      q: 'Can teams manage conversations collaboratively?',
+      a: 'Absolutely. Multiple agents across sales, support, and dispatch can operate under a single official Meta-verified WhatsApp number. eBizChat prevents double-replies with collision detection, enables private team notes, and offers skill-based round-robin routing.',
+    },
+    {
+      q: 'Can eBizChat integrate with business systems?',
+      a: 'Yes. eBizChat provides native bi-directional synchronization with Orizer ERP for real-time dispatch alerts, LR docket tracking, and invoice PDFs. It also connects with CRMs, payment gateways, Shopify, WooCommerce, and custom enterprise databases via webhooks and REST APIs.',
+    },
+    {
+      q: 'How do I get started?',
+      a: 'Getting started takes under 15 minutes. You can either bring your existing WhatsApp number or register a new verified number. Our onboarding team at Orizer provides complete guided setup, template approvals, and ERP workflow mapping.',
+    },
+    {
+      q: 'How is eBizChat related to Orizer?',
+      a: 'eBizChat is built and backed by Orizer Infotech Pvt. Ltd. While Orizer provides comprehensive industrial enterprise solutions including ERP, CRM, and supply chain automation, eBizChat is Orizer’s dedicated platform focused specifically on WhatsApp customer communication, lead generation, and frontline workflows.',
+    },
+  ];
+
   return (
-    <div className="flex flex-col min-h-screen bg-white text-slate-900 selection:bg-emerald-500 selection:text-white font-sans">
+    <div className="flex flex-col min-h-screen bg-white text-slate-900 selection:bg-emerald-500 selection:text-white font-sans overflow-x-hidden">
       {/* ───────────────────────────────────────────────────────────
-          1. HERO SECTION (Clean White, Eyebrow, 2-3 Line Headline, CTAs, Dual Mockup)
+          1. HERO SECTION (Cunnekt Quality & Layout)
       ─────────────────────────────────────────────────────────── */}
-      <section className="relative pt-12 pb-16 lg:pt-16 lg:pb-24 overflow-hidden border-b border-slate-100 bg-white">
+      <section className="relative pt-10 pb-16 lg:pt-14 lg:pb-22 overflow-hidden border-b border-slate-100 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             {/* Left Column: Hero Content */}
             <div className="lg:col-span-6 text-left space-y-6">
               {/* Eyebrow Pill */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100/80 border border-slate-200/80 text-slate-700 text-xs font-medium">
-                <span>WhatsApp Business Platform Powered by AI</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-semibold tracking-wide">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span>WhatsApp Business Platform by Orizer</span>
               </div>
 
-              {/* Strong 2–3 line Heading */}
-              <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold tracking-tight text-slate-900 leading-[1.12]">
-                The complete <br />
-                WhatsApp solution <br />
-                for <span className="text-emerald-600">modern businesses</span>
+              {/* Main Heading: 2-3 lines, high contrast */}
+              <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-slate-900 leading-[1.12]">
+                Turn WhatsApp Conversations Into{' '}
+                <span className="text-emerald-600">Business Opportunities</span>
               </h1>
 
-              {/* Short Description */}
+              {/* Supporting text */}
               <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed max-w-xl">
-                Engage, automate and grow with WhatsApp marketing, shared inbox, chatbots and sales automation — all in one powerful platform.
+                eBizChat helps businesses manage customer conversations, generate leads and automate WhatsApp communication from one powerful platform.
               </p>
 
               {/* 2 CTA Buttons */}
               <div className="flex flex-wrap items-center gap-3.5 pt-1">
                 <button
                   onClick={onOpenContactModal}
-                  className="px-6 py-3 rounded-lg text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all active:scale-[0.98]"
+                  className="px-6 py-3.5 rounded-xl text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-md shadow-emerald-600/20 transition-all active:scale-[0.98] inline-flex items-center gap-2"
                 >
-                  Start Free trial
+                  <span>Get Started</span>
+                  <ArrowRight className="w-4 h-4" />
                 </button>
-                <button
-                  onClick={onOpenDemoModal}
-                  className="px-6 py-3 rounded-lg text-sm font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 shadow-xs transition-all active:scale-[0.98]"
+                <Link
+                  to="/features"
+                  className="px-6 py-3.5 rounded-xl text-sm font-semibold text-slate-800 bg-white hover:bg-slate-50 border border-slate-200 shadow-xs transition-all active:scale-[0.98] inline-flex items-center gap-2"
                 >
-                  Book a demo
-                </button>
+                  <span>Explore Features</span>
+                </Link>
               </div>
 
-              {/* 3 Proof Guarantees */}
-              <div className="pt-2 flex flex-wrap items-center gap-5 text-xs text-slate-500">
-                <div className="flex items-center gap-1.5">
-                  <Check className="w-4 h-4 text-emerald-600" strokeWidth={2.5} />
-                  <span>14-day free trial</span>
+              {/* Small Trust Points: 4 items */}
+              <div className="pt-3 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs text-slate-600 font-medium">
+                <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-50 border border-slate-100">
+                  <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
+                  <span>WhatsApp Business</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <Check className="w-4 h-4 text-emerald-600" strokeWidth={2.5} />
-                  <span>No credit card required</span>
+                <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-50 border border-slate-100">
+                  <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
+                  <span>Lead Generation</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <Check className="w-4 h-4 text-emerald-600" strokeWidth={2.5} />
-                  <span>Cancel anytime</span>
+                <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-50 border border-slate-100">
+                  <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
+                  <span>Automation</span>
+                </div>
+                <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-50 border border-slate-100">
+                  <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
+                  <span>Built by Orizer</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Layered Desktop Web App + Overlapping iPhone Mockup */}
+            {/* Right Column: Large realistic product visual (Web App + Chat + Leads + Floating iPhone) */}
             <div className="lg:col-span-6 w-full pt-4 lg:pt-0">
               <HeroVisualMockup />
             </div>
@@ -128,373 +191,128 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          TRUSTED CUSTOMER LOGO ROW (Static clean row matching reference)
+          2. ENTERPRISE TRUST STATEMENT & SECURITY STRIP (No fake logos)
       ─────────────────────────────────────────────────────────── */}
-      <section className="py-12 border-b border-slate-100 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-8">
-            Trusted by 10,000+ businesses worldwide
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-14 lg:gap-20 opacity-70">
-            <span className="text-xl sm:text-2xl font-serif font-black tracking-widest text-slate-800 hover:opacity-100 transition-opacity">
-              L'ORÉAL
-            </span>
-            <span className="text-lg sm:text-xl font-sans font-bold tracking-tight text-slate-800 hover:opacity-100 transition-opacity">
-              Chargebee
-            </span>
-            <span className="text-2xl sm:text-3xl font-sans font-black tracking-tighter text-slate-800 hover:opacity-100 transition-opacity">
-              OYO
-            </span>
-            <span className="text-lg sm:text-xl font-sans font-black tracking-wider uppercase text-slate-800 hover:opacity-100 transition-opacity">
-              DECATHLON
-            </span>
-            <span className="text-lg sm:text-xl font-sans font-semibold tracking-tight text-slate-800 hover:opacity-100 transition-opacity">
-              freshworks
-            </span>
-            <span className="text-lg sm:text-xl font-mono font-black tracking-widest uppercase text-slate-800 hover:opacity-100 transition-opacity">
-              CRED
-            </span>
+      <section className="py-8 border-b border-slate-100 bg-slate-50/70">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 text-left">
+            <div className="max-w-md">
+              <span className="text-[11px] font-mono uppercase font-bold tracking-wider text-emerald-700 block mb-1">
+                Enterprise Standards & Reliability
+              </span>
+              <p className="text-xs sm:text-sm text-slate-700 font-medium">
+                Trusted business communication infrastructure engineered by Orizer with 99.9% uptime architecture.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-xs text-slate-700 font-medium">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-slate-200/80 shadow-xs">
+                <ShieldCheck className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <span>Meta Cloud API Compliant</span>
+              </div>
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-slate-200/80 shadow-xs">
+                <Database className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <span>Orizer ERP 2-Way Sync</span>
+              </div>
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-slate-200/80 shadow-xs">
+                <Lock className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <span>AES-256 End-to-End Encrypted</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          2. LEAD GENERATION SECTION (Capture, Qualify & Kanban Pipeline)
+          3. WHAT IS EBIZCHAT? (Requirement #8)
       ─────────────────────────────────────────────────────────── */}
-      <section id="lead-generation" className="py-20 lg:py-28 border-b border-slate-100 bg-white">
+      <section className="py-20 lg:py-24 border-b border-slate-100 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Content */}
             <div className="lg:col-span-6 space-y-6 text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-semibold uppercase tracking-wider font-mono">
-                <Zap className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Multi-Channel Lead Generation</span>
-              </div>
-
-              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-slate-900 tracking-tight leading-tight">
-                Capture, Qualify & Convert Leads on <span className="text-emerald-600">WhatsApp in Real-Time</span>
-              </h2>
-
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                Eliminate friction and lead leakage. eBizChat automatically ingests customer inquiries from Click-to-WhatsApp ads, website QR codes, and offline campaigns, scores them instantly with AI, and routes them to your sales agents with complete ERP context.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-                <div className="p-3.5 rounded-xl border border-slate-200/80 bg-slate-50/50">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs">
-                      0s
-                    </span>
-                    <h4 className="text-xs font-bold text-slate-900">Instant Lead Capture</h4>
-                  </div>
-                  <p className="text-[11px] text-slate-500 leading-relaxed">
-                    Capture phone numbers & UTM campaign source directly with zero form friction.
-                  </p>
-                </div>
-
-                <div className="p-3.5 rounded-xl border border-slate-200/80 bg-slate-50/50">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xs">
-                      AI
-                    </span>
-                    <h4 className="text-xs font-bold text-slate-900">Smart Qualification</h4>
-                  </div>
-                  <p className="text-[11px] text-slate-500 leading-relaxed">
-                    Qualify budget, requirement, and urgency in 3 automated WhatsApp prompts.
-                  </p>
-                </div>
-
-                <div className="p-3.5 rounded-xl border border-slate-200/80 bg-slate-50/50">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className="w-6 h-6 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center font-bold text-xs">
-                      📊
-                    </span>
-                    <h4 className="text-xs font-bold text-slate-900">Visual Kanban CRM</h4>
-                  </div>
-                  <p className="text-[11px] text-slate-500 leading-relaxed">
-                    Track leads across Inbound, Qualified, Quote Sent, and Won deal stages.
-                  </p>
-                </div>
-
-                <div className="p-3.5 rounded-xl border border-slate-200/80 bg-slate-50/50">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-xs">
-                      🔄
-                    </span>
-                    <h4 className="text-xs font-bold text-slate-900">Orizer ERP Sync</h4>
-                  </div>
-                  <p className="text-[11px] text-slate-500 leading-relaxed">
-                    Direct sync with manufacturing PPC, quotation generation, and contact records.
-                  </p>
-                </div>
-              </div>
-
-              <div className="pt-2 flex flex-wrap items-center gap-3.5">
-                <button
-                  onClick={onOpenContactModal}
-                  className="px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs shadow-xs transition-colors"
-                >
-                  Start Capturing Leads
-                </button>
-                <Link
-                  to="/leadgen"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white border border-slate-300 hover:bg-slate-50 text-slate-800 font-semibold text-xs transition-colors"
-                >
-                  <span>Explore Lead Generation</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-slate-500" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Right: SaaS Kanban Board Mockup */}
-            <div className="lg:col-span-6 w-full">
-              <LeadPipelineMockup />
-            </div>
-          </div>
-
-          {/* Sub-Showcase: Automated Appointment Scheduling via WhatsApp */}
-          <div className="mt-16 pt-16 border-t border-slate-100">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-              <div className="lg:col-span-6 text-left space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-semibold">
-                  <Calendar className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>Automated Appointment Scheduling</span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug">
-                  Turn conversations into confirmed appointments <span className="text-emerald-600">in under 60 seconds</span>
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Allow prospects and clients to book demos, factory site visits, consultations, or service appointments directly inside WhatsApp. eBizChat checks real-time slot availability, sends automated calendar confirmations, and triggers timely reminders to eliminate no-shows.
-                </p>
-                <div className="space-y-2.5 pt-1">
-                  {[
-                    'Automated 3-tap booking flow directly in WhatsApp chat',
-                    'Bi-directional sync with Google Calendar, Outlook & Orizer ERP',
-                    'Automated 24-hour and 1-hour pre-appointment reminders',
-                    'Instant reschedule & cancellation options with zero human effort',
-                  ].map((bullet, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-xs sm:text-sm text-slate-800 font-medium">
-                      <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
-                      <span>{bullet}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="pt-2">
-                  <button
-                    onClick={onOpenDemoModal}
-                    className="px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs transition-colors shadow-xs inline-flex items-center gap-2"
-                  >
-                    <span>Try Booking Flow Demo</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-
-              <div className="lg:col-span-6 flex justify-center">
-                <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200/80 bg-white max-w-md w-full group">
-                  <img
-                    src="/images/appointment-scheduling.png"
-                    alt="eBizChat Automated Appointment Scheduling via WhatsApp"
-                    className="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
-                    loading="lazy"
-                  />
-                  <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent p-4 text-white text-left">
-                    <div className="text-xs font-bold flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      <span>Live WhatsApp Appointment Booking Bot</span>
-                    </div>
-                    <div className="text-[11px] text-emerald-200">99.4% booking completion rate with automated slot selection</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ───────────────────────────────────────────────────────────
-          3. FEATURES SECTION (Centered Heading + 4 Clean Cards in 1 Row)
-      ─────────────────────────────────────────────────────────── */}
-      <section className="py-20 lg:py-28 border-b border-slate-100 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Centered Heading */}
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-slate-900 tracking-tight leading-tight">
-              Everything you need to build <br />
-              <span className="text-emerald-600">stronger customer relationships</span>
-            </h2>
-            <p className="mt-4 text-slate-600 text-sm sm:text-base leading-relaxed">
-              Empower your team with a complete suite of WhatsApp engagement tools designed to drive conversions and customer delight.
-            </p>
-          </div>
-
-          {/* 4 Clean Feature Cards in 1 Row */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Card 1: WhatsApp Marketing */}
-            <div className="bg-white rounded-2xl border border-slate-200/80 p-7 text-center hover:shadow-md transition-shadow flex flex-col items-center">
-              <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-5">
-                <Megaphone className="w-6 h-6" />
-              </div>
-              <h3 className="text-base font-bold text-slate-900 mb-2">
-                WhatsApp Marketing
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
-                Create, personalize and send high-converting campaigns with rich media and templates.
-              </p>
-            </div>
-
-            {/* Card 2: Shared Team Inbox */}
-            <div className="bg-white rounded-2xl border border-slate-200/80 p-7 text-center hover:shadow-md transition-shadow flex flex-col items-center">
-              <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-5">
-                <Inbox className="w-6 h-6" />
-              </div>
-              <h3 className="text-base font-bold text-slate-900 mb-2">
-                Shared Team Inbox
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
-                Manage all chats in one place. Assign, collaborate and resolve faster.
-              </p>
-            </div>
-
-            {/* Card 3: No-code Chatbots */}
-            <div className="bg-white rounded-2xl border border-slate-200/80 p-7 text-center hover:shadow-md transition-shadow flex flex-col items-center">
-              <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-5">
-                <Bot className="w-6 h-6" />
-              </div>
-              <h3 className="text-base font-bold text-slate-900 mb-2">
-                No-code Chatbots
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
-                Build smart workflows and chatbots in minutes with our drag-and-drop builder.
-              </p>
-            </div>
-
-            {/* Card 4: Sales Automation */}
-            <div className="bg-white rounded-2xl border border-slate-200/80 p-7 text-center hover:shadow-md transition-shadow flex flex-col items-center">
-              <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-5">
-                <TrendingUp className="w-6 h-6" />
-              </div>
-              <h3 className="text-base font-bold text-slate-900 mb-2">
-                Sales Automation
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
-                Automate follow-ups, qualify leads and close more deals on autopilot.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ───────────────────────────────────────────────────────────
-          3. PRODUCT SHOWCASE 1 (Left Content, Right Dashboard Screenshot)
-      ─────────────────────────────────────────────────────────── */}
-      <section className="py-20 lg:py-28 border-b border-slate-100 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-            {/* Left Column: Heading & Content */}
-            <div className="lg:col-span-5 space-y-6 text-left">
-              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono">
-                THE INBOX & PLATFORM
+              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block">
+                WHAT IS EBIZCHAT?
               </span>
-
-              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-slate-900 tracking-tight leading-tight">
-                Designed for teams. <br />
-                Built for growth.
+              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-slate-900 tracking-tight leading-tight">
+                Everything You Need to Build <span className="text-emerald-600">Better Customer Conversations</span>
               </h2>
-
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                From startups to enterprises, eBizChat helps you deliver exceptional customer experiences on WhatsApp.
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                eBizChat is the central communication nervous system that connects your customers’ preferred messaging channel with your core business workflows. From first touch to closed sale and repeat orders, eBizChat organizes every interaction with speed and accountability.
               </p>
 
-              <div className="space-y-3 pt-1">
-                <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-800 font-medium">
-                  <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
-                  <span>Official WhatsApp Business API</span>
-                </div>
-                <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-800 font-medium">
-                  <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
-                  <span>Enterprise-grade security & scalability</span>
-                </div>
-                <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-800 font-medium">
-                  <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
-                  <span>Scalable for growing teams</span>
-                </div>
-                <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-800 font-medium">
-                  <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
-                  <span>Deep integrations with your favorite tools & Orizer ERP</span>
-                </div>
+              {/* 6 Capability Highlights */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                {[
+                  {
+                    title: 'WhatsApp Communication',
+                    desc: 'Official WhatsApp Business API with zero ban risk and verified green tick readiness.',
+                    icon: MessageSquare,
+                  },
+                  {
+                    title: 'Automated Lead Capture',
+                    desc: 'Capture phone numbers and UTM source instantly with zero form abandonment.',
+                    icon: Zap,
+                  },
+                  {
+                    title: 'Visual Automation',
+                    desc: 'Drag-and-drop triggers, interactive quick replies, and multi-step conditional logic.',
+                    icon: GitBranch,
+                  },
+                  {
+                    title: 'Team Workflows',
+                    desc: 'Shared multi-agent inbox, collision detection, and department routing.',
+                    icon: Users,
+                  },
+                  {
+                    title: 'Customer Engagement',
+                    desc: 'Personalized broadcasts, rich media catalogs, and transactional order alerts.',
+                    icon: Megaphone,
+                  },
+                  {
+                    title: 'Business Follow-up',
+                    desc: 'Automated payment reminders, quote tracking, and bi-directional ERP synchronization.',
+                    icon: RefreshCw,
+                  },
+                ].map((item, idx) => (
+                  <div key={idx} className="p-3.5 rounded-xl border border-slate-200/80 bg-slate-50/60 text-left">
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                        <item.icon className="w-3.5 h-3.5" />
+                      </div>
+                      <h4 className="text-xs font-bold text-slate-900">{item.title}</h4>
+                    </div>
+                    <p className="text-[11px] text-slate-600 leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
               </div>
 
               <div className="pt-2">
-                <Link
-                  to="/features"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white border border-slate-300 hover:bg-slate-50 text-slate-800 font-semibold text-xs transition-colors"
+                <button
+                  onClick={onOpenDemoModal}
+                  className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs shadow-sm transition-colors inline-flex items-center gap-2"
                 >
-                  <span>Explore all features</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-slate-500" />
-                </Link>
+                  <span>See How It Works</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
               </div>
             </div>
 
-            {/* Right Column: Realistic Analytics Dashboard Mockup */}
-            <div className="lg:col-span-7">
-              <AnalyticsOverviewMockup />
-            </div>
-          </div>
-
-          {/* Sub-Showcase: Enterprise Multi-Agent Boardroom Collaboration */}
-          <div className="mt-16 pt-16 border-t border-slate-100">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-              <div className="lg:col-span-7 flex justify-center order-2 lg:order-1">
-                <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200/80 bg-white w-full group">
-                  <img
-                    src="/images/multi-agent-collaboration.png"
-                    alt="eBizChat Multi-Agent Collaboration & Enterprise Teamwork"
-                    className="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
-                    loading="lazy"
-                  />
-                  <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent p-4 text-white text-left">
-                    <div className="text-xs font-bold flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      <span>Enterprise Shared Team Inbox & Wall Monitor Display</span>
-                    </div>
-                    <div className="text-[11px] text-emerald-200">Unlimited simultaneous agents under 1 official Meta WhatsApp Business number</div>
+            {/* Right Product Screenshot: Appointment Scheduling Showcase */}
+            <div className="lg:col-span-6 flex justify-center">
+              <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200/80 bg-white w-full max-w-lg group">
+                <img
+                  src="/images/appointment-scheduling.png"
+                  alt="eBizChat WhatsApp Appointment Scheduling & Lead Workflow"
+                  className="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900/85 via-slate-900/40 to-transparent p-4 text-white text-left">
+                  <div className="text-xs font-bold flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Automated Appointment Scheduling Flow</span>
                   </div>
-                </div>
-              </div>
-
-              <div className="lg:col-span-5 text-left space-y-4 order-1 lg:order-2">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-semibold">
-                  <Users className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>Teamwork & Collaboration</span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug">
-                  Multi-agent collaboration on <span className="text-emerald-600">one official WhatsApp number</span>
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Break departmental silos. Connect your sales reps, technical support engineers, and billing accounts teams on a single verified WhatsApp Business API number. Eliminate customer overlap with collision alerts, auto-assignment queues, and private internal notes.
-                </p>
-                <div className="space-y-2.5 pt-1">
-                  {[
-                    'Round-robin and skill-based conversation auto-assignment',
-                    'Real-time collision detection so two agents never double-reply',
-                    'Private internal comments visible only to team members',
-                    'Departmental inbox separation (Sales, Support, Accounts, Dispatch)',
-                  ].map((bullet, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-xs sm:text-sm text-slate-800 font-medium">
-                      <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
-                      <span>{bullet}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="pt-2">
-                  <Link
-                    to="/features/team-inbox"
-                    className="px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs transition-colors shadow-xs inline-flex items-center gap-2"
-                  >
-                    <span>Explore Shared Team Inbox</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
+                  <div className="text-[11px] text-emerald-200">Instant slot selection, automated reminders & zero human effort</div>
                 </div>
               </div>
             </div>
@@ -503,116 +321,429 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          4. AUTOMATION SECTION (Reversed Layout: Left Visual Workflow, Right Content)
+          4. LEAD GENERATION SECTION (Requirement #9)
       ─────────────────────────────────────────────────────────── */}
-      <section className="py-20 lg:py-28 border-b border-slate-100 bg-white">
+      <section id="lead-generation" className="py-20 lg:py-26 border-b border-slate-100 bg-slate-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-            {/* Left Column: Visual Workflow Interface */}
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
+              PIPELINE DISCIPLINE
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Turn Conversations Into <span className="text-emerald-600">Actionable Leads</span>
+            </h2>
+            <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+              Don't lose high-intent buyers in messy chat lists. eBizChat converts incoming customer chats into structured CRM cards with automated qualification, lead scoring, and instant agent assignment.
+            </p>
+          </div>
+
+          {/* Visual 7-Step Workflow Requested in Prompt:
+              Customer Message -> Conversation -> Lead Capture -> Qualification -> Assignment -> Follow-up -> Business Opportunity */}
+          <div className="mb-14 p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+            <div className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-4 text-left flex items-center gap-2">
+              <Zap className="w-4 h-4 text-emerald-600" />
+              <span>Automated WhatsApp Lead Journey:</span>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+              {[
+                { step: '01', title: 'Customer Message', desc: 'Inbound ad or QR scan' },
+                { step: '02', title: 'Conversation', desc: 'Instant 0s response' },
+                { step: '03', title: 'Lead Capture', desc: 'Phone & UTM source' },
+                { step: '04', title: 'Qualification', desc: 'Budget & requirement' },
+                { step: '05', title: 'Assignment', desc: 'Routed to sales rep' },
+                { step: '06', title: 'Follow-up', desc: 'Automated CRM alerts' },
+                { step: '07', title: 'Opportunity', desc: 'ERP Quotation & Deal' },
+              ].map((item, idx) => (
+                <div key={idx} className="relative p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-left">
+                  <div className="text-[10px] font-mono font-bold text-emerald-600 mb-1">{item.step}</div>
+                  <div className="text-xs font-bold text-slate-900 leading-tight mb-1">{item.title}</div>
+                  <div className="text-[10px] text-slate-500">{item.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Kanban Pipeline Mockup & Detail Panel */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-5 text-left space-y-5">
+              <h3 className="text-2xl font-bold text-slate-900 tracking-tight">
+                Visual Lead Pipeline with Real-Time ERP Context
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Track leads across Inbound, Qualified, Quote Sent, and Won deal stages. Every card includes buyer name, verified WhatsApp number, estimated deal value, and direct connection to Orizer ERP.
+              </p>
+              <div className="space-y-2.5 pt-1">
+                {[
+                  'Lead Status: Real-time stage badges (Fresh, Qualified, Negotiation, Won)',
+                  'Lead Source: Automatic tagging for Click-to-WhatsApp ads, QR & Website',
+                  'Assigned Team: Round-robin routing with dedicated sales owner',
+                  'Follow-up Reminders: Automated calendar alerts to prevent pipeline stall',
+                  'Customer Info: Company details, past order records, and credit limits',
+                ].map((bullet, i) => (
+                  <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                    <span>{bullet}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="pt-2">
+                <Link
+                  to="/leadgen"
+                  className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs shadow-sm transition-colors inline-flex items-center gap-2"
+                >
+                  <span>Explore Lead Generation</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7">
+              <LeadPipelineMockup />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          5. KEY FEATURES OF WHATSAPP BUSINESS API PLATFORM (Requirement #10 & Cunnekt Screenshot)
+      ─────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-26 border-b border-slate-100 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-3xl mx-auto mb-10">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Key <span className="text-emerald-600">Features</span> Of WhatsApp Business API Platform
+            </h2>
+            <p className="mt-3 text-slate-600 text-sm sm:text-base">
+              Everything modern businesses need to scale customer communication, automate support, and accelerate revenue.
+            </p>
+          </div>
+
+          {/* Interactive Feature Pills Switcher (like Cunnekt UI) */}
+          <div className="flex flex-wrap items-center justify-center gap-2.5 mb-12">
+            {[
+              { id: 'chatbot', label: 'Whatsapp Chatbot Builder', icon: Bot },
+              { id: 'integrations', label: 'Whatsapp API Integrations', icon: Layers },
+              { id: 'leadgen', label: 'Lead Management', icon: Filter },
+              { id: 'marketing', label: 'WhatsApp Marketing', icon: Megaphone },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setKeyFeaturesTab(tab.id)}
+                className={`px-4 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all inline-flex items-center gap-2 ${
+                  keyFeaturesTab === tab.id
+                    ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/20'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200/80'
+                }`}
+              >
+                <tab.icon className="w-4 h-4" />
+                <span>{tab.label}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Active Tab Showcase Card */}
+          <div className="bg-slate-50/70 rounded-3xl border border-slate-200/90 p-8 sm:p-12 text-left">
+            {keyFeaturesTab === 'chatbot' && (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <div className="lg:col-span-6 space-y-4">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-600">
+                    NO-CODE VISUAL BUILDER
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+                    Whatsapp Chatbot Builder
+                  </h3>
+                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                    Create powerful WhatsApp chatbots without any coding. Design automated conversation flows to answer FAQs, qualify leads, collect user requirements, share product catalogs, and hand off chats to live team agents seamlessly.
+                  </p>
+                  <div className="space-y-2 pt-2">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
+                      <Check className="w-4 h-4 text-emerald-600" />
+                      <span>Hybrid keyword rules + intelligent intent classification</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
+                      <Check className="w-4 h-4 text-emerald-600" />
+                      <span>24/7 instant response under 3 seconds with zero human latency</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
+                      <Check className="w-4 h-4 text-emerald-600" />
+                      <span>Seamless human escalation with full chat history</span>
+                    </div>
+                  </div>
+                  <div className="pt-4 flex items-center gap-4">
+                    <Link
+                      to="/features/chatbot"
+                      className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-colors inline-flex items-center gap-2"
+                    >
+                      <span>No-Code Chatbot Builder &gt;&gt;</span>
+                    </Link>
+                    <span className="px-3 py-1 rounded-md bg-white border border-slate-200 text-[11px] font-semibold text-slate-600 font-mono">
+                      Meta Cloud API Verified
+                    </span>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-6">
+                  <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-white">
+                    <img
+                      src="/images/appointment-scheduling.png"
+                      alt="WhatsApp Chatbot Builder"
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {keyFeaturesTab === 'integrations' && (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <div className="lg:col-span-6 space-y-4">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-600">
+                    ENTERPRISE CONNECTIVITY
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+                    Whatsapp API Integrations
+                  </h3>
+                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                    Connect WhatsApp directly with the core business software your company already uses. Enable instant bi-directional data flow with Orizer ERP, external CRMs, payment gateways, and custom inventory databases.
+                  </p>
+                  <div className="space-y-2 pt-2">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
+                      <Check className="w-4 h-4 text-emerald-600" />
+                      <span>Native Orizer ERP integration for automated dispatch notes & invoices</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
+                      <Check className="w-4 h-4 text-emerald-600" />
+                      <span>Webhook triggers for order status and payment completion</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
+                      <Check className="w-4 h-4 text-emerald-600" />
+                      <span>Comprehensive REST API endpoints with 99.9% uptime SLA</span>
+                    </div>
+                  </div>
+                  <div className="pt-4">
+                    <Link
+                      to="/features/integrations"
+                      className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-colors inline-flex items-center gap-2"
+                    >
+                      <span>Explore Integrations &gt;&gt;</span>
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-6">
+                  <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-white">
+                    <img
+                      src="/images/transactional-notifications.png"
+                      alt="WhatsApp API Integrations"
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {keyFeaturesTab === 'leadgen' && (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <div className="lg:col-span-6 space-y-4">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-600">
+                    CONVERSION PIPELINE
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+                    Lead Management & CRM
+                  </h3>
+                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                    Manage leads end-to-end: capture, track, qualify, nurture, and convert seamlessly. Provide your sales reps with structured deal stages, follow-up timers, and customer buying signals.
+                  </p>
+                  <div className="space-y-2 pt-2">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
+                      <Check className="w-4 h-4 text-emerald-600" />
+                      <span>Visual Kanban deal board with drag-and-drop stages</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
+                      <Check className="w-4 h-4 text-emerald-600" />
+                      <span>Automated round-robin rep distribution and collision avoidance</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
+                      <Check className="w-4 h-4 text-emerald-600" />
+                      <span>Complete interaction log and ledger history per account</span>
+                    </div>
+                  </div>
+                  <div className="pt-4">
+                    <Link
+                      to="/features/lead-management"
+                      className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-colors inline-flex items-center gap-2"
+                    >
+                      <span>Explore Lead CRM &gt;&gt;</span>
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-6">
+                  <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-white">
+                    <img
+                      src="/images/multi-agent-collaboration.png"
+                      alt="Lead Management & CRM"
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {keyFeaturesTab === 'marketing' && (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <div className="lg:col-span-6 space-y-4">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-600">
+                    ENGAGE AT SCALE
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+                    WhatsApp Marketing & Catalogs
+                  </h3>
+                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                    Deliver personalized marketing campaigns with 98% open rates. Showcase your products with multi-card interactive carousels, PDF spec sheets, and quick-reply action buttons directly in WhatsApp.
+                  </p>
+                  <div className="space-y-2 pt-2">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
+                      <Check className="w-4 h-4 text-emerald-600" />
+                      <span>Pre-approved Meta message templates with personalized variables</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
+                      <Check className="w-4 h-4 text-emerald-600" />
+                      <span>Real-time delivery, read, and click tracking reports</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
+                      <Check className="w-4 h-4 text-emerald-600" />
+                      <span>Product collection showcase with instant checkout links</span>
+                    </div>
+                  </div>
+                  <div className="pt-4">
+                    <Link
+                      to="/features/whatsapp-marketing"
+                      className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-colors inline-flex items-center gap-2"
+                    >
+                      <span>Explore WhatsApp Marketing &gt;&gt;</span>
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-6">
+                  <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-white">
+                    <img
+                      src="/images/rich-media-engagement.png"
+                      alt="WhatsApp Marketing & Catalogs"
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          6. PRODUCT SHOWCASE SECTION (Requirement #11: Functional 5-Tab Dashboard)
+      ─────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-26 border-b border-slate-100 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-3xl mx-auto mb-10">
+            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
+              ALL-IN-ONE WORKSPACE
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Powerful Tools for <span className="text-emerald-600">Smarter Business Communication</span>
+            </h2>
+            <p className="mt-3 text-slate-600 text-sm sm:text-base">
+              Explore the realistic eBizChat interface. Switch between live modules below.
+            </p>
+          </div>
+
+          {/* Interactive 5 Tabs Requested in Prompt:
+              Inbox | Leads | Automation | Campaigns | Analytics */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
+            {[
+              { id: 'inbox', label: 'Inbox', icon: Inbox },
+              { id: 'leads', label: 'Leads', icon: Filter },
+              { id: 'automation', label: 'Automation', icon: GitBranch },
+              { id: 'campaigns', label: 'Campaigns', icon: Megaphone },
+              { id: 'analytics', label: 'Analytics', icon: BarChart3 },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setProductShowcaseTab(tab.id)}
+                className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all inline-flex items-center gap-2 ${
+                  productShowcaseTab === tab.id
+                    ? 'bg-slate-900 text-white shadow-md'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
+              >
+                <tab.icon className="w-4 h-4" />
+                <span>{tab.label}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Dynamic Mockup Preview Container */}
+          <div className="max-w-6xl mx-auto transition-all duration-300">
+            {productShowcaseTab === 'inbox' && <TeamInboxMockup />}
+            {productShowcaseTab === 'leads' && <KanbanMockup />}
+            {productShowcaseTab === 'automation' && <WorkflowBuilderMockup />}
+            {productShowcaseTab === 'campaigns' && <CampaignAnalyticsMockup />}
+            {productShowcaseTab === 'analytics' && <AnalyticsOverviewMockup />}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          7. WHATSAPP AUTOMATION SECTION (Requirement #12)
+      ─────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-26 border-b border-slate-100 bg-slate-50/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Column: Visual Workflow Canvas */}
             <div className="lg:col-span-7 order-2 lg:order-1">
               <WorkflowBuilderMockup />
             </div>
 
-            {/* Right Column: Heading & Content */}
+            {/* Right Column: Heading & Copy */}
             <div className="lg:col-span-5 space-y-6 text-left order-1 lg:order-2">
-              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono">
-                AI-POWERED AUTOMATION
+              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block">
+                INTELLIGENT WORKFLOWS
               </span>
-
-              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-slate-900 tracking-tight leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
                 Automate conversations. <br />
                 <span className="text-emerald-600">Delight customers.</span>
               </h2>
-
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                Use AI to understand intent, route conversations, and provide instant answers 24/7.
+                Automate repetitive conversations while keeping customer interactions organized and connected to your business workflow.
               </p>
 
-              <div className="space-y-3 pt-1">
-                <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-800 font-medium">
-                  <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
-                  <span>AI-powered auto-responses</span>
-                </div>
-                <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-800 font-medium">
-                  <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
-                  <span>Smart routing & lead qualification</span>
-                </div>
-                <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-800 font-medium">
-                  <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
-                  <span>Multi-flow automation</span>
-                </div>
-                <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-800 font-medium">
-                  <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
-                  <span>Multi-language support</span>
-                </div>
+              {/* Workflow Node Steps Requested:
+                  Trigger -> Message -> Customer Response -> Qualification -> Team Assignment -> Follow-up */}
+              <div className="space-y-3 pt-2">
+                {[
+                  'Trigger: Instant reaction to customer inquiries, ad clicks, or ERP alerts',
+                  'Message: Meta-approved templates with dynamic media and buttons',
+                  'Customer Response: Instant parsing of customer keyword selections',
+                  'Qualification: Automated budget and timeline screening in under 60s',
+                  'Team Assignment: Routing to the right department (Sales, Accounts, Dispatch)',
+                  'Follow-up: Scheduled reminders and order status tracking until closure',
+                ].map((step, i) => (
+                  <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+                    <Check className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                    <span>{step}</span>
+                  </div>
+                ))}
               </div>
 
               <div className="pt-2">
                 <button
                   onClick={onOpenContactModal}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white border border-slate-300 hover:bg-slate-50 text-slate-800 font-semibold text-xs transition-colors"
+                  className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs transition-colors shadow-sm inline-flex items-center gap-2"
                 >
                   <span>Build your first workflow</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-slate-500" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Sub-Showcase: Rich Media Product Carousels & Quick Replies */}
-          <div className="mt-16 pt-16 border-t border-slate-100">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-              <div className="lg:col-span-6 text-left space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-semibold">
-                  <Megaphone className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>Rich Media & Catalogs</span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug">
-                  Interactive product carousels, video demos & <span className="text-emerald-600">quick-reply action buttons</span>
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Move beyond plain text messages. Deliver immersive shopping experiences directly inside WhatsApp with multi-card carousels, product collections, and interactive quick-reply pills that drive 45%+ reply rates.
-                </p>
-                <div className="space-y-2.5 pt-1">
-                  {[
-                    'Dynamic product carousels with price tags and checkout links',
-                    'High-definition video teasers & interactive PDF catalogs',
-                    'One-tap Quick Reply buttons for frictionless customer decisions',
-                    '100% Meta Cloud API verified templates with zero ban risk',
-                  ].map((bullet, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-xs sm:text-sm text-slate-800 font-medium">
-                      <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
-                      <span>{bullet}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="pt-2">
-                  <Link
-                    to="/features/whatsapp-marketing"
-                    className="px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs transition-colors shadow-xs inline-flex items-center gap-2"
-                  >
-                    <span>Explore Marketing Templates</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-
-              <div className="lg:col-span-6 flex justify-center">
-                <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200/80 bg-white max-w-md w-full group">
-                  <img
-                    src="/images/rich-media-engagement.png"
-                    alt="eBizChat Rich Media & Personalized WhatsApp Engagement"
-                    className="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
-                    loading="lazy"
-                  />
-                  <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent p-4 text-white text-left">
-                    <div className="text-xs font-bold flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      <span>Interactive WhatsApp Product Carousel Flow</span>
-                    </div>
-                    <div className="text-[11px] text-emerald-200">Personalized product cards, demo video, and quick reply action buttons</div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -620,72 +751,83 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          6. HOW EBIZCHAT WORKS (4 Simple Steps Progressive Flow)
+          8. INTEGRATIONS SECTION (Requirement #13: Real Systems Only)
       ─────────────────────────────────────────────────────────── */}
-      <section className="py-20 lg:py-24 border-b border-slate-100 bg-slate-50/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto text-center mb-16">
+      <section className="py-20 lg:py-24 border-b border-slate-100 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-2xl mx-auto mb-14">
             <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
-              HOW IT WORKS
+              CONNECTED ECOSYSTEM
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              From setup to scale in <span className="text-emerald-600">4 simple steps</span>
+              Seamlessly Connected to <span className="text-emerald-600">Your Business Stack</span>
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
-              Deploy enterprise WhatsApp messaging without complex coding or months of integration.
+              Connect customer communication with the systems your business already uses.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left max-w-5xl mx-auto">
             {[
               {
-                step: "01",
-                title: "Connect Meta Cloud API",
-                desc: "Link your official WhatsApp Business number via Meta's secure Cloud API in under 5 minutes with zero server maintenance.",
-                icon: Zap,
+                title: 'WhatsApp Business Cloud API',
+                type: 'Direct Meta Infrastructure',
+                desc: 'Official tier-1 cloud API integration ensuring zero number bans, high throughput, and instant green badge verification.',
+                icon: MessageSquare,
+                badge: 'Official API',
               },
               {
-                step: "02",
-                title: "Sync CRM & ERP Contacts",
-                desc: "Seamlessly import your customer lists, vendor contacts, and lead databases directly from Orizer ERP, Excel, or custom CRM.",
-                icon: Database,
+                title: 'Orizer ERP Native Sync',
+                type: 'Industrial ERP & CRM',
+                desc: 'Deep bi-directional sync with production PPC, dispatch LR notes, GST invoice generation, and customer ledger balances.',
+                icon: Factory,
+                badge: 'Native 2-Way',
               },
               {
-                step: "03",
-                title: "Design Visual Workflows",
-                desc: "Drag-and-drop triggers, interactive message templates, quick reply buttons, and intelligent round-robin agent routing rules.",
+                title: 'Customer Relationship Management',
+                type: 'CRM & Pipeline Systems',
+                desc: 'Bi-directional contact syncing, stage updates, agent notes, and activity timeline tracking for every commercial relationship.',
+                icon: Filter,
+                badge: 'Real-Time Sync',
+              },
+              {
+                title: 'Developer REST APIs',
+                type: 'Custom Enterprise Endpoints',
+                desc: 'Send transactional alerts, trigger chatbots, and query contact records programmatically with secure API tokens.',
+                icon: Cpu,
+                badge: 'JSON REST',
+              },
+              {
+                title: 'Event-Driven Webhooks',
+                type: 'Real-Time Event Streams',
+                desc: 'Listen for inbound messages, delivery receipts, read statuses, and button clicks with zero polling overhead.',
                 icon: GitBranch,
+                badge: '< 50ms Latency',
               },
               {
-                step: "04",
-                title: "Engage, Convert & Scale",
-                desc: "Broadcast targeted campaigns, route live chats to your sales & support agents, and automate follow-ups 24/7.",
-                icon: TrendingUp,
+                title: 'E-Commerce & Retail Sync',
+                type: 'Shopify / WooCommerce',
+                desc: 'Automated abandoned cart recovery, cash-on-delivery (COD) verification, and live tracking updates via WhatsApp.',
+                icon: ShoppingBag,
+                badge: 'E-Commerce',
               },
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-xl border border-slate-200/80 p-6 shadow-sm hover:border-emerald-500 hover:shadow-md transition-all relative group flex flex-col justify-between"
+                className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-emerald-500 hover:shadow-md transition-all text-left flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-sm">
+                    <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 text-emerald-600 flex items-center justify-center shadow-xs">
                       <item.icon className="w-5 h-5" />
                     </div>
-                    <span className="text-2xl font-black text-slate-200 group-hover:text-emerald-300 transition-colors font-mono">
-                      {item.step}
+                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold">
+                      {item.badge}
                     </span>
                   </div>
-                  <h3 className="text-base font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-emerald-600">
-                  <span>Step {item.step}</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  <h3 className="text-base font-bold text-slate-900 mb-1">{item.title}</h3>
+                  <div className="text-[11px] font-mono text-emerald-700 font-semibold mb-2">{item.type}</div>
+                  <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -694,472 +836,303 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          7. SOLUTIONS BY TEAM (Interactive Department Tabs)
+          9. HOW IT WORKS (Requirement #18: 4-Step Connected Journey)
       ─────────────────────────────────────────────────────────── */}
-      <section id="solutions" className="py-20 lg:py-24 border-b border-slate-100 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto text-center mb-12">
+      <section className="py-20 lg:py-24 border-b border-slate-100 bg-slate-50/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-2xl mx-auto mb-16">
             <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
-              SOLUTIONS BY TEAM
+              SIMPLE ONBOARDING
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Engineered for every <span className="text-emerald-600">revenue & operations team</span>
+              How <span className="text-emerald-600">eBizChat Works</span>
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
-              From frontline lead capture to factory floor dispatch, see how eBizChat empowers every department.
+              Four straightforward steps to modernize your business communications.
             </p>
           </div>
 
-          {/* Tab Navigation Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left relative">
             {[
-              { id: 'sales', label: 'Sales & Lead Gen', icon: TrendingUp },
-              { id: 'marketing', label: 'Marketing & Broadcasts', icon: Send },
-              { id: 'support', label: 'Customer Support', icon: Headphones },
-              { id: 'operations', label: 'Operations & ERP Sync', icon: Factory },
-            ].map((tab) => {
-              const Icon = tab.icon;
-              const isActive = activeSolutionTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveSolutionTab(tab.id)}
-                  className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
-                    isActive
-                      ? 'bg-emerald-600 text-white shadow-sm'
-                      : 'bg-slate-100 hover:bg-slate-200/70 text-slate-700'
-                  }`}
-                >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-500'}`} />
-                  <span>{tab.label}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Active Tab Showcase Panel */}
-          <div className="bg-slate-50/70 rounded-2xl border border-slate-200/80 p-6 sm:p-10 lg:p-12">
-            {activeSolutionTab === 'sales' && (
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                <div className="lg:col-span-6 space-y-5 text-left">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-semibold">
-                    <span>High-Velocity Sales Engine</span>
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                    Accelerate your sales pipeline & close deals 3x faster
-                  </h3>
-                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                    Capture incoming enquiries from Meta Ads, website QR codes, and landing pages instantly. Auto-qualify prospects with interactive conversational bots and route warm leads directly to your top closers.
-                  </p>
-                  <div className="space-y-3 pt-2">
-                    {[
-                      'Instant auto-response within 2 seconds of enquiry',
-                      'Automated lead scoring and round-robin sales agent assignment',
-                      'Send interactive product catalogs and quotation PDFs in chat',
-                      'Payment collection links with instant webhook confirmation',
-                    ].map((bullet, i) => (
-                      <div key={i} className="flex items-start gap-3 text-xs sm:text-sm text-slate-800 font-medium">
-                        <Check className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-                        <span>{bullet}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="pt-4">
-                    <button
-                      onClick={onOpenDemoModal}
-                      className="px-6 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs transition-colors shadow-sm inline-flex items-center gap-2"
-                    >
-                      <span>Book Sales Demo</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Sales Tab Visual Mockup */}
-                <div className="lg:col-span-6">
-                  <div className="bg-white rounded-xl border border-slate-200 shadow-md p-5 space-y-4">
-                    <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-                      <div className="flex items-center gap-2.5">
-                        <div className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs">
-                          SP
-                        </div>
-                        <div>
-                          <div className="text-xs font-bold text-slate-900">Siddharth Patel</div>
-                          <div className="text-[10px] text-slate-500">Lead Score: 94/100 • Ahmedabad Industrial</div>
-                        </div>
-                      </div>
-                      <span className="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-200">
-                        Hot Lead (RFQ #4920)
-                      </span>
-                    </div>
-
-                    <div className="bg-slate-50 rounded-lg p-3 space-y-2 text-xs">
-                      <div className="bg-emerald-600 text-white rounded-lg rounded-tr-none p-3 max-w-[85%] ml-auto shadow-sm">
-                        <div className="font-semibold text-[11px] mb-1">eBizChat Sales Bot:</div>
-                        Hello Mr. Patel! Thanks for requesting a quote for 500 units of Industrial Valves (Model IV-200). Here is your quotation:
-                        <div className="mt-2 p-2 bg-white/10 rounded flex items-center justify-between text-[10px]">
-                          <span>📄 Quotation_IV200.pdf (420 KB)</span>
-                          <span className="underline cursor-pointer">Download</span>
-                        </div>
-                      </div>
-                      <div className="bg-white border border-slate-200 rounded-lg rounded-tl-none p-3 max-w-[85%] shadow-sm text-slate-800">
-                        <div className="font-semibold text-[11px] text-slate-900 mb-1">Siddharth Patel:</div>
-                        Received the quote! Can we proceed with 50% advance via NEFT or online payment link?
-                      </div>
-                      <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-2.5 flex items-center justify-between">
-                        <div className="text-[11px] font-medium text-emerald-900">
-                          ⚡ Auto-Assigned to Senior Rep: <b>Rahul Shah (Desk 02)</b>
-                        </div>
-                        <span className="text-[10px] text-emerald-700 font-mono font-bold">10:42 AM</span>
-                      </div>
-                    </div>
-                  </div>
+              {
+                num: '01',
+                name: 'Connect',
+                desc: 'Connect your WhatsApp business communication with official Meta Cloud API verification in minutes.',
+              },
+              {
+                num: '02',
+                name: 'Configure',
+                desc: 'Set up your workflows, team departments, auto-assignment queues, and business ERP rules.',
+              },
+              {
+                num: '03',
+                name: 'Engage',
+                desc: 'Manage customer conversations, inquiries, and support tickets collaboratively in the team inbox.',
+              },
+              {
+                num: '04',
+                name: 'Convert',
+                desc: 'Turn qualified conversations into structured leads, confirmed orders, and repeat business opportunities.',
+              },
+            ].map((step, idx) => (
+              <div
+                key={idx}
+                className="p-7 rounded-2xl bg-white border border-slate-200/80 shadow-xs relative flex flex-col justify-between group hover:border-emerald-500 transition-colors"
+              >
+                <div>
+                  <span className="font-mono text-3xl sm:text-4xl font-extrabold text-emerald-600 block mb-3">
+                    {step.num}
+                  </span>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">{step.name}</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{step.desc}</p>
                 </div>
               </div>
-            )}
-
-            {activeSolutionTab === 'marketing' && (
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                <div className="lg:col-span-6 space-y-5 text-left">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-teal-100 text-teal-800 text-xs font-semibold">
-                    <span>98% Open Rate Broadcast Engine</span>
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                    High-engagement marketing broadcasts with zero spam risk
-                  </h3>
-                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                    Move beyond low-converting emails and SMS. Send hyper-personalized WhatsApp campaigns, seasonal promotions, and re-engagement offers officially approved by Meta.
-                  </p>
-                  <div className="space-y-3 pt-2">
-                    {[
-                      'Targeted audience segmentation based on tags and ERP history',
-                      'Rich media templates with CTA buttons, carousels, and video',
-                      'Granular campaign delivery analytics (sent, read, clicked, replied)',
-                      'Automated abandoned cart & renewal follow-ups with promo codes',
-                    ].map((bullet, i) => (
-                      <div key={i} className="flex items-start gap-3 text-xs sm:text-sm text-slate-800 font-medium">
-                        <Check className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-                        <span>{bullet}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="pt-4">
-                    <button
-                      onClick={onOpenDemoModal}
-                      className="px-6 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs transition-colors shadow-sm inline-flex items-center gap-2"
-                    >
-                      <span>Explore Marketing Suite</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Marketing Tab Visual Mockup */}
-                <div className="lg:col-span-6">
-                  <div className="bg-white rounded-xl border border-slate-200 shadow-md p-5 space-y-4">
-                    <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-                      <div>
-                        <div className="text-xs font-bold text-slate-900">Diwali Festive B2B Promo 2025</div>
-                        <div className="text-[10px] text-slate-500">Target: 4,850 Verified Enterprise Buyers</div>
-                      </div>
-                      <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold">
-                        Delivered
-                      </span>
-                    </div>
-
-                    <div className="grid grid-cols-3 gap-3">
-                      <div className="p-3 bg-slate-50 rounded-lg text-center border border-slate-100">
-                        <div className="text-lg font-black text-slate-900 font-mono">98.4%</div>
-                        <div className="text-[10px] text-slate-500 font-medium">Read Rate</div>
-                      </div>
-                      <div className="p-3 bg-slate-50 rounded-lg text-center border border-slate-100">
-                        <div className="text-lg font-black text-emerald-600 font-mono">41.8%</div>
-                        <div className="text-[10px] text-slate-500 font-medium">Click-Through</div>
-                      </div>
-                      <div className="p-3 bg-slate-50 rounded-lg text-center border border-slate-100">
-                        <div className="text-lg font-black text-slate-900 font-mono">₹4.2L</div>
-                        <div className="text-[10px] text-slate-500 font-medium">Attributed Sales</div>
-                      </div>
-                    </div>
-
-                    <div className="p-3 bg-emerald-50 rounded-lg border border-emerald-100 flex items-center justify-between text-xs text-emerald-900">
-                      <span>✓ 100% Meta Cloud API Compliant • Zero Number Ban Risk</span>
-                      <span className="text-[10px] font-bold text-emerald-700">Verified</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {activeSolutionTab === 'support' && (
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                <div className="lg:col-span-6 space-y-5 text-left">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-semibold">
-                    <span>Multi-Agent Shared Inbox</span>
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                    Collaborative team inbox for lightning-fast resolution
-                  </h3>
-                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                    Empower your support team with a unified inbox for multiple agents operating under one official WhatsApp Business number. Resolve queries in seconds with AI canned replies and internal notes.
-                  </p>
-                  <div className="space-y-3 pt-2">
-                    {[
-                      'Multi-agent assignment with department-based queues & tags',
-                      'Quick canned responses and private internal team notes',
-                      'AI co-pilot that drafts suggested answers based on your FAQs',
-                      'Real-time SLA monitoring, response timers, and CSAT ratings',
-                    ].map((bullet, i) => (
-                      <div key={i} className="flex items-start gap-3 text-xs sm:text-sm text-slate-800 font-medium">
-                        <Check className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-                        <span>{bullet}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="pt-4">
-                    <button
-                      onClick={onOpenDemoModal}
-                      className="px-6 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs transition-colors shadow-sm inline-flex items-center gap-2"
-                    >
-                      <span>Explore Support Inbox</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Support Tab Visual Showcase with user screenshot */}
-                <div className="lg:col-span-6 flex justify-center">
-                  <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200/80 bg-white max-w-lg w-full group">
-                    <img
-                      src="/images/support-agent-inbox.png"
-                      alt="eBizChat Multi-Agent Support Inbox & Ticket Resolution"
-                      className="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
-                      loading="lazy"
-                    />
-                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900/85 via-slate-900/40 to-transparent p-4 text-white text-left">
-                      <div className="text-xs font-bold flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                        <span>Live Enterprise Support Inbox</span>
-                      </div>
-                      <div className="text-[11px] text-emerald-200">Real-time agent assignment, response SLAs & multi-agent resolution</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {activeSolutionTab === 'operations' && (
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                <div className="lg:col-span-6 space-y-5 text-left">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-100 text-amber-800 text-xs font-semibold">
-                    <span>Orizer ERP 2-Way Sync</span>
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                    Bridging WhatsApp directly with shop floor operations
-                  </h3>
-                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                    Automate critical operational notifications directly from your Orizer ERP database. Send automatic dispatch alerts, e-way bills, quality test certificates, and overdue payment notices without manual intervention.
-                  </p>
-                  <div className="space-y-3 pt-2">
-                    {[
-                      'Automated sales order confirmation & live tracking updates',
-                      'Real-time raw material stock queries & vendor PO approvals',
-                      'Payment overdue reminders with attached GST invoice PDFs',
-                      'Production batch completion alerts sent directly to clients',
-                    ].map((bullet, i) => (
-                      <div key={i} className="flex items-start gap-3 text-xs sm:text-sm text-slate-800 font-medium">
-                        <Check className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-                        <span>{bullet}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="pt-4">
-                    <button
-                      onClick={onOpenDemoModal}
-                      className="px-6 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs transition-colors shadow-sm inline-flex items-center gap-2"
-                    >
-                      <span>See ERP Demo</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Operations Tab Visual Mockup */}
-                <div className="lg:col-span-6">
-                  <div className="bg-white rounded-xl border border-slate-200 shadow-md p-5 space-y-3">
-                    <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-                      <div>
-                        <div className="text-xs font-bold text-slate-900">Orizer ERP Automated Dispatch Bot</div>
-                        <div className="text-[10px] text-slate-500">Trigger: Vehicle Dispatched from Vapi Plant</div>
-                      </div>
-                      <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold">
-                        Auto-Fired
-                      </span>
-                    </div>
-
-                    <div className="bg-slate-50 rounded-lg p-3 space-y-2 text-xs">
-                      <div className="bg-white border border-slate-200 rounded-lg p-3 space-y-1.5 shadow-sm">
-                        <div className="text-emerald-700 font-bold text-xs flex items-center gap-1.5">
-                          <span>📦 Shipment Dispatched • LR #984210</span>
-                        </div>
-                        <p className="text-slate-700 text-[11px]">
-                          Dear <b>Mehta Enterprises</b>, your order <b>#OE-2025-104</b> has been dispatched via V-Trans (Vehicle: GJ-15-XX-1234).
-                        </p>
-                        <div className="pt-1 flex flex-wrap gap-2 text-[10px]">
-                          <span className="px-2 py-1 bg-slate-100 rounded text-slate-700 font-mono font-medium">
-                            E-Way Bill: 241098234123
-                          </span>
-                          <span className="px-2 py-1 bg-emerald-50 text-emerald-700 rounded font-semibold">
-                            Est. Delivery: Tomorrow, 2:00 PM
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-100 text-slate-600 text-[11px] flex items-center justify-between">
-                      <span>✓ ERP Stock Deducted & Invoice Emailed</span>
-                      <span className="text-emerald-600 font-bold">Synced with Orizer ERP</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
+            ))}
           </div>
         </div>
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          8. SOLUTIONS FOR EVERY INDUSTRY (7 Rich Cards)
+          10. SOLUTIONS FOR EVERY BUSINESS (Requirement #14)
       ─────────────────────────────────────────────────────────── */}
-      <section className="py-20 lg:py-24 border-b border-slate-100 bg-slate-50/50">
+      <section className="py-20 lg:py-24 border-b border-slate-100 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-2xl mx-auto mb-14">
             <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
-              INDUSTRIES
+              SECTOR SOLUTIONS
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Pre-built solutions for <span className="text-emerald-600">every industry</span>
+              Solutions for <span className="text-emerald-600">Every Business</span>
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
-              Tailored WhatsApp workflows, compliance templates, and integrations for your sector.
+              Practical WhatsApp workflows and templates designed for specific industry challenges.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left">
             {[
               {
-                title: "Manufacturing & Industrial",
-                desc: "Automate order tracking, dispatch alerts, stock inquiries, and vendor RFQ communications linked with ERP.",
+                title: 'Manufacturing & Industrial',
+                desc: 'Enquiry management, sales communication, order tracking, dispatch alerts, and vendor PO communications linked with ERP.',
                 icon: Factory,
-                link: "/solutions/services",
+                link: '/solutions/services',
               },
               {
-                title: "E-Commerce & Retail",
-                desc: "Recover abandoned carts, send automated shipment notifications, and take orders via interactive WhatsApp catalog.",
+                title: 'Retail & E-commerce',
+                desc: 'Product enquiries, order communication, customer follow-ups, and automated abandoned cart recovery.',
                 icon: ShoppingBag,
-                link: "/solutions/ecommerce",
+                link: '/solutions/ecommerce',
               },
               {
-                title: "Healthcare & Clinics",
-                desc: "Appointment bookings, doctor consult reminders, diagnostic test report delivery, and post-visit follow-ups.",
+                title: 'Healthcare & Clinics',
+                desc: 'Doctor consultation reminders, patient appointment booking, diagnostic report delivery, and care follow-ups.',
                 icon: Heart,
-                link: "/solutions/services",
+                link: '/solutions/services',
               },
               {
-                title: "Education & EdTech",
-                desc: "Instant admissions enquiries, fee payment reminders, live webinar alerts, and parent-teacher communications.",
+                title: 'Education & EdTech',
+                desc: 'Admissions enquiries, student fee payment reminders, live exam alerts, and parent communication.',
                 icon: GraduationCap,
-                link: "/solutions/education",
+                link: '/solutions/education',
               },
               {
-                title: "Real Estate & Builders",
-                desc: "Site visit scheduling, brochure downloads, lead qualification, and automated broker partner coordination.",
+                title: 'Real Estate & Builders',
+                desc: 'Lead qualification, property enquiries, site visit bookings, brochure downloads, and broker coordination.',
                 icon: Building2,
-                link: "/solutions/real-estate",
+                link: '/solutions/real-estate',
               },
               {
-                title: "Travel & Hospitality",
-                desc: "Booking confirmations, itinerary updates, automated check-in details, and 24/7 guest concierge support.",
+                title: 'Professional Services & B2B',
+                desc: 'Quotation follow-ups, client onboarding, NDA exchange, and automated executive meeting coordination.',
+                icon: Briefcase,
+                link: '/solutions/services',
+              },
+              {
+                title: 'Travel & Hospitality',
+                desc: 'Booking confirmations, itinerary updates, automated check-in details, and 24/7 guest concierge support.',
                 icon: Plane,
-                link: "/solutions/services",
+                link: '/solutions/services',
               },
               {
-                title: "Finance & B2B Services",
-                desc: "EMI payment reminders, KYC document collection, loan application updates, and insurance policy renewals.",
-                icon: Landmark,
-                link: "/solutions/services",
-              },
-              {
-                title: "Custom Enterprise Workflows",
-                desc: "Have unique operational requirements? Our Orizer engineering team customizes WhatsApp workflows for you.",
+                title: 'Custom Enterprise Workflows',
+                desc: 'Have unique operational requirements? Our Orizer engineering team customizes WhatsApp workflows for you.',
                 icon: Sparkles,
-                link: "/solutions",
+                link: '/solutions',
               },
             ].map((item, idx) => (
               <Link
                 key={idx}
                 to={item.link}
-                className="bg-white rounded-xl border border-slate-200/80 p-5 hover:border-emerald-500 hover:shadow-md transition-all group flex flex-col justify-between"
+                className="bg-slate-50/60 rounded-xl border border-slate-200/80 p-5 hover:border-emerald-500 hover:bg-white hover:shadow-md transition-all group flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-10 h-10 rounded-lg bg-slate-50 group-hover:bg-emerald-50 text-slate-700 group-hover:text-emerald-600 flex items-center justify-center transition-colors mb-3.5">
+                  <div className="w-10 h-10 rounded-lg bg-white group-hover:bg-emerald-50 text-slate-700 group-hover:text-emerald-600 flex items-center justify-center transition-colors mb-3.5 border border-slate-200">
                     <item.icon className="w-5 h-5" />
                   </div>
                   <h3 className="text-sm font-bold text-slate-900 group-hover:text-emerald-600 transition-colors mb-1.5">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {item.desc}
-                  </p>
+                  <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500 group-hover:text-emerald-600 transition-colors">
-                  <span>Explore workflows</span>
+                <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-slate-500 group-hover:text-emerald-600 transition-colors">
+                  <span>View solution</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>
+            ))}
+          </div>
+
+          {/* Customer Support Inbox Screenshot Showcase */}
+          <div className="mt-14 p-6 sm:p-10 rounded-3xl bg-slate-50 border border-slate-200/80 text-left">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+              <div className="lg:col-span-5 space-y-4">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-600">
+                  COLLABORATIVE SUPPORT
+                </span>
+                <h3 className="text-2xl font-bold text-slate-900">
+                  Multi-Agent Team Inbox for Lightning-Fast Resolution
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Support your customers with team-based collaboration on one official WhatsApp Business number. Resolve queries in seconds with AI canned replies, collision warnings, and private internal notes.
+                </p>
+                <div className="space-y-2 pt-1">
+                  <div className="flex items-center gap-2 text-xs text-slate-700 font-medium">
+                    <Check className="w-4 h-4 text-emerald-600" />
+                    <span>Real-time SLA tracking and first-response timers</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-slate-700 font-medium">
+                    <Check className="w-4 h-4 text-emerald-600" />
+                    <span>Department queues (Sales, Support, Accounts, Dispatch)</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="lg:col-span-7">
+                <div className="rounded-2xl overflow-hidden shadow-md border border-slate-200 bg-white">
+                  <img
+                    src="/images/support-agent-inbox.png"
+                    alt="Multi-Agent Support Inbox"
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          11. WHY EBIZCHAT? (Requirement #15: 6 Core Value Propositions)
+      ─────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-24 border-b border-slate-100 bg-slate-50/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-2xl mx-auto mb-14">
+            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
+              THE ADVANTAGE
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Why <span className="text-emerald-600">eBizChat?</span>
+            </h2>
+            <p className="mt-3 text-slate-600 text-sm sm:text-base">
+              Built specifically for business productivity, accountability, and measurable ROI.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left max-w-6xl mx-auto">
+            {[
+              {
+                title: 'Centralized Conversations',
+                desc: 'Unify all customer chats from ads, websites, and offline stores into one single official Meta-verified WhatsApp number.',
+                icon: Inbox,
+              },
+              {
+                title: 'Faster Responses',
+                desc: 'Cut response time from hours to seconds with 24/7 intelligent automated replies and instant department routing.',
+                icon: Clock,
+              },
+              {
+                title: 'Structured Lead Management',
+                desc: 'Stop losing deals in cluttered chat histories. Every inquiry is automatically captured, qualified, and tracked on Kanban boards.',
+                icon: Filter,
+              },
+              {
+                title: 'Reduced Repetitive Work',
+                desc: 'Automate repetitive inquiries like catalog sharing, order tracking, appointment bookings, and payment receipts.',
+                icon: Sliders,
+              },
+              {
+                title: 'Better Team Coordination',
+                desc: 'Eliminate duplicate replies with real-time collision alerts, private internal notes, and supervisor monitoring.',
+                icon: Users,
+              },
+              {
+                title: 'Connected Business Workflows',
+                desc: 'Direct connection with Orizer ERP ensures instant dispatch alerts, LR receipts, invoice PDFs, and ledger updates.',
+                icon: Factory,
+              },
+            ].map((prop, idx) => (
+              <div
+                key={idx}
+                className="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:border-emerald-500 hover:shadow-md transition-all text-left space-y-3"
+              >
+                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
+                  <prop.icon className="w-5 h-5" />
+                </div>
+                <h3 className="text-base font-bold text-slate-900">{prop.title}</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{prop.desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          9. POWERED BY ORIZER ERP (Enterprise Deep Integration & Stats)
+          12. BUILT BY ORIZER (Requirement #16 & #17: Verified Information)
       ─────────────────────────────────────────────────────────── */}
       <section className="py-20 lg:py-24 border-b border-slate-100 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left: Orizer ERP Overview */}
+            {/* Left: Orizer ERP Ecosystem Overview */}
             <div className="lg:col-span-6 text-left space-y-6">
               <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block">
-                BACKED BY ORIZER ERP
+                PARENT COMPANY & ECOSYSTEM
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                The only WhatsApp platform with <span className="text-emerald-600">native industrial ERP sync</span>
+                Built by <span className="text-emerald-600">Orizer</span>
               </h2>
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                {ORIZER_INFO.description}
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                Orizer provides enterprise business technology solutions including ERP, CRM, manufacturing automation, and integrated industrial workflows across India. While Orizer specializes in comprehensive operational enterprise management, eBizChat focuses specifically on WhatsApp-based customer communication, frontline lead workflows, and automated client engagement.
               </p>
 
-              {/* Orizer ERP Modules Grid */}
-              <div className="pt-2">
+              {/* Direct Synced ERP Modules */}
+              <div className="pt-1">
                 <div className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3">
-                  Direct Synced ERP Modules:
+                  Direct Synced Orizer ERP Modules:
                 </div>
                 <div className="grid grid-cols-2 gap-2.5">
-                  {ORIZER_INFO.erpModules.slice(0, 6).map((mod, i) => (
+                  {[
+                    'Sales Order Processing',
+                    'Production PPC & Batching',
+                    'Dispatch & E-Way Bill Alerts',
+                    'GST Invoicing & Billing',
+                    'Inventory & Material Stock',
+                    'Customer Ledger & Receivables',
+                  ].map((mod, i) => (
                     <div key={i} className="flex items-center gap-2 p-2 rounded-lg bg-slate-50 border border-slate-200/70 text-xs text-slate-800">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
-                      <span className="font-medium truncate">{mod.name}</span>
+                      <span className="font-medium truncate">{mod}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Verified Company Badge */}
+              {/* Verified Company Office Card */}
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                 <div>
                   <div className="font-bold text-slate-900">Orizer Infotech Pvt. Ltd.</div>
-                  <div className="text-slate-500">{ORIZER_INFO.contact.office.building}, {ORIZER_INFO.contact.office.city}, Gujarat</div>
+                  <div className="text-slate-500">
+                    {ORIZER_INFO.contact.office.building}, {ORIZER_INFO.contact.office.city}, Gujarat {ORIZER_INFO.contact.office.pincode}
+                  </div>
                 </div>
                 <a
                   href="https://orizer.in/"
@@ -1167,101 +1140,29 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-emerald-600 hover:text-emerald-700 font-bold whitespace-nowrap"
                 >
-                  <span>Visit Orizer Portal</span>
+                  <span>Explore Orizer</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
             </div>
 
-            {/* Right: Verified Stats Display */}
+            {/* Right: Real Operational Alerts Visual Showcase */}
             <div className="lg:col-span-6">
-              <div className="grid grid-cols-2 gap-4">
-                {ORIZER_INFO.stats.map((stat, idx) => (
-                  <div
-                    key={idx}
-                    className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-emerald-500 transition-all text-left group"
-                  >
-                    <div className="text-3xl sm:text-4xl font-black text-slate-900 font-mono group-hover:text-emerald-600 transition-colors">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm font-bold text-slate-800 mt-1">
-                      {stat.label}
-                    </div>
-                    <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
-                      {stat.description}
-                    </p>
+              <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-white group">
+                <img
+                  src="/images/transactional-notifications.png"
+                  alt="Orizer ERP WhatsApp Transactional Alerts"
+                  className="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="p-4 bg-slate-900 text-white text-left">
+                  <div className="text-xs font-bold flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Orizer ERP Real-Time Dispatch & Invoicing Engine</span>
                   </div>
-                ))}
-              </div>
-
-              <div className="mt-4 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-left flex items-center justify-between">
-                <div>
-                  <div className="text-xs font-bold text-emerald-900">Need ERP Integration Consultation?</div>
-                  <div className="text-[11px] text-emerald-700">Speak directly with our Vapi engineering team</div>
-                </div>
-                <a
-                  href={`tel:${ORIZER_INFO.contact.helpdeskPhones[0].raw}`}
-                  className="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-colors whitespace-nowrap"
-                >
-                  {ORIZER_INFO.contact.helpdeskPhones[0].number}
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Sub-Showcase: Automated Operational & Transactional Alerts */}
-          <div className="mt-16 pt-16 border-t border-slate-100">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-              <div className="lg:col-span-6 flex justify-center order-2 lg:order-1">
-                <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200/80 bg-white max-w-md w-full group">
-                  <img
-                    src="/images/transactional-notifications.png"
-                    alt="eBizChat Automated Transactional WhatsApp Notifications & ERP Dispatch Alerts"
-                    className="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
-                    loading="lazy"
-                  />
-                  <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900/85 via-slate-900/40 to-transparent p-4 text-white text-left">
-                    <div className="text-xs font-bold flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      <span>Orizer ERP Real-Time Dispatch Engine</span>
-                    </div>
-                    <div className="text-[11px] text-emerald-200">Automated e-way bills, delivery updates & GST invoice attachments</div>
+                  <div className="text-[11px] text-emerald-200 mt-0.5">
+                    Automated e-way bills, lorry receipts (LR) & GST invoice PDF attachments
                   </div>
-                </div>
-              </div>
-
-              <div className="lg:col-span-6 text-left space-y-4 order-1 lg:order-2">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-semibold">
-                  <Truck className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>Real-Time Dispatch & Operational Alerts</span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug">
-                  Zero-delay transactional notifications <span className="text-emerald-600">straight from your ERP</span>
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Trigger instant WhatsApp alerts the exact second an order status changes in Orizer ERP. From warehouse truck loading and gate passes to transit milestone tracking and automated payment receipts — keep your buyers, dealers, and suppliers updated automatically.
-                </p>
-                <div className="space-y-2.5 pt-1">
-                  {[
-                    'Instant dispatch alerts with live lorry receipt (LR) and tracking numbers',
-                    'Automated GST invoice PDF delivery via verified Meta WhatsApp API',
-                    'Bi-directional ledger balance checks and payment confirmation receipts',
-                    'Proactive delay warnings and expected time of arrival (ETA) notices',
-                  ].map((bullet, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-xs sm:text-sm text-slate-800 font-medium">
-                      <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
-                      <span>{bullet}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="pt-2">
-                  <button
-                    onClick={onOpenDemoModal}
-                    className="px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs transition-colors shadow-xs inline-flex items-center gap-2"
-                  >
-                    <span>Request Live ERP Integration Demo</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
                 </div>
               </div>
             </div>
@@ -1270,7 +1171,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          10. TRANSPARENT PRICING PLANS
+          13. TRANSPARENT PRICING PLANS (Requirement #19)
       ─────────────────────────────────────────────────────────── */}
       <section id="pricing" className="py-20 lg:py-24 border-b border-slate-100 bg-slate-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -1279,15 +1180,15 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
               TRANSPARENT PRICING
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Simple, predictable plans for <span className="text-emerald-600">growing businesses</span>
+              Simple, Predictable Plans for <span className="text-emerald-600">Every Business</span>
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
-              No hidden setup fees. No vendor lock-in. Scale as your customer conversations expand.
+              No hidden setup fees. Scale as your customer conversations expand.
             </p>
           </div>
 
           {/* Billing Switcher Toggle */}
-          <div className="flex items-center justify-center gap-3 mb-14">
+          <div className="flex items-center justify-center gap-3 mb-12">
             <span className={`text-xs font-semibold ${billingCycle === 'monthly' ? 'text-slate-900' : 'text-slate-500'}`}>
               Monthly
             </span>
@@ -1302,352 +1203,273 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
               />
             </button>
             <span className={`text-xs font-semibold flex items-center gap-1.5 ${billingCycle === 'yearly' ? 'text-slate-900' : 'text-slate-500'}`}>
-              <span>Yearly</span>
-              <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">
+              <span>Annual</span>
+              <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold font-mono">
                 Save 20%
               </span>
             </span>
           </div>
 
-          {/* 3 Pricing Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 text-left max-w-6xl mx-auto items-stretch">
-            {/* Starter Plan */}
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-              <div>
-                <div className="text-sm font-bold text-slate-900 mb-1">Starter</div>
-                <p className="text-xs text-slate-500 mb-4">
-                  For small businesses launching on official WhatsApp Business API.
-                </p>
-                <div className="flex items-baseline gap-1 mb-6 pb-6 border-b border-slate-100">
-                  <span className="text-3xl sm:text-4xl font-black text-slate-900 font-mono">
-                    {billingCycle === 'yearly' ? '₹1,599' : '₹1,999'}
-                  </span>
-                  <span className="text-xs text-slate-500 font-medium">/ month</span>
-                </div>
+          {/* 4 Plan Cards: Starter | Growth | Professional | Enterprise */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left items-stretch">
+            {PRICING_DATA.plans.map((plan) => {
+              const price =
+                typeof plan.monthlyPrice === 'number'
+                  ? billingCycle === 'yearly'
+                    ? plan.annualPrice
+                    : plan.monthlyPrice
+                  : plan.monthlyPrice;
 
-                <div className="space-y-3 text-xs text-slate-700">
-                  <div className="font-semibold text-slate-900 mb-2">Included Features:</div>
-                  {[
-                    '1,000 Free Service Conversations / mo',
-                    '1 Official WhatsApp Business Number',
-                    '3 Team Agent Logins & Shared Inbox',
-                    'Basic Visual Flow Builder',
-                    'Contact Tagging & Segmentation',
-                    'Standard Meta Cloud API Access',
-                    'Standard Email & Chat Support',
-                  ].map((f, i) => (
-                    <div key={i} className="flex items-center gap-2.5">
-                      <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                      <span>{f}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="pt-8">
-                <button
-                  onClick={onOpenContactModal}
-                  className="w-full py-2.5 rounded-lg border border-slate-300 hover:bg-slate-50 text-slate-900 font-bold text-xs transition-colors"
+              return (
+                <div
+                  key={plan.id}
+                  className={`bg-white rounded-2xl p-6 sm:p-7 flex flex-col justify-between border transition-all ${
+                    plan.popular
+                      ? 'border-emerald-500 shadow-xl shadow-emerald-500/10 ring-2 ring-emerald-500/20'
+                      : 'border-slate-200 shadow-xs hover:border-slate-300'
+                  }`}
                 >
-                  Start Free Trial
-                </button>
-              </div>
-            </div>
-
-            {/* Growth Plan (Popular) */}
-            <div className="bg-white rounded-2xl border-2 border-emerald-500 p-8 shadow-lg relative flex flex-col justify-between">
-              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-extrabold uppercase tracking-wider shadow-sm">
-                MOST POPULAR
-              </div>
-
-              <div>
-                <div className="text-sm font-bold text-slate-900 mb-1">Growth</div>
-                <p className="text-xs text-slate-500 mb-4">
-                  For scaling teams automating sales, broadcasts, and support queues.
-                </p>
-                <div className="flex items-baseline gap-1 mb-6 pb-6 border-b border-slate-100">
-                  <span className="text-3xl sm:text-4xl font-black text-emerald-600 font-mono">
-                    {billingCycle === 'yearly' ? '₹3,839' : '₹4,799'}
-                  </span>
-                  <span className="text-xs text-slate-500 font-medium">/ month</span>
-                </div>
-
-                <div className="space-y-3 text-xs text-slate-700">
-                  <div className="font-semibold text-slate-900 mb-2">Everything in Starter, plus:</div>
-                  {[
-                    '5,000 Free Service Conversations / mo',
-                    '2 Official WhatsApp Numbers',
-                    '10 Team Agents + Advanced Permissions',
-                    'Multi-Branch Automation Workflow Builder',
-                    'Full Lead Pipeline Kanban Board',
-                    'Shopify / WooCommerce Webhook Sync',
-                    'Interactive Catalogs & CTA Buttons',
-                    'Priority WhatsApp HelpDesk Support',
-                  ].map((f, i) => (
-                    <div key={i} className="flex items-center gap-2.5">
-                      <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                      <span className="font-medium text-slate-900">{f}</span>
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">
+                        {plan.badge}
+                      </span>
+                      {plan.popular && (
+                        <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px] font-mono">
+                          POPULAR
+                        </span>
+                      )}
                     </div>
-                  ))}
-                </div>
-              </div>
 
-              <div className="pt-8">
-                <button
-                  onClick={onOpenContactModal}
-                  className="w-full py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-colors"
-                >
-                  Start 14-Day Free Trial
-                </button>
-              </div>
-            </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">{plan.name}</h3>
+                    <p className="text-xs text-slate-500 min-h-[36px] leading-relaxed mb-6 font-normal">
+                      {plan.description}
+                    </p>
 
-            {/* Enterprise Plan */}
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-              <div>
-                <div className="text-sm font-bold text-slate-900 mb-1">Enterprise</div>
-                <p className="text-xs text-slate-500 mb-4">
-                  For large manufacturers and enterprises requiring native ERP sync.
-                </p>
-                <div className="flex items-baseline gap-1 mb-6 pb-6 border-b border-slate-100">
-                  <span className="text-3xl sm:text-4xl font-black text-slate-900 font-mono">
-                    Custom
-                  </span>
-                  <span className="text-xs text-slate-500 font-medium">/ tailored SLA</span>
-                </div>
-
-                <div className="space-y-3 text-xs text-slate-700">
-                  <div className="font-semibold text-slate-900 mb-2">Enterprise Capabilities:</div>
-                  {[
-                    'Unlimited Team Agents & Custom Numbers',
-                    'Direct Native Connector for Orizer ERP / SAP',
-                    'Custom AI Chatbot Trained on Company Data',
-                    'Dedicated Account Manager & Technical SLA',
-                    'Green Checkmark Badge Verification Filing',
-                    'Custom API Webhooks & ERP Database Sync',
-                    'Enterprise On-Premise / Private Cloud Setup',
-                  ].map((f, i) => (
-                    <div key={i} className="flex items-center gap-2.5">
-                      <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                      <span>{f}</span>
+                    <div className="mb-6 pb-6 border-b border-slate-100">
+                      <div className="flex items-baseline gap-1">
+                        {typeof price === 'number' && (
+                          <span className="text-2xl font-bold text-slate-900 font-mono">₹</span>
+                        )}
+                        <span className="text-4xl font-extrabold text-slate-900 font-mono tracking-tight">
+                          {typeof price === 'number' ? price.toLocaleString('en-IN') : price}
+                        </span>
+                        {typeof price === 'number' && (
+                          <span className="text-xs text-slate-500 font-medium">/ month</span>
+                        )}
+                      </div>
+                      <div className="text-[10px] text-slate-400 font-mono mt-1">
+                        {typeof price === 'number'
+                          ? billingCycle === 'yearly'
+                            ? 'Billed annually'
+                            : 'Billed monthly'
+                          : 'Custom enterprise deployment'}
+                      </div>
                     </div>
-                  ))}
+
+                    <div className="space-y-2.5 mb-6">
+                      <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                        Included Features:
+                      </span>
+                      {plan.features.slice(0, 6).map((feat, i) => (
+                        <div key={i} className="flex items-start gap-2 text-xs text-slate-700">
+                          <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                          <span>{feat}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={onOpenContactModal}
+                    className={`w-full py-3 rounded-xl text-xs font-bold transition-all ${
+                      plan.popular
+                        ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm'
+                        : 'bg-slate-100 hover:bg-slate-200 text-slate-800'
+                    }`}
+                  >
+                    {plan.ctaText}
+                  </button>
                 </div>
-              </div>
-
-              <div className="pt-8">
-                <button
-                  onClick={onOpenDemoModal}
-                  className="w-full py-2.5 rounded-lg border border-slate-300 hover:bg-slate-50 text-slate-900 font-bold text-xs transition-colors"
-                >
-                  Talk to Enterprise Sales
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Meta Conversation Fee Transparency Callout */}
-          <div className="max-w-3xl mx-auto mt-10 p-4 rounded-xl bg-white border border-slate-200/80 text-xs text-slate-600 text-left flex items-start gap-3">
-            <ShieldCheck className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <span className="font-bold text-slate-900">Transparent Meta Pricing: </span>
-              Meta Cloud API conversation fees (Marketing, Utility, Authentication, and Service) are passed through at Meta's official base rates with zero markups. The first 1,000 service conversations every month are 100% free under Meta's policy.
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          11. RESOURCES & KNOWLEDGE PLAYBOOKS
+          14. RESOURCES SECTION (Requirement #20: Zero Overflow Grid)
       ─────────────────────────────────────────────────────────── */}
       <section id="resources" className="py-20 lg:py-24 border-b border-slate-100 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto text-center mb-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-2xl mx-auto mb-14">
             <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
-              RESOURCES & GUIDES
+              KNOWLEDGE BASE
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Everything you need to master <span className="text-emerald-600">WhatsApp automation</span>
+              Resources & <span className="text-emerald-600">Business Guides</span>
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
-              Step-by-step guides, conversion playbooks, and technical whitepapers crafted by Orizer engineers.
+              Learn how modern enterprises streamline sales automation and customer support on WhatsApp.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
             {[
               {
-                tag: "Meta Verification Guide",
-                title: "Official WhatsApp Cloud API & Green Tick Badge Verification Checklist",
-                desc: "Complete walkthrough on Meta Business Manager verification, display name approvals, and applying for the prestigious official green tick.",
-                readTime: "6 min read",
-                icon: ShieldCheck,
+                title: 'Product Guides',
+                desc: 'Step-by-step documentation on setting up Meta WhatsApp Cloud API, shared inbox, and canned replies.',
+                link: '/resources',
+                icon: BookOpen,
+                tag: 'Documentation',
               },
               {
-                tag: "Marketing Playbook",
-                title: "25+ High-Converting WhatsApp Broadcast Templates for Indian Businesses",
-                desc: "Tested copy templates for Diwali sales, festive flash offers, abandoned cart reminders, and payment follow-ups with high CTR.",
-                readTime: "8 min read",
-                icon: Megaphone,
-              },
-              {
-                tag: "ERP Whitepaper",
-                title: "Connecting WhatsApp CRM with Manufacturing ERP: The 2025 Blueprint",
-                desc: "How leading Indian manufacturers automate dispatch notifications, inventory stock queries, and vendor purchase approvals via WhatsApp.",
-                readTime: "10 min read",
+                title: 'Business Guides',
+                desc: 'Executive playbooks on WhatsApp lead generation, sales pipeline discipline, and response time reduction.',
+                link: '/resources',
                 icon: FileText,
+                tag: 'Playbooks',
+              },
+              {
+                title: 'Frequently Asked Questions',
+                desc: 'Comprehensive answers regarding pricing, onboarding, Meta verification, and enterprise security.',
+                link: '/faq',
+                icon: HelpCircle,
+                tag: 'Knowledgebase',
+              },
+              {
+                title: 'Blogs & Insights',
+                desc: 'Expert articles analyzing customer messaging trends, e-way bill automation, and manufacturing ERP sync.',
+                link: '/blog',
+                icon: Sparkles,
+                tag: 'Insights',
               },
             ].map((res, idx) => (
-              <div
+              <Link
                 key={idx}
-                className="bg-white rounded-xl border border-slate-200/80 p-6 hover:border-emerald-500 hover:shadow-md transition-all flex flex-col justify-between group"
+                to={res.link}
+                className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-500 hover:bg-white hover:shadow-md transition-all flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="px-2.5 py-1 rounded bg-slate-100 text-slate-700 text-[11px] font-bold">
+                    <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 text-emerald-600 flex items-center justify-center shadow-xs">
+                      <res.icon className="w-5 h-5" />
+                    </div>
+                    <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-wider">
                       {res.tag}
                     </span>
-                    <span className="text-[11px] text-slate-400 font-medium">
-                      {res.readTime}
-                    </span>
                   </div>
-                  <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-600 transition-colors mb-2.5 leading-snug">
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-600 transition-colors mb-2">
                     {res.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {res.desc}
-                  </p>
+                  <p className="text-xs text-slate-600 leading-relaxed">{res.desc}</p>
                 </div>
-
-                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-bold text-emerald-600 group-hover:underline inline-flex items-center gap-1">
-                    <span>Read Free Guide</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
-                  <BookOpen className="w-4 h-4 text-slate-400 group-hover:text-emerald-600 transition-colors" />
+                <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-emerald-600">
+                  <span>Explore resource</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          12. FREQUENTLY ASKED QUESTIONS (Accordion)
+          15. FAQ ACCORDION (Requirement #21: Exact 8 User-Requested Questions)
       ─────────────────────────────────────────────────────────── */}
       <section className="py-20 lg:py-24 border-b border-slate-100 bg-slate-50/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+          <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
-              FREQUENTLY ASKED QUESTIONS
+              COMMON QUESTIONS
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Got questions? We have <span className="text-emerald-600">answers</span>
+              Frequently Asked <span className="text-emerald-600">Questions</span>
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
-              Everything you need to know about eBizChat, Meta Cloud API, and Orizer ERP integration.
+              Everything you need to know about eBizChat platform, onboarding, and Orizer technology.
             </p>
           </div>
 
-          <div className="space-y-3">
-            {[
-              {
-                q: "How is eBizChat different from the standard WhatsApp Business app?",
-                a: "The regular WhatsApp Business mobile app is limited to 1 phone or 4 linked devices, lacks multi-agent routing, has a broadcast limit of only 256 contacts who must save your number, and cannot connect to ERP databases. eBizChat operates on the official Meta Cloud API, enabling unlimited simultaneous agent logins, broadcast messaging to tens of thousands of opted-in customers, automated visual bot workflows, and direct two-way integration with Orizer ERP and custom databases.",
-              },
-              {
-                q: "Can I use my existing business phone number with eBizChat?",
-                a: "Yes! You can use your existing landline or mobile phone number, provided it is not actively registered on a personal WhatsApp or WhatsApp Business mobile app (our onboarding team can guide you through a quick 5-minute migration). Alternatively, you can provision a fresh virtual mobile or toll-free number for your official business profile.",
-              },
-              {
-                q: "What is the Meta Green Tick badge and will eBizChat help us get verified?",
-                a: "The green tick badge beside your brand name signifies an official, verified business account recognized by Meta. While Meta reserves final approval based on brand notability and regulatory compliance, our dedicated team at Orizer assists you with Meta Business Manager verification, documentation submission, and application filing at no additional charge.",
-              },
-              {
-                q: "How does eBizChat integrate with Orizer ERP and other CRM software?",
-                a: "eBizChat comes with native pre-built connectors for Orizer ERP (PPC, Inventory, Order Processing, Financial Accounting), as well as open REST APIs and webhooks for platforms like Shopify, WooCommerce, Zoho, HubSpot, Tally, and custom SQL databases. You can trigger automated WhatsApp messages on ERP events and push captured lead data back into your CRM automatically.",
-              },
-              {
-                q: "How does WhatsApp / Meta conversation pricing work?",
-                a: "WhatsApp charges for conversations based on categories defined by Meta: Marketing, Utility, Authentication, and Service. Utility and customer-initiated service conversations are charged at Meta's minimal official base rates with zero platform markups from eBizChat. Plus, Meta provides the first 1,000 customer-initiated service conversations every month 100% free.",
-              },
-              {
-                q: "How long does onboarding and deployment take?",
-                a: "Most businesses go live within 24 hours. Our dedicated onboarding specialists at Orizer (HelpDesk: +91 98982 36655) assist you step-by-step with Meta Business verification, number activation, workflow configuration, and team training to ensure an effortless launch.",
-              },
-            ].map((faq, index) => {
-              const isOpen = openFaqIndex === index;
+          <div className="space-y-3.5">
+            {faqList.map((item, idx) => {
+              const isOpen = openFaqIndex === idx;
               return (
                 <div
-                  key={index}
-                  className="bg-white rounded-xl border border-slate-200/80 overflow-hidden transition-all shadow-sm"
+                  key={idx}
+                  className="rounded-2xl border border-slate-200 bg-white overflow-hidden transition-all shadow-xs"
                 >
                   <button
-                    onClick={() => toggleFaq(index)}
-                    className="w-full px-6 py-4 text-left flex items-center justify-between gap-4 hover:bg-slate-50 transition-colors"
+                    onClick={() => toggleFaq(idx)}
+                    className="w-full px-6 py-4 sm:py-5 flex items-center justify-between gap-4 text-left font-bold text-slate-900 text-sm sm:text-base hover:text-emerald-600 transition-colors focus:outline-none"
+                    aria-expanded={isOpen}
                   >
-                    <span className="text-sm sm:text-base font-bold text-slate-900">
-                      {faq.q}
-                    </span>
-                    <div className="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 text-slate-600">
-                      {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                    <span>{item.q}</span>
+                    <div
+                      className={`w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-transform duration-200 ${
+                        isOpen ? 'rotate-180 bg-emerald-100 text-emerald-700' : 'text-slate-500'
+                      }`}
+                    >
+                      <ChevronDown className="w-4 h-4" />
                     </div>
                   </button>
-                  {isOpen && (
-                    <div className="px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100">
-                      {faq.a}
-                    </div>
-                  )}
+
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <div className="px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal border-t border-slate-100">
+                          {item.a}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}
-          </div>
-
-          <div className="mt-8 p-4 rounded-xl bg-white border border-slate-200 text-center flex flex-col sm:flex-row items-center justify-center gap-3 text-xs text-slate-600">
-            <span>Still have questions about WhatsApp Business API?</span>
-            <a
-              href={`tel:${ORIZER_INFO.contact.helpdeskPhones[0].raw}`}
-              className="text-emerald-600 hover:text-emerald-700 font-bold inline-flex items-center gap-1.5"
-            >
-              <Phone className="w-3.5 h-3.5" />
-              <span>Call Orizer HelpDesk: {ORIZER_INFO.contact.helpdeskPhones[0].number}</span>
-            </a>
           </div>
         </div>
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          13. FINAL CTA BANNER
+          16. FINAL CTA BANNER (Requirement #22)
       ─────────────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20 bg-white">
+      <section className="py-20 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 p-8 sm:p-12 lg:p-14 text-white shadow-lg">
-            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-              <div className="max-w-xl text-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-emerald-100 text-xs font-semibold mb-3">
-                  <span>Start in under 24 hours</span>
-                </div>
-                <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-                  Ready to transform your <br />
-                  WhatsApp conversations?
-                </h2>
-                <p className="mt-3 text-emerald-100 text-sm sm:text-base font-normal">
-                  Join 2,810+ business users growing faster with eBizChat by Orizer.
-                </p>
-              </div>
+          <div className="rounded-3xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 p-8 sm:p-14 lg:p-16 text-white text-left relative overflow-hidden shadow-2xl shadow-emerald-600/20">
+            {/* Background decorative circles */}
+            <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-white/10 blur-2xl pointer-events-none" />
+            <div className="absolute bottom-0 left-1/3 -mb-20 w-60 h-60 rounded-full bg-black/10 blur-xl pointer-events-none" />
 
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full lg:w-auto">
+            <div className="relative z-10 max-w-3xl space-y-6">
+              <span className="px-3.5 py-1 rounded-full bg-white/20 text-white font-mono text-xs font-semibold uppercase tracking-wider backdrop-blur-sm inline-block">
+                Start Growing Today
+              </span>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+                Ready to Turn WhatsApp Conversations Into Business Growth?
+              </h2>
+
+              <p className="text-base sm:text-lg text-emerald-50 leading-relaxed max-w-2xl font-normal">
+                Build better customer conversations, automate repetitive work and create a more organized lead-generation workflow with eBizChat.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4 pt-2">
                 <button
                   onClick={onOpenContactModal}
-                  className="px-6 py-3 rounded-lg bg-white text-emerald-700 hover:bg-slate-50 font-bold text-sm shadow-sm transition-all active:scale-[0.98] text-center"
+                  className="px-8 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-emerald-700 font-extrabold text-sm shadow-lg transition-all active:scale-[0.98]"
                 >
-                  Start Free Trial
+                  Get Started
                 </button>
                 <button
                   onClick={onOpenDemoModal}
-                  className="px-6 py-3 rounded-lg bg-transparent text-white border border-white/60 hover:bg-white/10 font-bold text-sm transition-all active:scale-[0.98] text-center"
+                  className="px-8 py-3.5 rounded-xl bg-emerald-800/40 hover:bg-emerald-800/60 text-white font-bold text-sm border border-white/30 backdrop-blur-sm transition-all active:scale-[0.98]"
                 >
-                  Book Live Demo
+                  Talk to Sales
                 </button>
               </div>
             </div>

@@ -12,21 +12,22 @@ export default function BrandLogo({
   variant = 'default',
 }) {
   const sizeMap = {
-    sm: { height: 'h-6', tagline: 'text-[9px]' },
-    md: { height: 'h-8 sm:h-9', tagline: 'text-[10px]' },
-    lg: { height: 'h-10 sm:h-11', tagline: 'text-xs' },
-    xl: { height: 'h-12 sm:h-14', tagline: 'text-sm' },
+    sm: { height: 'h-7', tagline: 'text-[9px]' },
+    md: { height: 'h-8 sm:h-9 lg:h-10', tagline: 'text-[10px]' },
+    lg: { height: 'h-10 sm:h-11 lg:h-12', tagline: 'text-xs' },
+    xl: { height: 'h-12 sm:h-14 lg:h-16', tagline: 'text-sm' },
   };
 
   const currentSize = sizeMap[size] || sizeMap.md;
 
   return (
     <div className={`flex items-center gap-2.5 select-none ${className}`}>
-      {/* Official eBizChat Logo Image */}
+      {/* Official eBizChat Logo Image (Cropped, 100% Transparent PNG) */}
       <img
         src={logoImg}
         alt="eBizChat Logo"
-        className={`${currentSize.height} w-auto object-contain transition-transform group-hover:scale-[1.02] ${
+        draggable="false"
+        className={`${currentSize.height} w-auto max-w-[220px] sm:max-w-[260px] object-contain shrink-0 transition-transform duration-200 group-hover:scale-[1.02] ${
           variant === 'white' ? 'brightness-0 invert' : ''
         }`}
         loading="eager"
