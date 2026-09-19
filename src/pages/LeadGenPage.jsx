@@ -22,6 +22,7 @@ import SectionHeader from '../components/ui/SectionHeader';
 import Breadcrumbs from '../components/ui/Breadcrumbs';
 import { KanbanMockup, WorkflowAutomationMockup } from '../components/ui/DashboardMockups';
 import WorkingForm from '../components/ui/WorkingForm';
+import SEOHead from '../components/ui/SEOHead';
 
 export default function LeadGenPage({ onOpenDemoModal, onOpenContactModal }) {
   const [activeStage, setActiveStage] = useState(0);
@@ -73,6 +74,11 @@ export default function LeadGenPage({ onOpenDemoModal, onOpenContactModal }) {
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
+      <SEOHead
+        title="WhatsApp Lead Generation Engine | eBizChat by Orizer"
+        description="Capture high-intent B2B commercial buyers without form friction. 7-stage automated conversational pipeline with native Orizer ERP synchronization."
+        canonical="https://ebizchat.vercel.app/lead-generation"
+      />
       {/* Top Header & Breadcrumbs */}
       <div className="border-b border-slate-100 bg-slate-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -15,6 +15,7 @@ import {
 import SectionHeader from '../components/ui/SectionHeader';
 import Breadcrumbs from '../components/ui/Breadcrumbs';
 import WorkingForm from '../components/ui/WorkingForm';
+import SEOHead from '../components/ui/SEOHead';
 import { ORIZER_INFO } from '../data/orizerData';
 
 export default function ContactPage({ onOpenDemoModal }) {
@@ -30,6 +31,11 @@ export default function ContactPage({ onOpenDemoModal }) {
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
+      <SEOHead
+        title="Contact Orizer eBizChat | Support, Sales & Live Demo"
+        description="Connect with our enterprise solution architects in Vapi, Gujarat. Call +91 98982 36655 or WhatsApp +91 99983 91947 for guided setup and demonstrations."
+        canonical="https://ebizchat.vercel.app/contact"
+      />
       <div className="border-b border-slate-100 bg-slate-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Breadcrumbs items={[{ label: 'Contact Us' }]} />

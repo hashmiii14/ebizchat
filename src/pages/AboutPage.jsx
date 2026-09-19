@@ -14,11 +14,17 @@ import {
 } from 'lucide-react';
 import SectionHeader from '../components/ui/SectionHeader';
 import Breadcrumbs from '../components/ui/Breadcrumbs';
+import SEOHead from '../components/ui/SEOHead';
 import { ORIZER_INFO } from '../data/orizerData';
 
 export default function AboutPage({ onOpenDemoModal, onOpenContactModal }) {
   return (
     <div className="flex flex-col min-h-screen bg-white">
+      <SEOHead
+        title="About Orizer Infotech & eBizChat | Enterprise ERP & WhatsApp Platform"
+        description="Headquartered in Vapi, Gujarat, Orizer engineers enterprise ERP and WhatsApp automation software for manufacturing and commercial enterprises across India."
+        canonical="https://ebizchat.vercel.app/about-orizer"
+      />
       <div className="border-b border-slate-100 bg-slate-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Breadcrumbs items={[{ label: 'About Orizer' }]} />

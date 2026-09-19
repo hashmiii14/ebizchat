@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import SectionHeader from '../components/ui/SectionHeader';
 import Breadcrumbs from '../components/ui/Breadcrumbs';
+import SEOHead from '../components/ui/SEOHead';
 import { FEATURES_DATA } from '../data/featuresData';
 
 export default function FeaturesPage({ onOpenDemoModal, onOpenContactModal }) {
@@ -67,6 +68,11 @@ export default function FeaturesPage({ onOpenDemoModal, onOpenContactModal }) {
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
+      <SEOHead
+        title="Enterprise WhatsApp Features & Modules | eBizChat by Orizer"
+        description="Explore the complete eBizChat ecosystem: No-code chat automation, multi-agent team inbox, visual Kanban pipelines, broadcasts, and 2-way ERP sync."
+        canonical="https://ebizchat.vercel.app/features"
+      />
       {/* Breadcrumbs */}
       <div className="border-b border-slate-100 bg-slate-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

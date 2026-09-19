@@ -65,6 +65,8 @@ import { ORIZER_INFO } from '../data/orizerData';
 import { PRICING_DATA } from '../data/pricingData';
 import { BLOG_POSTS } from '../data/blogData';
 import SEOHead from '../components/ui/SEOHead';
+import TypebotHeroCanvas from '../components/ui/TypebotHeroCanvas';
+import FormVsChatShowcase from '../components/ui/FormVsChatShowcase';
 
 export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
   // Interactive Product Showcase tab state
@@ -124,73 +126,68 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
         canonical="https://ebizchat.vercel.app/"
       />
       {/* ───────────────────────────────────────────────────────────
-          1. HERO SECTION (Cunnekt Quality & Layout)
+          1. HERO SECTION (Typebot-Inspired Expressive Visual Experience)
       ─────────────────────────────────────────────────────────── */}
-      <section className="relative pt-10 pb-16 lg:pt-14 lg:pb-22 overflow-hidden border-b border-slate-100 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            {/* Left Column: Hero Content */}
-            <div className="lg:col-span-6 text-left space-y-6">
-              {/* Eyebrow Pill */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-semibold tracking-wide">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>WhatsApp Business Platform by Orizer</span>
-              </div>
+      <section className="relative pt-12 pb-20 lg:pt-18 lg:pb-28 overflow-hidden border-b border-slate-100 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Eyebrow Pill */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-semibold font-mono tracking-wide shadow-xs mb-6">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span>✨ Conversational WhatsApp Automation · Built by Orizer</span>
+          </div>
 
-              {/* Main Heading: 2-3 lines, high contrast */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold tracking-tight text-slate-900 leading-[1.14]">
-                Turn WhatsApp Conversations Into{' '}
-                <span className="text-emerald-600">Business Opportunities</span>
-              </h1>
+          {/* Bold Expressive Typebot-Style Headline */}
+          <h1 className="text-4xl sm:text-6xl lg:text-[68px] font-extrabold tracking-tight text-slate-950 leading-[1.08] max-w-4xl mx-auto mb-6">
+            Build conversational WhatsApp flows that{' '}
+            <span className="bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-600 bg-clip-text text-transparent">
+              convert leads into revenue
+            </span>
+          </h1>
 
-              {/* Supporting text */}
-              <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed max-w-xl">
-                eBizChat helps businesses manage customer conversations, generate leads and automate WhatsApp communication from one powerful platform.
-              </p>
+          {/* Subtitle */}
+          <p className="text-base sm:text-xl text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto mb-8">
+            Visual no-code flow builder, multi-agent shared inbox, automated lead qualification, and native 2-way Orizer ERP sync on official Meta Cloud API.
+          </p>
 
-              {/* 2 CTA Buttons */}
-              <div className="flex flex-wrap items-center gap-3.5 pt-1">
-                <button
-                  onClick={onOpenContactModal}
-                  className="px-6 py-3.5 rounded-xl text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-md shadow-emerald-600/20 transition-all active:scale-[0.98] inline-flex items-center gap-2"
-                >
-                  <span>Get Started</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-                <Link
-                  to="/features"
-                  className="px-6 py-3.5 rounded-xl text-sm font-semibold text-slate-800 bg-white hover:bg-slate-50 border border-slate-200 shadow-xs transition-all active:scale-[0.98] inline-flex items-center gap-2"
-                >
-                  <span>Explore Features</span>
-                </Link>
-              </div>
+          {/* Centered CTA Buttons */}
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
+            <button
+              onClick={onOpenContactModal}
+              className="px-8 py-4 rounded-xl text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-lg shadow-emerald-600/25 hover:shadow-emerald-600/40 transition-all active:scale-[0.98] inline-flex items-center gap-2"
+            >
+              <span>Start Building Free</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <button
+              onClick={onOpenDemoModal}
+              className="px-8 py-4 rounded-xl text-sm font-semibold text-slate-800 bg-white hover:bg-slate-50 border border-slate-200 shadow-xs transition-all active:scale-[0.98] inline-flex items-center gap-2"
+            >
+              <span>Book Live Demo</span>
+            </button>
+          </div>
 
-              {/* Small Trust Points: 4 items */}
-              <div className="pt-3 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs text-slate-600 font-medium">
-                <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-50 border border-slate-100">
-                  <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
-                  <span>WhatsApp Business</span>
-                </div>
-                <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-50 border border-slate-100">
-                  <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
-                  <span>Lead Generation</span>
-                </div>
-                <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-50 border border-slate-100">
-                  <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
-                  <span>Automation</span>
-                </div>
-                <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-50 border border-slate-100">
-                  <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
-                  <span>Built by Orizer</span>
-                </div>
-              </div>
+          {/* 4 Trust Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs text-slate-600 font-medium mb-12">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80">
+              <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
+              <span>Official Meta Cloud API</span>
             </div>
-
-            {/* Right Column: Large realistic product visual (Web App + Chat + Leads + Floating iPhone) */}
-            <div className="lg:col-span-6 w-full pt-4 lg:pt-0 pb-6 sm:pb-10 lg:pb-6">
-              <HeroVisualMockup />
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80">
+              <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
+              <span>Native Orizer ERP 2-Way Sync</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80">
+              <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
+              <span>No-Code Visual Node Tree</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80">
+              <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
+              <span>99.9% Uptime Architecture</span>
             </div>
           </div>
+
+          {/* Full Interactive Typebot Hero Canvas (Node Builder + Live WhatsApp Phone) */}
+          <TypebotHeroCanvas />
         </div>
       </section>
 
@@ -226,6 +223,11 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
           </div>
         </div>
       </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          2.5. CONVERSATIONAL VS STATIC FORMS SHOWCASE (Typebot Iconic Experience)
+      ─────────────────────────────────────────────────────────── */}
+      <FormVsChatShowcase onOpenContactModal={onOpenContactModal} />
 
       {/* ───────────────────────────────────────────────────────────
           3. WHAT IS EBIZCHAT? (Requirement #8)

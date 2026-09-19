@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import SectionHeader from '../components/ui/SectionHeader';
 import Breadcrumbs from '../components/ui/Breadcrumbs';
+import SEOHead from '../components/ui/SEOHead';
 import { SOLUTIONS_DATA } from '../data/solutionsData';
 
 export default function SolutionsPage({ onOpenDemoModal, onOpenContactModal }) {
@@ -71,6 +72,11 @@ export default function SolutionsPage({ onOpenDemoModal, onOpenContactModal }) {
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
+      <SEOHead
+        title="Industry WhatsApp Solutions & Enterprise Blueprints | eBizChat"
+        description="Tailored WhatsApp workflows for Manufacturing, Retail, Real Estate, Healthcare, Education, and Professional Services with native Orizer ERP synchronization."
+        canonical="https://ebizchat.vercel.app/solutions"
+      />
       {/* Breadcrumbs */}
       <div className="border-b border-slate-100 bg-slate-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

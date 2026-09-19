@@ -61,9 +61,9 @@ export default {
         }
       },
       fontFamily: {
-        display: ['"Clash Display"', 'Plus Jakarta Sans', 'sans-serif'],
-        body: ['Satoshi', 'Inter', 'sans-serif'],
-        sans: ['Satoshi', 'Plus Jakarta Sans', 'Inter', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+        body: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'Geist Mono', 'monospace'],
       },
       boxShadow: {
