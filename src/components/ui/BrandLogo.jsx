@@ -35,9 +35,15 @@ export default function BrandLogo({
 
       {/* Orizer Ecosystem Pill */}
       {showTagline && (
-        <span className="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-slate-100 border border-slate-200/80 text-[10px] font-semibold text-slate-600 font-mono tracking-wide uppercase">
+        <span
+          className={`hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold font-mono tracking-wide uppercase transition-colors ${
+            variant === 'white'
+              ? 'bg-white/10 border border-white/15 text-zinc-300'
+              : 'bg-zinc-100 border border-zinc-200/90 text-zinc-700'
+          }`}
+        >
           <span>by Orizer</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#ff5500] inline-block animate-pulse" />
         </span>
       )}
     </div>

@@ -67,6 +67,7 @@ import { BLOG_POSTS } from '../data/blogData';
 import SEOHead from '../components/ui/SEOHead';
 import TypebotHeroCanvas from '../components/ui/TypebotHeroCanvas';
 import FormVsChatShowcase from '../components/ui/FormVsChatShowcase';
+import CustomerConversationsVisual from '../components/ui/CustomerConversationsVisual';
 
 export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
   // Interactive Product Showcase tab state
@@ -119,7 +120,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-white text-slate-900 selection:bg-emerald-500 selection:text-white font-sans overflow-x-hidden">
+    <div className="flex flex-col min-h-screen bg-[#fcfbf8] text-slate-900 selection:bg-[#ff5500] selection:text-white font-sans overflow-x-hidden">
       <SEOHead
         title="eBizChat - WhatsApp Business Platform & CRM Automation | Orizer"
         description="Enterprise WhatsApp Business platform by Orizer. Multi-agent shared inbox, visual Kanban pipelines, no-code chat automation, and 2-way ERP sync."
@@ -128,18 +129,18 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       {/* ───────────────────────────────────────────────────────────
           1. HERO SECTION (Typebot-Inspired Expressive Visual Experience)
       ─────────────────────────────────────────────────────────── */}
-      <section className="relative pt-12 pb-20 lg:pt-18 lg:pb-28 overflow-hidden border-b border-slate-100 bg-white">
+      <section className="relative pt-12 pb-20 lg:pt-18 lg:pb-28 overflow-hidden border-b border-zinc-200/80 bg-[#fcfbf8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           {/* Eyebrow Pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-semibold font-mono tracking-wide shadow-xs mb-6">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-200/80 text-orange-950 text-xs font-semibold font-mono tracking-wide shadow-xs mb-6">
+            <span className="w-2 h-2 rounded-full bg-[#ff5500] animate-pulse" />
             <span>✨ Conversational WhatsApp Automation · Built by Orizer</span>
           </div>
 
           {/* Bold Expressive Typebot-Style Headline */}
-          <h1 className="text-4xl sm:text-6xl lg:text-[68px] font-extrabold tracking-tight text-slate-950 leading-[1.08] max-w-4xl mx-auto mb-6">
+          <h1 className="text-4xl sm:text-6xl lg:text-[70px] font-extrabold tracking-tight text-slate-950 leading-[1.06] max-w-4xl mx-auto mb-6">
             Build conversational WhatsApp flows that{' '}
-            <span className="bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#ff5500] via-[#ff7747] to-[#ff5500] bg-clip-text text-transparent">
               convert leads into revenue
             </span>
           </h1>
@@ -153,14 +154,14 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
           <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
             <button
               onClick={onOpenContactModal}
-              className="px-8 py-4 rounded-xl text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-lg shadow-emerald-600/25 hover:shadow-emerald-600/40 transition-all active:scale-[0.98] inline-flex items-center gap-2"
+              className="px-8 py-4 rounded-xl text-sm font-bold text-white bg-[#ff5500] hover:bg-[#e04a00] shadow-lg shadow-[#ff5500]/25 hover:shadow-[#ff5500]/40 transition-all active:scale-[0.98] inline-flex items-center gap-2 cursor-pointer"
             >
               <span>Start Building Free</span>
               <ArrowRight className="w-4 h-4" />
             </button>
             <button
               onClick={onOpenDemoModal}
-              className="px-8 py-4 rounded-xl text-sm font-semibold text-slate-800 bg-white hover:bg-slate-50 border border-slate-200 shadow-xs transition-all active:scale-[0.98] inline-flex items-center gap-2"
+              className="px-8 py-4 rounded-xl text-sm font-semibold text-slate-800 bg-white hover:bg-zinc-50 border border-zinc-200 shadow-xs transition-all active:scale-[0.98] inline-flex items-center gap-2 cursor-pointer"
             >
               <span>Book Live Demo</span>
             </button>
@@ -168,20 +169,20 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
 
           {/* 4 Trust Pills */}
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs text-slate-600 font-medium mb-12">
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80">
-              <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-zinc-200/80 shadow-xs">
+              <Check className="w-3.5 h-3.5 text-[#ff5500] flex-shrink-0" strokeWidth={2.5} />
               <span>Official Meta Cloud API</span>
             </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80">
-              <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-zinc-200/80 shadow-xs">
+              <Check className="w-3.5 h-3.5 text-[#ff5500] flex-shrink-0" strokeWidth={2.5} />
               <span>Native Orizer ERP 2-Way Sync</span>
             </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80">
-              <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-zinc-200/80 shadow-xs">
+              <Check className="w-3.5 h-3.5 text-[#ff5500] flex-shrink-0" strokeWidth={2.5} />
               <span>No-Code Visual Node Tree</span>
             </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80">
-              <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-zinc-200/80 shadow-xs">
+              <Check className="w-3.5 h-3.5 text-[#ff5500] flex-shrink-0" strokeWidth={2.5} />
               <span>99.9% Uptime Architecture</span>
             </div>
           </div>
@@ -194,11 +195,11 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       {/* ───────────────────────────────────────────────────────────
           2. ENTERPRISE TRUST STATEMENT & SECURITY STRIP (No fake logos)
       ─────────────────────────────────────────────────────────── */}
-      <section className="py-8 border-b border-slate-100 bg-slate-50/70">
+      <section className="py-8 border-b border-zinc-200/80 bg-zinc-50/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 text-left">
             <div className="max-w-md">
-              <span className="text-[11px] font-mono uppercase font-bold tracking-wider text-emerald-700 block mb-1">
+              <span className="text-[11px] font-mono uppercase font-bold tracking-wider text-[#ff5500] block mb-1">
                 Enterprise Standards & Reliability
               </span>
               <p className="text-xs sm:text-sm text-slate-700 font-medium">
@@ -207,16 +208,16 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
             </div>
 
             <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-xs text-slate-700 font-medium">
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-slate-200/80 shadow-xs">
-                <ShieldCheck className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-zinc-200/80 shadow-xs">
+                <ShieldCheck className="w-4 h-4 text-[#ff5500] flex-shrink-0" />
                 <span>Meta Cloud API Compliant</span>
               </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-slate-200/80 shadow-xs">
-                <Database className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-zinc-200/80 shadow-xs">
+                <Database className="w-4 h-4 text-[#ff5500] flex-shrink-0" />
                 <span>Orizer ERP 2-Way Sync</span>
               </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-slate-200/80 shadow-xs">
-                <Lock className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-zinc-200/80 shadow-xs">
+                <Lock className="w-4 h-4 text-[#ff5500] flex-shrink-0" />
                 <span>AES-256 End-to-End Encrypted</span>
               </div>
             </div>
@@ -232,16 +233,16 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       {/* ───────────────────────────────────────────────────────────
           3. WHAT IS EBIZCHAT? (Requirement #8)
       ─────────────────────────────────────────────────────────── */}
-      <section className="py-20 lg:py-24 border-b border-slate-100 bg-white">
+      <section className="py-20 lg:py-24 border-b border-zinc-200/80 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Content */}
             <div className="lg:col-span-6 space-y-6 text-left">
-              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#ff5500] font-mono block">
                 WHAT IS EBIZCHAT?
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-slate-900 tracking-tight leading-tight">
-                Everything You Need to Build <span className="text-emerald-600">Better Customer Conversations</span>
+                Everything You Need to Build <span className="text-[#ff5500]">Better Customer Conversations</span>
               </h2>
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
                 eBizChat is the central communication nervous system that connects your customers’ preferred messaging channel with your core business workflows. From first touch to closed sale and repeat orders, eBizChat organizes every interaction with speed and accountability.
@@ -281,9 +282,9 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                     icon: RefreshCw,
                   },
                 ].map((item, idx) => (
-                  <div key={idx} className="p-3.5 rounded-xl border border-slate-200/80 bg-slate-50/60 text-left">
+                  <div key={idx} className="p-3.5 rounded-xl border border-zinc-200/80 bg-zinc-50/60 text-left">
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                      <div className="w-6 h-6 rounded-md bg-orange-50 text-[#ff5500] flex items-center justify-center">
                         <item.icon className="w-3.5 h-3.5" />
                       </div>
                       <h4 className="text-xs font-bold text-slate-900">{item.title}</h4>
@@ -296,7 +297,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
               <div className="pt-2">
                 <button
                   onClick={onOpenDemoModal}
-                  className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs shadow-sm transition-colors inline-flex items-center gap-2"
+                  className="px-6 py-3 rounded-xl bg-[#ff5500] hover:bg-[#e04a00] text-white font-semibold text-xs shadow-sm shadow-[#ff5500]/25 transition-colors inline-flex items-center gap-2 cursor-pointer"
                 >
                   <span>See How It Works</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -304,23 +305,9 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
               </div>
             </div>
 
-            {/* Right Product Screenshot: Unified Lead Funnel & Communication Pipeline */}
-            <div className="lg:col-span-6 flex justify-center">
-              <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200/80 bg-white w-full max-w-lg group">
-                <img
-                  src="/images/lead-funnel-pipeline.png"
-                  alt="eBizChat WhatsApp Communication & Full Lead Conversion Pipeline"
-                  className="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
-                  loading="lazy"
-                />
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent p-4 text-white text-left">
-                  <div className="text-xs font-bold flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>Unified Lead Capture & Sales Pipeline</span>
-                  </div>
-                  <div className="text-[11px] text-emerald-200 mt-0.5">Multi-channel lead intake, automated qualification & live team routing</div>
-                </div>
-              </div>
+            {/* Right Product Interactive Component: Replaces static lead-funnel-pipeline.png image */}
+            <div className="lg:col-span-6 flex justify-center w-full">
+              <CustomerConversationsVisual />
             </div>
           </div>
         </div>
@@ -329,14 +316,14 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       {/* ───────────────────────────────────────────────────────────
           4. LEAD GENERATION SECTION (Requirement #9)
       ─────────────────────────────────────────────────────────── */}
-      <section id="lead-generation" className="py-20 lg:py-26 border-b border-slate-100 bg-slate-50/50">
+      <section id="lead-generation" className="py-20 lg:py-26 border-b border-zinc-200/80 bg-[#fcfbf8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#ff5500] font-mono block mb-2">
               PIPELINE DISCIPLINE
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Turn Conversations Into <span className="text-emerald-600">Actionable Leads</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950 tracking-tight">
+              Turn Conversations Into <span className="text-[#ff5500]">Actionable Leads</span>
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
               Don't lose high-intent buyers in messy chat lists. eBizChat converts incoming customer chats into structured CRM cards with automated qualification, lead scoring, and instant agent assignment.
@@ -345,9 +332,9 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
 
           {/* Visual 7-Step Workflow Requested in Prompt:
               Customer Message -> Conversation -> Lead Capture -> Qualification -> Assignment -> Follow-up -> Business Opportunity */}
-          <div className="mb-14 p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <div className="mb-14 p-6 rounded-2xl bg-white border border-zinc-200 shadow-sm">
             <div className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-4 text-left flex items-center gap-2">
-              <Zap className="w-4 h-4 text-emerald-600" />
+              <Zap className="w-4 h-4 text-[#ff5500]" />
               <span>Automated WhatsApp Lead Journey:</span>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
@@ -360,8 +347,8 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                 { step: '06', title: 'Follow-up', desc: 'Automated CRM alerts' },
                 { step: '07', title: 'Opportunity', desc: 'ERP Quotation & Deal' },
               ].map((item, idx) => (
-                <div key={idx} className="relative p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-left">
-                  <div className="text-[10px] font-mono font-bold text-emerald-600 mb-1">{item.step}</div>
+                <div key={idx} className="relative p-3 rounded-xl bg-zinc-50 border border-zinc-200/80 text-left">
+                  <div className="text-[10px] font-mono font-bold text-[#ff5500] mb-1">{item.step}</div>
                   <div className="text-xs font-bold text-slate-900 leading-tight mb-1">{item.title}</div>
                   <div className="text-[10px] text-slate-500">{item.desc}</div>
                 </div>
@@ -372,7 +359,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
           {/* Kanban Pipeline Mockup & Detail Panel */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-5 text-left space-y-5">
-              <h3 className="text-2xl font-bold text-slate-900 tracking-tight">
+              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
                 Visual Lead Pipeline with Real-Time ERP Context
               </h3>
               <p className="text-sm text-slate-600 leading-relaxed">
@@ -387,15 +374,15 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                   'Customer Info: Company details, past order records, and credit limits',
                 ].map((bullet, i) => (
                   <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#ff5500] flex-shrink-0 mt-0.5" />
                     <span>{bullet}</span>
                   </div>
                 ))}
               </div>
               <div className="pt-2">
                 <Link
-                  to="/leadgen"
-                  className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs shadow-sm transition-colors inline-flex items-center gap-2"
+                  to="/lead-generation"
+                  className="px-6 py-3 rounded-xl bg-[#ff5500] hover:bg-[#e04a00] text-white font-semibold text-xs shadow-sm shadow-[#ff5500]/25 transition-colors inline-flex items-center gap-2 cursor-pointer"
                 >
                   <span>Explore Lead Generation</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -413,11 +400,11 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       {/* ───────────────────────────────────────────────────────────
           5. KEY FEATURES OF WHATSAPP BUSINESS API PLATFORM (Requirement #10 & Cunnekt Screenshot)
       ─────────────────────────────────────────────────────────── */}
-      <section className="py-20 lg:py-26 border-b border-slate-100 bg-white">
+      <section className="py-20 lg:py-26 border-b border-zinc-200/80 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-3xl mx-auto mb-10">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Key <span className="text-emerald-600">Features</span> Of WhatsApp Business API Platform
+              Key <span className="text-[#ff5500]">Features</span> Of WhatsApp Business API Platform
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
               Everything modern businesses need to scale customer communication, automate support, and accelerate revenue.
@@ -435,10 +422,10 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
               <button
                 key={tab.id}
                 onClick={() => setKeyFeaturesTab(tab.id)}
-                className={`px-4 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all inline-flex items-center gap-2 ${
+                className={`px-4 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all inline-flex items-center gap-2 cursor-pointer ${
                   keyFeaturesTab === tab.id
-                    ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/20'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200/80'
+                    ? 'bg-[#0a0a0a] text-white shadow-md'
+                    : 'bg-zinc-100 text-zinc-700 hover:bg-zinc-200/80'
                 }`}
               >
                 <tab.icon className="w-4 h-4" />
@@ -452,7 +439,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
             {keyFeaturesTab === 'chatbot' && (
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                 <div className="lg:col-span-6 space-y-4">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-600">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#ff5500]">
                     NO-CODE VISUAL BUILDER
                   </span>
                   <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
@@ -463,33 +450,33 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                   </p>
                   <div className="space-y-2 pt-2">
                     <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
-                      <Check className="w-4 h-4 text-emerald-600" />
+                      <Check className="w-4 h-4 text-[#ff5500]" />
                       <span>Hybrid keyword rules + intelligent intent classification</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
-                      <Check className="w-4 h-4 text-emerald-600" />
+                      <Check className="w-4 h-4 text-[#ff5500]" />
                       <span>24/7 instant response under 3 seconds with zero human latency</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
-                      <Check className="w-4 h-4 text-emerald-600" />
+                      <Check className="w-4 h-4 text-[#ff5500]" />
                       <span>Seamless human escalation with full chat history</span>
                     </div>
                   </div>
                   <div className="pt-4 flex items-center gap-4">
                     <Link
                       to="/features/chatbot"
-                      className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-colors inline-flex items-center gap-2"
+                      className="px-6 py-3 rounded-xl bg-[#ff5500] hover:bg-[#e04a00] text-white font-bold text-xs shadow-sm shadow-[#ff5500]/25 transition-colors inline-flex items-center gap-2 cursor-pointer"
                     >
                       <span>No-Code Chatbot Builder &gt;&gt;</span>
                     </Link>
-                    <span className="px-3 py-1 rounded-md bg-white border border-slate-200 text-[11px] font-semibold text-slate-600 font-mono">
+                    <span className="px-3 py-1 rounded-md bg-white border border-zinc-200 text-[11px] font-semibold text-slate-600 font-mono">
                       Meta Cloud API Verified
                     </span>
                   </div>
                 </div>
 
                 <div className="lg:col-span-6">
-                  <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-white">
+                  <div className="rounded-2xl overflow-hidden shadow-lg border border-zinc-200 bg-white">
                     <img
                       src="/images/appointment-scheduling.png"
                       alt="WhatsApp Chatbot Builder"
@@ -503,7 +490,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
             {keyFeaturesTab === 'integrations' && (
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                 <div className="lg:col-span-6 space-y-4">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-600">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#ff5500]">
                     ENTERPRISE CONNECTIVITY
                   </span>
                   <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
@@ -514,22 +501,22 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                   </p>
                   <div className="space-y-2 pt-2">
                     <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
-                      <Check className="w-4 h-4 text-emerald-600" />
+                      <Check className="w-4 h-4 text-[#ff5500]" />
                       <span>Native Orizer ERP integration for automated dispatch notes & invoices</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
-                      <Check className="w-4 h-4 text-emerald-600" />
+                      <Check className="w-4 h-4 text-[#ff5500]" />
                       <span>Webhook triggers for order status and payment completion</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
-                      <Check className="w-4 h-4 text-emerald-600" />
+                      <Check className="w-4 h-4 text-[#ff5500]" />
                       <span>Comprehensive REST API endpoints with 99.9% uptime SLA</span>
                     </div>
                   </div>
                   <div className="pt-4">
                     <Link
                       to="/features/integrations"
-                      className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-colors inline-flex items-center gap-2"
+                      className="px-6 py-3 rounded-xl bg-[#ff5500] hover:bg-[#e04a00] text-white font-bold text-xs shadow-sm shadow-[#ff5500]/25 transition-colors inline-flex items-center gap-2 cursor-pointer"
                     >
                       <span>Explore Integrations &gt;&gt;</span>
                     </Link>
@@ -537,7 +524,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                 </div>
 
                 <div className="lg:col-span-6">
-                  <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-white">
+                  <div className="rounded-2xl overflow-hidden shadow-lg border border-zinc-200 bg-white">
                     <img
                       src="/images/transactional-notifications.png"
                       alt="WhatsApp API Integrations"
@@ -551,7 +538,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
             {keyFeaturesTab === 'leadgen' && (
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                 <div className="lg:col-span-6 space-y-4">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-600">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#ff5500]">
                     CONVERSION PIPELINE
                   </span>
                   <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
@@ -562,22 +549,22 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                   </p>
                   <div className="space-y-2 pt-2">
                     <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
-                      <Check className="w-4 h-4 text-emerald-600" />
+                      <Check className="w-4 h-4 text-[#ff5500]" />
                       <span>Visual Kanban deal board with drag-and-drop stages</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
-                      <Check className="w-4 h-4 text-emerald-600" />
+                      <Check className="w-4 h-4 text-[#ff5500]" />
                       <span>Automated round-robin rep distribution and collision avoidance</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
-                      <Check className="w-4 h-4 text-emerald-600" />
+                      <Check className="w-4 h-4 text-[#ff5500]" />
                       <span>Complete interaction log and ledger history per account</span>
                     </div>
                   </div>
                   <div className="pt-4">
                     <Link
                       to="/features/lead-management"
-                      className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-colors inline-flex items-center gap-2"
+                      className="px-6 py-3 rounded-xl bg-[#ff5500] hover:bg-[#e04a00] text-white font-bold text-xs shadow-sm shadow-[#ff5500]/25 transition-colors inline-flex items-center gap-2 cursor-pointer"
                     >
                       <span>Explore Lead CRM &gt;&gt;</span>
                     </Link>
@@ -585,7 +572,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                 </div>
 
                 <div className="lg:col-span-6">
-                  <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-white">
+                  <div className="rounded-2xl overflow-hidden shadow-lg border border-zinc-200 bg-white">
                     <img
                       src="/images/multi-agent-collaboration.png"
                       alt="Lead Management & CRM"
@@ -599,7 +586,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
             {keyFeaturesTab === 'marketing' && (
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                 <div className="lg:col-span-6 space-y-4">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-600">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#ff5500]">
                     ENGAGE AT SCALE
                   </span>
                   <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
@@ -610,22 +597,22 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                   </p>
                   <div className="space-y-2 pt-2">
                     <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
-                      <Check className="w-4 h-4 text-emerald-600" />
+                      <Check className="w-4 h-4 text-[#ff5500]" />
                       <span>Pre-approved Meta message templates with personalized variables</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
-                      <Check className="w-4 h-4 text-emerald-600" />
+                      <Check className="w-4 h-4 text-[#ff5500]" />
                       <span>Real-time delivery, read, and click tracking reports</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
-                      <Check className="w-4 h-4 text-emerald-600" />
+                      <Check className="w-4 h-4 text-[#ff5500]" />
                       <span>Product collection showcase with instant checkout links</span>
                     </div>
                   </div>
                   <div className="pt-4">
                     <Link
                       to="/features/whatsapp-marketing"
-                      className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-colors inline-flex items-center gap-2"
+                      className="px-6 py-3 rounded-xl bg-[#ff5500] hover:bg-[#e04a00] text-white font-bold text-xs shadow-sm shadow-[#ff5500]/25 transition-colors inline-flex items-center gap-2 cursor-pointer"
                     >
                       <span>Explore WhatsApp Marketing &gt;&gt;</span>
                     </Link>
@@ -633,7 +620,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                 </div>
 
                 <div className="lg:col-span-6">
-                  <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-white">
+                  <div className="rounded-2xl overflow-hidden shadow-lg border border-zinc-200 bg-white">
                     <img
                       src="/images/rich-media-engagement.png"
                       alt="WhatsApp Marketing & Catalogs"
@@ -653,11 +640,11 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       <section className="py-20 lg:py-26 border-b border-slate-100 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-3xl mx-auto mb-10">
-            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#ff5500] font-mono block mb-2">
               ALL-IN-ONE WORKSPACE
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Powerful Tools for <span className="text-emerald-600">Smarter Business Communication</span>
+              Powerful Tools for <span className="text-[#ff5500]">Smarter Business Communication</span>
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
               Explore the realistic eBizChat interface. Switch between live modules below.
@@ -713,12 +700,12 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
 
             {/* Right Column: Heading & Copy */}
             <div className="lg:col-span-5 space-y-6 text-left order-1 lg:order-2">
-              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#ff5500] font-mono block">
                 INTELLIGENT WORKFLOWS
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
                 Automate conversations. <br />
-                <span className="text-emerald-600">Delight customers.</span>
+                <span className="text-[#ff5500]">Delight customers.</span>
               </h2>
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
                 Automate repetitive conversations while keeping customer interactions organized and connected to your business workflow.
@@ -736,7 +723,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                   'Follow-up: Scheduled reminders and order status tracking until closure',
                 ].map((step, i) => (
                   <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
-                    <Check className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                    <Check className="w-4 h-4 text-[#ff5500] flex-shrink-0 mt-0.5" strokeWidth={2.5} />
                     <span>{step}</span>
                   </div>
                 ))}
@@ -745,7 +732,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
               <div className="pt-2">
                 <button
                   onClick={onOpenContactModal}
-                  className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs transition-colors shadow-sm inline-flex items-center gap-2"
+                  className="px-6 py-3 rounded-xl bg-[#ff5500] hover:bg-[#e04a00] text-white font-semibold text-xs transition-colors shadow-sm inline-flex items-center gap-2 cursor-pointer"
                 >
                   <span>Build your first workflow</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -762,11 +749,11 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       <section className="py-20 lg:py-24 border-b border-slate-100 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#ff5500] font-mono block mb-2">
               CONNECTED ECOSYSTEM
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Seamlessly Connected to <span className="text-emerald-600">Your Business Stack</span>
+              Seamlessly Connected to <span className="text-[#ff5500]">Your Business Stack</span>
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
               Connect customer communication with the systems your business already uses.
@@ -820,19 +807,19 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-emerald-500 hover:shadow-md transition-all text-left flex flex-col justify-between"
+                className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-[#ff5500] hover:shadow-md transition-all text-left flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 text-emerald-600 flex items-center justify-center shadow-xs">
+                    <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 text-[#ff5500] flex items-center justify-center shadow-xs">
                       <item.icon className="w-5 h-5" />
                     </div>
-                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold">
+                    <span className="px-2.5 py-0.5 rounded-full bg-orange-100 text-orange-900 text-[10px] font-mono font-bold">
                       {item.badge}
                     </span>
                   </div>
                   <h3 className="text-base font-bold text-slate-900 mb-1">{item.title}</h3>
-                  <div className="text-[11px] font-mono text-emerald-700 font-semibold mb-2">{item.type}</div>
+                  <div className="text-[11px] font-mono text-[#ff5500] font-semibold mb-2">{item.type}</div>
                   <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
@@ -847,11 +834,11 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       <section className="py-20 lg:py-24 border-b border-slate-100 bg-slate-50/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#ff5500] font-mono block mb-2">
               SIMPLE ONBOARDING
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              How <span className="text-emerald-600">eBizChat Works</span>
+              How <span className="text-[#ff5500]">eBizChat Works</span>
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
               Four straightforward steps to modernize your business communications.
@@ -883,10 +870,10 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
             ].map((step, idx) => (
               <div
                 key={idx}
-                className="p-7 rounded-2xl bg-white border border-slate-200/80 shadow-xs relative flex flex-col justify-between group hover:border-emerald-500 transition-colors"
+                className="p-7 rounded-2xl bg-white border border-slate-200/80 shadow-xs relative flex flex-col justify-between group hover:border-[#ff5500] transition-colors"
               >
                 <div>
-                  <span className="font-mono text-3xl sm:text-4xl font-extrabold text-emerald-600 block mb-3">
+                  <span className="font-mono text-3xl sm:text-4xl font-extrabold text-[#ff5500] block mb-3">
                     {step.num}
                   </span>
                   <h3 className="text-lg font-bold text-slate-900 mb-2">{step.name}</h3>
@@ -904,11 +891,11 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       <section className="py-20 lg:py-24 border-b border-slate-100 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#ff5500] font-mono block mb-2">
               SECTOR SOLUTIONS
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Solutions for <span className="text-emerald-600">Every Business</span>
+              Solutions for <span className="text-[#ff5500]">Every Business</span>
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
               Practical WhatsApp workflows and templates designed for specific industry challenges.
@@ -969,18 +956,18 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
               <Link
                 key={idx}
                 to={item.link}
-                className="bg-slate-50/60 rounded-xl border border-slate-200/80 p-5 hover:border-emerald-500 hover:bg-white hover:shadow-md transition-all group flex flex-col justify-between"
+                className="bg-slate-50/60 rounded-xl border border-slate-200/80 p-5 hover:border-[#ff5500] hover:bg-white hover:shadow-md transition-all group flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-10 h-10 rounded-lg bg-white group-hover:bg-emerald-50 text-slate-700 group-hover:text-emerald-600 flex items-center justify-center transition-colors mb-3.5 border border-slate-200">
+                  <div className="w-10 h-10 rounded-lg bg-white group-hover:bg-orange-50 text-slate-700 group-hover:text-[#ff5500] flex items-center justify-center transition-colors mb-3.5 border border-slate-200">
                     <item.icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-sm font-bold text-slate-900 group-hover:text-emerald-600 transition-colors mb-1.5">
+                  <h3 className="text-sm font-bold text-slate-900 group-hover:text-[#ff5500] transition-colors mb-1.5">
                     {item.title}
                   </h3>
                   <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-slate-500 group-hover:text-emerald-600 transition-colors">
+                <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-slate-500 group-hover:text-[#ff5500] transition-colors">
                   <span>View solution</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -992,7 +979,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
           <div className="mt-14 p-6 sm:p-10 rounded-3xl bg-slate-50 border border-slate-200/80 text-left">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
               <div className="lg:col-span-5 space-y-4">
-                <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-600">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#ff5500]">
                   COLLABORATIVE SUPPORT
                 </span>
                 <h3 className="text-2xl font-bold text-slate-900">
@@ -1003,11 +990,11 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                 </p>
                 <div className="space-y-2 pt-1">
                   <div className="flex items-center gap-2 text-xs text-slate-700 font-medium">
-                    <Check className="w-4 h-4 text-emerald-600" />
+                    <Check className="w-4 h-4 text-[#ff5500]" />
                     <span>Real-time SLA tracking and first-response timers</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs text-slate-700 font-medium">
-                    <Check className="w-4 h-4 text-emerald-600" />
+                    <Check className="w-4 h-4 text-[#ff5500]" />
                     <span>Department queues (Sales, Support, Accounts, Dispatch)</span>
                   </div>
                 </div>
@@ -1033,11 +1020,11 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       <section className="py-20 lg:py-24 border-b border-slate-100 bg-slate-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#ff5500] font-mono block mb-2">
               THE ADVANTAGE
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Why <span className="text-emerald-600">eBizChat?</span>
+              Why <span className="text-[#ff5500]">eBizChat?</span>
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
               Built specifically for business productivity, accountability, and measurable ROI.
@@ -1079,9 +1066,9 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
             ].map((prop, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:border-emerald-500 hover:shadow-md transition-all text-left space-y-3"
+                className="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:border-[#ff5500] hover:shadow-md transition-all text-left space-y-3"
               >
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
+                <div className="w-10 h-10 rounded-xl bg-orange-50 text-[#ff5500] flex items-center justify-center font-bold">
                   <prop.icon className="w-5 h-5" />
                 </div>
                 <h3 className="text-base font-bold text-slate-900">{prop.title}</h3>
@@ -1100,11 +1087,11 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left: Orizer ERP Ecosystem Overview */}
             <div className="lg:col-span-6 text-left space-y-6">
-              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#ff5500] font-mono block">
                 PARENT COMPANY & ECOSYSTEM
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                Built by <span className="text-emerald-600">Orizer</span>
+                Built by <span className="text-[#ff5500]">Orizer</span>
               </h2>
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
                 Orizer provides enterprise business technology solutions including ERP, CRM, manufacturing automation, and integrated industrial workflows across India. While Orizer specializes in comprehensive operational enterprise management, eBizChat focuses specifically on WhatsApp-based customer communication, frontline lead workflows, and automated client engagement.
@@ -1125,7 +1112,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                     'Customer Ledger & Receivables',
                   ].map((mod, i) => (
                     <div key={i} className="flex items-center gap-2 p-2 rounded-lg bg-slate-50 border border-slate-200/70 text-xs text-slate-800">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#ff5500] flex-shrink-0" />
                       <span className="font-medium truncate">{mod}</span>
                     </div>
                   ))}
@@ -1144,7 +1131,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                   href="https://orizer.in/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-emerald-600 hover:text-emerald-700 font-bold whitespace-nowrap"
+                  className="inline-flex items-center gap-1.5 text-[#ff5500] hover:text-[#e04a00] font-bold whitespace-nowrap"
                 >
                   <span>Explore Orizer</span>
                   <ExternalLink className="w-3.5 h-3.5" />
@@ -1164,16 +1151,16 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                     loading="lazy"
                   />
                   <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-sm text-white text-[10px] font-mono font-semibold flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#ff5500] animate-pulse" />
                     <span>Live ERP BI Sync</span>
                   </div>
                 </div>
                 <div className="p-4 bg-slate-900 text-white text-left">
                   <div className="text-xs font-bold flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                    <span className="w-2 h-2 rounded-full bg-[#ff5500]" />
                     <span>Orizer ERP Business Intelligence & Production Analytics</span>
                   </div>
-                  <div className="text-[11px] text-emerald-200 mt-0.5">
+                  <div className="text-[11px] text-orange-200 mt-0.5">
                     Real-time data synchronization for stock alerts, dispatches, and dealer billing
                   </div>
                 </div>
@@ -1190,7 +1177,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                   />
                 </div>
                 <div className="p-4 text-left flex-1">
-                  <div className="text-[11px] font-mono text-emerald-600 font-bold uppercase tracking-wider">
+                  <div className="text-[11px] font-mono text-[#ff5500] font-bold uppercase tracking-wider">
                     Shop-Floor & Warehouse Reliability
                   </div>
                   <h4 className="text-xs sm:text-sm font-bold text-slate-900 mt-0.5">
@@ -1212,11 +1199,11 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       <section id="pricing" className="py-20 lg:py-24 border-b border-slate-100 bg-slate-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#ff5500] font-mono block mb-2">
               TRANSPARENT PRICING
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Simple, Tailored Plans for <span className="text-emerald-600">Every Business</span>
+              Simple, Tailored Plans for <span className="text-[#ff5500]">Every Business</span>
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
               Predictable enterprise software subscriptions with direct Meta Cloud API wholesale rates and 100% data ownership.
@@ -1230,7 +1217,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                 key={plan.id}
                 className={`bg-white rounded-2xl p-6 sm:p-7 flex flex-col justify-between border transition-all ${
                   plan.popular
-                    ? 'border-emerald-500 shadow-xl shadow-emerald-500/10 ring-2 ring-emerald-500/20'
+                    ? 'border-[#ff5500] shadow-xl shadow-[#ff5500]/10 ring-2 ring-[#ff5500]/20'
                     : 'border-slate-200 shadow-xs hover:border-slate-300'
                 }`}
               >
@@ -1240,7 +1227,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                       {plan.badge}
                     </span>
                     {plan.popular && (
-                      <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px] font-mono">
+                      <span className="px-2.5 py-0.5 rounded-full bg-orange-100 text-[#ff5500] font-bold text-[10px] font-mono">
                         POPULAR
                       </span>
                     )}
@@ -1255,7 +1242,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                     <div className="text-2xl font-extrabold text-slate-900 font-mono tracking-tight">
                       {plan.pricingDisplay}
                     </div>
-                    <div className="text-[11px] text-emerald-700 font-medium mt-1">
+                    <div className="text-[11px] text-[#ff5500] font-medium mt-1">
                       {plan.pricingSub}
                     </div>
                   </div>
@@ -1266,7 +1253,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                     </span>
                     {plan.features.slice(0, 6).map((feat, i) => (
                       <div key={i} className="flex items-start gap-2 text-xs text-slate-700">
-                        <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                        <Check className="w-3.5 h-3.5 text-[#ff5500] flex-shrink-0 mt-0.5" strokeWidth={2.5} />
                         <span>{feat}</span>
                       </div>
                     ))}
@@ -1276,9 +1263,9 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                 <div className="space-y-2 pt-2">
                   <button
                     onClick={onOpenContactModal}
-                    className={`w-full py-3 rounded-xl text-xs font-bold transition-all ${
+                    className={`w-full py-3 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                       plan.popular
-                        ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm'
+                        ? 'bg-[#ff5500] hover:bg-[#e04a00] text-white shadow-sm'
                         : 'bg-slate-100 hover:bg-slate-200 text-slate-800'
                     }`}
                   >
@@ -1295,7 +1282,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 font-bold text-xs shadow-xs transition-colors"
             >
               <span>View Full Feature Comparison Matrix</span>
-              <ArrowRight className="w-3.5 h-3.5 text-emerald-600" />
+              <ArrowRight className="w-3.5 h-3.5 text-[#ff5500]" />
             </Link>
           </div>
         </div>
@@ -1307,11 +1294,11 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       <section id="resources" className="py-20 lg:py-24 border-b border-slate-100 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#ff5500] font-mono block mb-2">
               KNOWLEDGE BASE
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Resources & <span className="text-emerald-600">Business Guides</span>
+              Resources & <span className="text-[#ff5500]">Business Guides</span>
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
               Learn how modern enterprises streamline sales automation and customer support on WhatsApp.
@@ -1352,23 +1339,23 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
               <Link
                 key={idx}
                 to={res.link}
-                className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-500 hover:bg-white hover:shadow-md transition-all flex flex-col justify-between group"
+                className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-[#ff5500] hover:bg-white hover:shadow-md transition-all flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 text-emerald-600 flex items-center justify-center shadow-xs">
+                    <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 text-[#ff5500] flex items-center justify-center shadow-xs">
                       <res.icon className="w-5 h-5" />
                     </div>
                     <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-wider">
                       {res.tag}
                     </span>
                   </div>
-                  <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-600 transition-colors mb-2">
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-[#ff5500] transition-colors mb-2">
                     {res.title}
                   </h3>
                   <p className="text-xs text-slate-600 leading-relaxed">{res.desc}</p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-emerald-600">
+                <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-[#ff5500]">
                   <span>Explore resource</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -1385,11 +1372,11 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
             <div className="max-w-2xl text-left">
-              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#ff5500] font-mono block mb-2">
                 EXPERT PLAYBOOKS & STRATEGY
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-                Latest Insights & <span className="text-emerald-600">WhatsApp Playbooks</span>
+                Latest Insights & <span className="text-[#ff5500]">WhatsApp Playbooks</span>
               </h2>
               <p className="mt-3 text-slate-600 text-sm sm:text-base">
                 Actionable engineering guides, B2B lead generation benchmarks, and ERP automation architectures from the eBizChat team.
@@ -1401,7 +1388,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 font-bold text-xs shadow-xs transition-all self-start md:self-auto group"
             >
               <span>Explore All Articles ({BLOG_POSTS.length})</span>
-              <ArrowRight className="w-3.5 h-3.5 text-emerald-600 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-3.5 h-3.5 text-[#ff5500] group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
@@ -1409,11 +1396,11 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
             {BLOG_POSTS.slice(0, 3).map((post) => (
               <article
                 key={post.slug}
-                className="bg-white rounded-2xl border border-slate-200 shadow-xs hover:shadow-card-hover hover:border-emerald-500 transition-all flex flex-col justify-between overflow-hidden group"
+                className="bg-white rounded-2xl border border-slate-200 shadow-xs hover:shadow-card-hover hover:border-[#ff5500] transition-all flex flex-col justify-between overflow-hidden group"
               >
                 <div className="p-6 sm:p-7">
                   <div className="flex items-center justify-between gap-2 mb-4">
-                    <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-mono font-semibold border border-emerald-200">
+                    <span className="px-2.5 py-1 rounded-full bg-orange-50 text-[#ff5500] text-[11px] font-mono font-semibold border border-orange-200">
                       {post.category}
                     </span>
                     <span className="text-slate-400 text-xs flex items-center gap-1 font-mono">
@@ -1423,7 +1410,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                   </div>
 
                   <Link to={`/blog/${post.slug}`}>
-                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition-colors leading-snug mb-3">
+                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#ff5500] transition-colors leading-snug mb-3">
                       {post.title}
                     </h3>
                   </Link>
@@ -1439,7 +1426,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                   </span>
                   <Link
                     to={`/blog/${post.slug}`}
-                    className="font-bold text-emerald-700 hover:text-emerald-800 inline-flex items-center gap-1 group-hover:underline"
+                    className="font-bold text-[#ff5500] hover:text-[#e04a00] inline-flex items-center gap-1 group-hover:underline"
                   >
                     <span>Read Article</span>
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
@@ -1452,16 +1439,16 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          15. FAQ ACCORDION (Requirement #21: Exact 8 User-Requested Questions)
+          14. FAQ ACCORDION (Requirement #21: Exact 8 User-Requested Questions)
       ─────────────────────────────────────────────────────────── */}
-      <section className="py-20 lg:py-24 border-b border-slate-100 bg-slate-50/50">
+      <section className="py-20 lg:py-24 border-b border-zinc-200/80 bg-[#fcfbf8]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#ff5500] font-mono block mb-2">
               COMMON QUESTIONS
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Frequently Asked <span className="text-emerald-600">Questions</span>
+              Frequently Asked <span className="text-[#ff5500]">Questions</span>
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
               Everything you need to know about eBizChat platform, onboarding, and Orizer technology.
@@ -1474,17 +1461,17 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
               return (
                 <div
                   key={idx}
-                  className="rounded-2xl border border-slate-200 bg-white overflow-hidden transition-all shadow-xs"
+                  className="rounded-2xl border border-zinc-200 bg-white overflow-hidden transition-all shadow-xs"
                 >
                   <button
                     onClick={() => toggleFaq(idx)}
-                    className="w-full px-6 py-4 sm:py-5 flex items-center justify-between gap-4 text-left font-bold text-slate-900 text-sm sm:text-base hover:text-emerald-600 transition-colors focus:outline-none"
+                    className="w-full px-6 py-4 sm:py-5 flex items-center justify-between gap-4 text-left font-bold text-slate-900 text-sm sm:text-base hover:text-[#ff5500] transition-colors focus:outline-none cursor-pointer"
                     aria-expanded={isOpen}
                   >
                     <span>{item.q}</span>
                     <div
-                      className={`w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-transform duration-200 ${
-                        isOpen ? 'rotate-180 bg-emerald-100 text-emerald-700' : 'text-slate-500'
+                      className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-200 ${
+                        isOpen ? 'rotate-180 bg-orange-100 text-[#ff5500]' : 'bg-zinc-100 text-zinc-500'
                       }`}
                     >
                       <ChevronDown className="w-4 h-4" />
@@ -1499,7 +1486,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <div className="px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal border-t border-slate-100">
+                        <div className="px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal border-t border-zinc-100">
                           {item.a}
                         </div>
                       </motion.div>
@@ -1513,25 +1500,67 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
       </section>
 
       {/* ───────────────────────────────────────────────────────────
-          15. CONTACT / MAP SECTION (Requirement #15: Mohid Tower, Vapi, Gujarat)
+          15. FINAL CTA BANNER (Typebot High-Impact Dark Block)
       ─────────────────────────────────────────────────────────── */}
-      <section id="contact-map" className="py-20 lg:py-24 border-b border-slate-100 bg-white">
+      <section className="py-20 lg:py-24 bg-[#fcfbf8]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl bg-[#0a0a0a] border border-zinc-800 p-8 sm:p-14 lg:p-16 text-white text-left relative overflow-hidden shadow-2xl">
+            {/* Background glowing orange radial ambient */}
+            <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-[#ff5500]/20 blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-1/4 -mb-20 w-80 h-80 rounded-full bg-[#ff5500]/10 blur-2xl pointer-events-none" />
+
+            <div className="relative z-10 max-w-3xl space-y-6">
+              <span className="px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-[#ff5500] font-mono text-xs font-semibold uppercase tracking-wider backdrop-blur-sm inline-block">
+                Start Growing Today
+              </span>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+                Ready to Turn WhatsApp Conversations Into <span className="text-[#ff5500]">Business Growth?</span>
+              </h2>
+
+              <p className="text-base sm:text-lg text-zinc-400 leading-relaxed max-w-2xl font-normal">
+                Build better customer conversations, automate repetitive work and create a more organized lead-generation workflow with eBizChat by Orizer.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <button
+                  onClick={onOpenContactModal}
+                  className="px-8 py-4 rounded-xl bg-[#ff5500] hover:bg-[#e04a00] text-white font-extrabold text-sm shadow-lg shadow-[#ff5500]/30 transition-all active:scale-[0.98] cursor-pointer"
+                >
+                  Get Started Free
+                </button>
+                <button
+                  onClick={onOpenDemoModal}
+                  className="px-8 py-4 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white font-bold text-sm border border-zinc-700 transition-all active:scale-[0.98] cursor-pointer"
+                >
+                  Talk to Sales
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────
+          16. CONTACT / MAP SECTION (VERY END: Requirement #15 & User Instruction)
+      ─────────────────────────────────────────────────────────── */}
+      <section id="contact-map" className="py-20 lg:py-24 border-t border-zinc-200/80 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 font-mono block mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#ff5500] font-mono block mb-2">
               GET IN TOUCH
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Connect with Our <span className="text-emerald-600">Headquarters</span>
+              Connect with Our <span className="text-[#ff5500]">Headquarters</span>
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
               Visit our corporate offices in Vapi, Gujarat or connect with our WhatsApp automation specialists.
             </p>
           </div>
 
-          <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-slate-50 grid grid-cols-1 lg:grid-cols-12">
+          <div className="rounded-3xl overflow-hidden border border-zinc-200 shadow-xl bg-zinc-50 grid grid-cols-1 lg:grid-cols-12">
             {/* Left: Responsive Map */}
-            <div className="lg:col-span-7 min-h-[360px] sm:min-h-[420px] relative bg-slate-100">
+            <div className="lg:col-span-7 min-h-[360px] sm:min-h-[420px] relative bg-zinc-100">
               <iframe
                 title="Orizer ERP Headquarters Map"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3739.736341270273!2d72.91583!3d20.39347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0cf31885f8ddb%3A0x8bb89255a4325a66!2sMohid%20Tower%2C%20Daman%20Rd%2C%20Chala%2C%20Vapi%2C%20Gujarat%20396191!5e0!3m2!1sen!2sin!4v1710800000000!5m2!1sen!2sin"
@@ -1546,9 +1575,9 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
             </div>
 
             {/* Right: Office details & Fast Action */}
-            <div className="lg:col-span-5 p-6 sm:p-8 bg-white flex flex-col justify-between space-y-6 text-left border-t lg:border-t-0 lg:border-l border-slate-200">
+            <div className="lg:col-span-5 p-6 sm:p-8 bg-white flex flex-col justify-between space-y-6 text-left border-t lg:border-t-0 lg:border-l border-zinc-200">
               <div className="space-y-4">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-mono text-[11px] font-semibold">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-50 text-[#ff5500] font-mono text-[11px] font-semibold border border-orange-200/80">
                   <Building2 className="w-3.5 h-3.5" />
                   <span>Orizer Infotech Pvt. Ltd.</span>
                 </div>
@@ -1557,80 +1586,38 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
                   {ORIZER_INFO.contact.office.fullAddress}
                 </p>
 
-                <div className="space-y-2.5 pt-2 border-t border-slate-100 text-xs">
+                <div className="space-y-2.5 pt-2 border-t border-zinc-100 text-xs">
                   <div className="flex items-center gap-2 text-slate-700">
-                    <Clock className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <Clock className="w-4 h-4 text-[#ff5500] flex-shrink-0" />
                     <span>Mon – Sat: 9:00 AM – 6:00 PM IST (Sunday closed)</span>
                   </div>
                   <div className="flex items-center gap-2 text-slate-700">
-                    <Phone className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                    <a href="tel:+919898236655" className="hover:text-emerald-600 font-mono font-semibold">
+                    <Phone className="w-4 h-4 text-[#ff5500] flex-shrink-0" />
+                    <a href="tel:+919898236655" className="hover:text-[#ff5500] font-mono font-semibold">
                       +91 98982 36655 (HelpDesk)
                     </a>
                   </div>
                   <div className="flex items-center gap-2 text-slate-700">
-                    <MessageSquare className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                    <a href="https://wa.me/919998391947" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-600 font-mono font-semibold">
+                    <MessageSquare className="w-4 h-4 text-[#ff5500] flex-shrink-0" />
+                    <a href="https://wa.me/919998391947" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff5500] font-mono font-semibold">
                       +91 99983 91947 (WhatsApp Direct)
                     </a>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-2 border-t border-slate-100 flex flex-col sm:flex-row gap-3">
+              <div className="pt-2 border-t border-zinc-100 flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={onOpenDemoModal}
-                  className="flex-1 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs transition-colors text-center"
+                  className="flex-1 py-3 rounded-xl bg-[#ff5500] hover:bg-[#e04a00] text-white font-bold text-xs shadow-sm shadow-[#ff5500]/25 transition-colors text-center cursor-pointer"
                 >
                   Book Live Demo
                 </button>
                 <button
                   onClick={onOpenContactModal}
-                  className="flex-1 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs transition-colors text-center"
+                  className="flex-1 py-3 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-slate-800 font-bold text-xs transition-colors text-center cursor-pointer"
                 >
                   Send Inquiry
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ───────────────────────────────────────────────────────────
-          16. FINAL CTA BANNER (Requirement #22)
-      ─────────────────────────────────────────────────────────── */}
-      <section className="py-20 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 p-8 sm:p-14 lg:p-16 text-white text-left relative overflow-hidden shadow-2xl shadow-emerald-600/20">
-            {/* Background decorative circles */}
-            <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-white/10 blur-2xl pointer-events-none" />
-            <div className="absolute bottom-0 left-1/3 -mb-20 w-60 h-60 rounded-full bg-black/10 blur-xl pointer-events-none" />
-
-            <div className="relative z-10 max-w-3xl space-y-6">
-              <span className="px-3.5 py-1 rounded-full bg-white/20 text-white font-mono text-xs font-semibold uppercase tracking-wider backdrop-blur-sm inline-block">
-                Start Growing Today
-              </span>
-
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
-                Ready to Turn WhatsApp Conversations Into Business Growth?
-              </h2>
-
-              <p className="text-base sm:text-lg text-emerald-50 leading-relaxed max-w-2xl font-normal">
-                Build better customer conversations, automate repetitive work and create a more organized lead-generation workflow with eBizChat.
-              </p>
-
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <button
-                  onClick={onOpenContactModal}
-                  className="px-8 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-emerald-700 font-extrabold text-sm shadow-lg transition-all active:scale-[0.98]"
-                >
-                  Get Started
-                </button>
-                <button
-                  onClick={onOpenDemoModal}
-                  className="px-8 py-3.5 rounded-xl bg-emerald-800/40 hover:bg-emerald-800/60 text-white font-bold text-sm border border-white/30 backdrop-blur-sm transition-all active:scale-[0.98]"
-                >
-                  Talk to Sales
                 </button>
               </div>
             </div>

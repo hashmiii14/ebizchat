@@ -22,7 +22,7 @@ export default function ResourcesPage({ onOpenDemoModal, onOpenContactModal }) {
       path: '/blog',
       icon: FileText,
       badge: 'Updated Weekly',
-      color: 'bg-emerald-50 text-emerald-600 border-emerald-200',
+      color: 'bg-orange-50 text-[#ff5500] border-orange-200',
     },
     {
       title: 'Frequently Asked Questions',
@@ -30,7 +30,7 @@ export default function ResourcesPage({ onOpenDemoModal, onOpenContactModal }) {
       path: '/faq',
       icon: HelpCircle,
       badge: 'Knowledgebase',
-      color: 'bg-emerald-50 text-emerald-600 border-emerald-200',
+      color: 'bg-orange-50 text-[#ff5500] border-orange-200',
     },
     {
       title: 'Enterprise Case Studies',
@@ -38,7 +38,7 @@ export default function ResourcesPage({ onOpenDemoModal, onOpenContactModal }) {
       path: '/case-studies',
       icon: Award,
       badge: 'Proven ROI',
-      color: 'bg-teal-50 text-teal-600 border-teal-200',
+      color: 'bg-zinc-100 text-zinc-800 border-zinc-200',
     },
   ];
 
@@ -56,17 +56,17 @@ export default function ResourcesPage({ onOpenDemoModal, onOpenContactModal }) {
       </div>
 
       {/* Hero */}
-      <section className="relative pt-12 pb-20 lg:pt-16 lg:pb-24 bg-gradient-to-b from-slate-50 via-white to-white">
+      <section className="relative pt-12 pb-20 lg:pt-16 lg:pb-24 bg-[#fcfbf8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-3xl mx-auto space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs font-mono font-semibold tracking-wide shadow-subtle">
-              <Sparkles className="w-3.5 h-3.5 text-brand-600" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-[#ff5500] text-xs font-mono font-semibold tracking-wide shadow-subtle">
+              <Sparkles className="w-3.5 h-3.5 text-[#ff5500]" />
               <span>Orizer Knowledgebase & Playbooks</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.12]">
               Guides, Playbooks & Insights for{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-emerald-500">
+              <span className="text-[#ff5500]">
                 Business Leaders.
               </span>
             </h1>

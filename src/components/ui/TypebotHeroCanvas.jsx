@@ -83,7 +83,7 @@ export default function TypebotHeroCanvas() {
   return (
     <div className="relative w-full max-w-7xl mx-auto select-none">
       {/* Ambient Radial Backdrop Glow */}
-      <div className="absolute -inset-4 sm:-inset-8 bg-gradient-to-tr from-emerald-500/15 via-teal-500/10 to-transparent rounded-3xl blur-3xl -z-10 pointer-events-none" />
+      <div className="absolute -inset-4 sm:-inset-8 bg-gradient-to-tr from-[#ff5500]/15 via-amber-500/10 to-transparent rounded-3xl blur-3xl -z-10 pointer-events-none" />
 
       {/* Top Experience Bar */}
       <div className="flex items-center justify-between px-4 py-2.5 bg-slate-900 text-white rounded-t-2xl border border-slate-800 text-xs shadow-md">
@@ -103,13 +103,13 @@ export default function TypebotHeroCanvas() {
 
         <div className="flex items-center gap-3">
           {/* Mobile switcher: Builder vs Phone */}
-          <div className="lg:hidden flex items-center bg-slate-800 p-0.5 rounded-lg text-[10px] font-semibold">
+          <div className="lg:hidden flex items-center bg-zinc-800 p-0.5 rounded-lg text-[10px] font-semibold">
             <button
               onClick={() => setActiveViewMode('builder')}
               className={`px-2 py-1 rounded-md transition-all ${
                 activeViewMode === 'builder'
-                  ? 'bg-emerald-600 text-white'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-[#ff5500] text-white'
+                  : 'text-zinc-400 hover:text-white'
               }`}
             >
               Flow Canvas
@@ -118,22 +118,22 @@ export default function TypebotHeroCanvas() {
               onClick={() => setActiveViewMode('simulator')}
               className={`px-2 py-1 rounded-md transition-all ${
                 activeViewMode === 'simulator'
-                  ? 'bg-emerald-600 text-white'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-[#ff5500] text-white'
+                  : 'text-zinc-400 hover:text-white'
               }`}
             >
               Live Phone
             </button>
           </div>
 
-          <div className="hidden sm:flex items-center gap-1.5 text-[11px] font-mono text-emerald-400">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <div className="hidden sm:flex items-center gap-1.5 text-[11px] font-mono text-[#ff5500]">
+            <span className="w-2 h-2 rounded-full bg-[#ff5500] animate-pulse" />
             <span>Interactive Simulator</span>
           </div>
 
           <button
             onClick={handleReset}
-            className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-[11px] font-mono transition-colors"
+            className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white text-[11px] font-mono transition-colors"
             title="Reset simulation to initial state"
           >
             <RotateCcw className="w-3 h-3" />
@@ -143,79 +143,79 @@ export default function TypebotHeroCanvas() {
       </div>
 
       {/* Main Dual Studio: Flow Canvas (Left) + Interactive Phone (Right) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 bg-white rounded-b-2xl border-x border-b border-slate-200/90 shadow-[0_25px_60px_-15px_rgba(15,23,42,0.12)] overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-12 bg-white rounded-b-2xl border-x border-b border-zinc-200/90 shadow-[0_25px_60px_-15px_rgba(10,10,10,0.1)] overflow-hidden">
         {/* ─── LEFT: TYPEBOT-STYLE NODE FLOW CANVAS ─── */}
         <div
-          className={`lg:col-span-7 p-4 sm:p-6 bg-slate-50/70 border-b lg:border-b-0 lg:border-r border-slate-200 relative overflow-hidden bg-dot-grid ${
+          className={`lg:col-span-7 p-4 sm:p-6 bg-[#fcfbf8] border-b lg:border-b-0 lg:border-r border-zinc-200 relative overflow-hidden bg-dot-grid ${
             activeViewMode === 'simulator' ? 'hidden lg:block' : 'block'
           }`}
         >
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <span className="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold uppercase tracking-wider flex items-center gap-1.5">
-                <Sparkles className="w-3 h-3" />
+              <span className="px-2.5 py-1 rounded-full bg-orange-100 text-orange-950 text-[10px] font-mono font-bold uppercase tracking-wider flex items-center gap-1.5">
+                <Sparkles className="w-3 h-3 text-[#ff5500]" />
                 No-Code Node Tree
               </span>
-              <span className="text-[11px] text-slate-500 font-mono hidden sm:inline">
+              <span className="text-[11px] text-zinc-500 font-mono hidden sm:inline">
                 Flow: Inbound_Lead_Funnels_v2
               </span>
             </div>
-            <span className="text-[10px] text-slate-400 font-mono">
+            <span className="text-[10px] text-zinc-400 font-mono">
               Click buttons on right to trigger flow ➔
             </span>
           </div>
 
           {/* Node 1: Trigger Node */}
           <div className="space-y-3 relative">
-            <div className="bg-white rounded-xl border border-slate-200 p-3 shadow-xs hover:shadow-sm transition-all max-w-[420px]">
-              <div className="flex items-center justify-between text-[11px] font-bold text-slate-900 mb-1">
-                <div className="flex items-center gap-1.5 text-emerald-600">
+            <div className="bg-white rounded-xl border border-zinc-200 p-3 shadow-xs hover:shadow-sm transition-all max-w-[420px]">
+              <div className="flex items-center justify-between text-[11px] font-bold text-zinc-900 mb-1">
+                <div className="flex items-center gap-1.5 text-[#ff5500]">
                   <Zap className="w-3.5 h-3.5 fill-current" />
                   <span>1. Trigger: Inbound WhatsApp Inquiry</span>
                 </div>
-                <span className="px-1.5 py-0.2 rounded text-[9px] font-mono bg-emerald-50 text-emerald-700 border border-emerald-200">
+                <span className="px-1.5 py-0.2 rounded text-[9px] font-mono bg-orange-50 text-[#ff5500] border border-orange-200 font-bold">
                   EVENT
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500">
+              <p className="text-[11px] text-zinc-500">
                 Customer sends WhatsApp message or clicks "Send WhatsApp" Ad on Meta.
               </p>
             </div>
 
             {/* Connecting Wire */}
-            <div className="w-0.5 h-4 bg-emerald-500/50 ml-6 relative">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 absolute -bottom-1 -left-[2px] animate-pulse" />
+            <div className="w-0.5 h-4 bg-[#ff5500]/50 ml-6 relative">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#ff5500] absolute -bottom-1 -left-[2px] animate-pulse" />
             </div>
 
             {/* Node 2: Message Bubble + Question */}
-            <div className="bg-white rounded-xl border border-slate-200 p-3 shadow-xs hover:shadow-sm transition-all max-w-[440px]">
-              <div className="flex items-center justify-between text-[11px] font-bold text-slate-900 mb-1">
-                <div className="flex items-center gap-1.5 text-slate-800">
-                  <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
+            <div className="bg-white rounded-xl border border-zinc-200 p-3 shadow-xs hover:shadow-sm transition-all max-w-[440px]">
+              <div className="flex items-center justify-between text-[11px] font-bold text-zinc-900 mb-1">
+                <div className="flex items-center gap-1.5 text-zinc-800">
+                  <MessageSquare className="w-3.5 h-3.5 text-[#ff5500]" />
                   <span>2. Send Message with Quick-Reply Buttons</span>
                 </div>
-                <span className="px-1.5 py-0.2 rounded text-[9px] font-mono bg-slate-100 text-slate-600">
+                <span className="px-1.5 py-0.2 rounded text-[9px] font-mono bg-zinc-100 text-zinc-600">
                   PROMPT
                 </span>
               </div>
-              <div className="bg-slate-50 rounded-lg p-2 text-[11px] text-slate-700 font-mono border border-slate-100">
+              <div className="bg-zinc-50 rounded-lg p-2 text-[11px] text-zinc-700 font-mono border border-zinc-100">
                 "Hello! Welcome to Orizer eBizChat. What are you looking to do today?"
               </div>
             </div>
 
             {/* Connecting Wire */}
-            <div className="w-0.5 h-4 bg-emerald-500/50 ml-6 relative">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 absolute -bottom-1 -left-[2px]" />
+            <div className="w-0.5 h-4 bg-[#ff5500]/50 ml-6 relative">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#ff5500] absolute -bottom-1 -left-[2px]" />
             </div>
 
             {/* Node 3: Conditional Multi-Branch */}
-            <div className="bg-white rounded-xl border border-slate-200 p-3.5 shadow-xs">
-              <div className="flex items-center justify-between text-[11px] font-bold text-slate-900 mb-2">
-                <div className="flex items-center gap-1.5 text-slate-800">
-                  <GitBranch className="w-3.5 h-3.5 text-teal-600" />
+            <div className="bg-white rounded-xl border border-zinc-200 p-3.5 shadow-xs">
+              <div className="flex items-center justify-between text-[11px] font-bold text-zinc-900 mb-2">
+                <div className="flex items-center gap-1.5 text-zinc-800">
+                  <GitBranch className="w-3.5 h-3.5 text-[#ff5500]" />
                   <span>3. Branch Logic (User Choice Selection)</span>
                 </div>
-                <span className="px-1.5 py-0.2 rounded text-[9px] font-mono bg-teal-50 text-teal-700 border border-teal-200">
+                <span className="px-1.5 py-0.2 rounded text-[9px] font-mono bg-orange-50 text-[#ff5500] border border-orange-200 font-bold">
                   ROUTER
                 </span>
               </div>
@@ -225,17 +225,17 @@ export default function TypebotHeroCanvas() {
                 {/* Branch A: Catalog */}
                 <button
                   onClick={() => handleSelectChoice('catalog')}
-                  className={`text-left p-2.5 rounded-lg border transition-all ${
+                  className={`text-left p-2.5 rounded-lg border transition-all cursor-pointer ${
                     selectedBranch === 'catalog'
-                      ? 'bg-emerald-50/90 border-emerald-500 ring-2 ring-emerald-500/30 shadow-xs'
-                      : 'bg-slate-50 border-slate-200 hover:bg-white hover:border-slate-300'
+                      ? 'bg-orange-50/90 border-[#ff5500] ring-2 ring-[#ff5500]/30 shadow-xs'
+                      : 'bg-zinc-50 border-zinc-200 hover:bg-white hover:border-zinc-300'
                   }`}
                 >
-                  <div className="flex items-center justify-between font-bold text-[11px] text-slate-900 mb-0.5">
+                  <div className="flex items-center justify-between font-bold text-[11px] text-zinc-900 mb-0.5">
                     <span>Wholesale</span>
-                    <span className="text-[9px] font-mono text-emerald-600">Branch A</span>
+                    <span className="text-[9px] font-mono text-[#ff5500] font-bold">Branch A</span>
                   </div>
-                  <p className="text-[10px] text-slate-500 leading-tight">
+                  <p className="text-[10px] text-zinc-500 leading-tight">
                     Send 2026 PDF specs & auto-qualify deal volume.
                   </p>
                 </button>
@@ -243,17 +243,17 @@ export default function TypebotHeroCanvas() {
                 {/* Branch B: Dispatch */}
                 <button
                   onClick={() => handleSelectChoice('dispatch')}
-                  className={`text-left p-2.5 rounded-lg border transition-all ${
+                  className={`text-left p-2.5 rounded-lg border transition-all cursor-pointer ${
                     selectedBranch === 'dispatch'
-                      ? 'bg-emerald-50/90 border-emerald-500 ring-2 ring-emerald-500/30 shadow-xs'
-                      : 'bg-slate-50 border-slate-200 hover:bg-white hover:border-slate-300'
+                      ? 'bg-orange-50/90 border-[#ff5500] ring-2 ring-[#ff5500]/30 shadow-xs'
+                      : 'bg-zinc-50 border-zinc-200 hover:bg-white hover:border-zinc-300'
                   }`}
                 >
-                  <div className="flex items-center justify-between font-bold text-[11px] text-slate-900 mb-0.5">
+                  <div className="flex items-center justify-between font-bold text-[11px] text-zinc-900 mb-0.5">
                     <span>Order Status</span>
-                    <span className="text-[9px] font-mono text-emerald-600">Branch B</span>
+                    <span className="text-[9px] font-mono text-[#ff5500] font-bold">Branch B</span>
                   </div>
-                  <p className="text-[10px] text-slate-500 leading-tight">
+                  <p className="text-[10px] text-zinc-500 leading-tight">
                     Query Orizer ERP for live LR & dispatch ETA.
                   </p>
                 </button>
@@ -261,17 +261,17 @@ export default function TypebotHeroCanvas() {
                 {/* Branch C: Sales Rep */}
                 <button
                   onClick={() => handleSelectChoice('sales')}
-                  className={`text-left p-2.5 rounded-lg border transition-all ${
+                  className={`text-left p-2.5 rounded-lg border transition-all cursor-pointer ${
                     selectedBranch === 'sales'
-                      ? 'bg-emerald-50/90 border-emerald-500 ring-2 ring-emerald-500/30 shadow-xs'
-                      : 'bg-slate-50 border-slate-200 hover:bg-white hover:border-slate-300'
+                      ? 'bg-orange-50/90 border-[#ff5500] ring-2 ring-[#ff5500]/30 shadow-xs'
+                      : 'bg-zinc-50 border-zinc-200 hover:bg-white hover:border-zinc-300'
                   }`}
                 >
-                  <div className="flex items-center justify-between font-bold text-[11px] text-slate-900 mb-0.5">
+                  <div className="flex items-center justify-between font-bold text-[11px] text-zinc-900 mb-0.5">
                     <span>Live Rep</span>
-                    <span className="text-[9px] font-mono text-emerald-600">Branch C</span>
+                    <span className="text-[9px] font-mono text-[#ff5500] font-bold">Branch C</span>
                   </div>
-                  <p className="text-[10px] text-slate-500 leading-tight">
+                  <p className="text-[10px] text-zinc-500 leading-tight">
                     Assign rep with collision lock & team note.
                   </p>
                 </button>
@@ -279,8 +279,8 @@ export default function TypebotHeroCanvas() {
             </div>
 
             {/* Connecting Wire */}
-            <div className="w-0.5 h-4 bg-emerald-500/50 ml-6 relative">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 absolute -bottom-1 -left-[2px]" />
+            <div className="w-0.5 h-4 bg-[#ff5500]/50 ml-6 relative">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#ff5500] absolute -bottom-1 -left-[2px]" />
             </div>
 
             {/* Node 4: Active Resolution & Enterprise ERP Action */}
@@ -289,18 +289,18 @@ export default function TypebotHeroCanvas() {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.25 }}
-              className="bg-emerald-900 text-white rounded-xl p-3.5 shadow-md border border-emerald-800"
+              className="bg-[#0a0a0a] text-white rounded-xl p-3.5 shadow-md border border-zinc-800"
             >
               <div className="flex items-center justify-between text-[11px] font-bold mb-1">
-                <div className="flex items-center gap-1.5 text-emerald-300">
+                <div className="flex items-center gap-1.5 text-[#ff5500]">
                   <Database className="w-3.5 h-3.5" />
                   <span>4. Instant Backend Sync · Orizer Ecosystem</span>
                 </div>
-                <span className="px-2 py-0.5 rounded text-[9px] font-mono bg-emerald-800 text-emerald-200">
+                <span className="px-2 py-0.5 rounded text-[9px] font-mono bg-zinc-900 text-zinc-300 border border-zinc-700">
                   LIVE ACTION
                 </span>
               </div>
-              <p className="text-xs text-emerald-100 font-mono">
+              <p className="text-xs text-zinc-200 font-mono">
                 {currentBranchData.erpSync}
               </p>
             </motion.div>
@@ -505,8 +505,8 @@ export default function TypebotHeroCanvas() {
           </div>
 
           {/* Floating Live Indicator Pills under Phone */}
-          <div className="mt-3 flex items-center gap-2 text-[10px] text-slate-600 font-mono">
-            <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+          <div className="mt-3 flex items-center gap-2 text-[10px] text-zinc-600 font-mono">
+            <span className="inline-block w-2 h-2 rounded-full bg-[#ff5500] animate-ping" />
             <span>Interactive Demo · Tap options above to test live</span>
           </div>
         </div>

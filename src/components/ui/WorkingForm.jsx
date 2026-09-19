@@ -64,8 +64,8 @@ export default function WorkingForm({
 
   if (status.success) {
     return (
-      <div className="bg-white rounded-2xl border border-emerald-200 p-8 text-center shadow-card animate-in fade-in-50">
-        <div className="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mx-auto mb-4">
+      <div className="bg-white rounded-2xl border border-orange-200 p-8 text-center shadow-card animate-in fade-in-50">
+        <div className="w-16 h-16 rounded-full bg-orange-50 border border-orange-200 text-[#ff5500] flex items-center justify-center mx-auto mb-4">
           <CheckCircle2 className="w-9 h-9" />
         </div>
         <h3 className="text-2xl font-bold text-slate-900 tracking-tight">Request Received Successfully!</h3>

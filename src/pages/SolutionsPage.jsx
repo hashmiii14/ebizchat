@@ -26,7 +26,7 @@ export default function SolutionsPage({ onOpenDemoModal, onOpenContactModal }) {
       data: SOLUTIONS_DATA.manufacturing,
       badge: 'Orizer Core Specialty · Native ERP Sync',
       featured: true,
-      color: 'bg-emerald-50 text-emerald-600 border-emerald-200',
+      color: 'bg-orange-50 text-[#ff5500] border-orange-200',
     },
     {
       key: 'ecommerce',
@@ -34,7 +34,7 @@ export default function SolutionsPage({ onOpenDemoModal, onOpenContactModal }) {
       data: SOLUTIONS_DATA.ecommerce,
       badge: 'High Velocity Retail',
       featured: false,
-      color: 'bg-teal-50 text-teal-600 border-teal-200',
+      color: 'bg-orange-50 text-[#ff5500] border-orange-200',
     },
     {
       key: 'healthcare',
@@ -50,7 +50,7 @@ export default function SolutionsPage({ onOpenDemoModal, onOpenContactModal }) {
       data: SOLUTIONS_DATA.education,
       badge: 'Institutes & EdTech',
       featured: false,
-      color: 'bg-teal-50 text-teal-600 border-teal-200',
+      color: 'bg-amber-50 text-amber-700 border-amber-200',
     },
     {
       key: 'realEstate',
@@ -66,7 +66,7 @@ export default function SolutionsPage({ onOpenDemoModal, onOpenContactModal }) {
       data: SOLUTIONS_DATA.services,
       badge: 'B2B Professional Services',
       featured: false,
-      color: 'bg-teal-50 text-teal-600 border-teal-200',
+      color: 'bg-zinc-100 text-zinc-800 border-zinc-200',
     },
   ];
 
@@ -85,17 +85,17 @@ export default function SolutionsPage({ onOpenDemoModal, onOpenContactModal }) {
       </div>
 
       {/* Hero */}
-      <section className="relative pt-12 pb-20 lg:pt-16 lg:pb-24 bg-gradient-to-b from-slate-50 via-white to-white">
+      <section className="relative pt-12 pb-20 lg:pt-16 lg:pb-24 bg-[#fcfbf8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-3xl mx-auto space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs font-mono font-semibold tracking-wide shadow-subtle">
-              <Sparkles className="w-3.5 h-3.5 text-brand-600" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-[#ff5500] text-xs font-mono font-semibold tracking-wide shadow-subtle">
+              <Sparkles className="w-3.5 h-3.5 text-[#ff5500]" />
               <span>Tailored for Enterprise Workflows</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.12]">
               Industry Solutions Built for{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-emerald-500">
+              <span className="text-[#ff5500]">
                 Operational Impact.
               </span>
             </h1>
@@ -107,16 +107,16 @@ export default function SolutionsPage({ onOpenDemoModal, onOpenContactModal }) {
             <div className="flex flex-wrap items-center justify-center gap-3.5 pt-2">
               <button
                 onClick={onOpenContactModal}
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-btn transition-all"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#ff5500] hover:bg-[#e04a00] text-white font-semibold text-sm shadow-btn transition-all cursor-pointer"
               >
                 Find Your Solution
                 <ArrowRight className="w-4 h-4" />
               </button>
               <button
                 onClick={onOpenDemoModal}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-semibold text-sm border border-slate-200 shadow-subtle transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-semibold text-sm border border-slate-200 shadow-subtle transition-all cursor-pointer"
               >
-                <Calendar className="w-4 h-4 text-brand-600" />
+                <Calendar className="w-4 h-4 text-[#ff5500]" />
                 Book Industry Demo
               </button>
             </div>
@@ -139,7 +139,7 @@ export default function SolutionsPage({ onOpenDemoModal, onOpenContactModal }) {
                 key={key}
                 className={`bg-white rounded-2xl border p-8 shadow-card hover:shadow-card-hover transition-all flex flex-col justify-between group ${
                   featured
-                    ? 'border-brand-300 ring-2 ring-brand-500/10 lg:col-span-2 bg-gradient-to-br from-white via-emerald-50/20 to-white'
+                    ? 'border-orange-300 ring-2 ring-orange-500/10 lg:col-span-2 bg-gradient-to-br from-white via-orange-50/20 to-white'
                     : 'border-slate-200'
                 }`}
               >
