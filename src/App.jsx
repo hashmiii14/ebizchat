@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
-// Layout Components
+// Layout Components (Eagerly loaded for instant shell)
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 
@@ -11,37 +11,52 @@ import ContactModal from './components/ui/ContactModal';
 import QuickContactFloat from './components/ui/QuickContactFloat';
 import PageLoader from './components/ui/PageLoader';
 
-// Pages
+// Critical Route: Eagerly imported for instant First Contentful Paint
 import HomePage from './pages/HomePage';
-import LeadGenPage from './pages/LeadGenPage';
-import FeaturesPage from './pages/FeaturesPage';
-import WhatsAppMarketingPage from './pages/features/WhatsAppMarketingPage';
-import LeadManagementPage from './pages/features/LeadManagementPage';
-import ChatbotPage from './pages/features/ChatbotPage';
-import TeamInboxPage from './pages/features/TeamInboxPage';
-import AutomationPage from './pages/features/AutomationPage';
-import AnalyticsPage from './pages/features/AnalyticsPage';
-import IntegrationsPage from './pages/features/IntegrationsPage';
 
-import SolutionsPage from './pages/SolutionsPage';
-import ManufacturingPage from './pages/solutions/ManufacturingPage';
-import EcommercePage from './pages/solutions/EcommercePage';
-import EducationPage from './pages/solutions/EducationPage';
-import RealEstatePage from './pages/solutions/RealEstatePage';
-import ServicesPage from './pages/solutions/ServicesPage';
-import HealthcarePage from './pages/solutions/HealthcarePage';
+// Code-Split Subroutes (Lazy loaded on demand to minimize initial JS bundle size)
+const LeadGenPage = lazy(() => import('./pages/LeadGenPage'));
+const FeaturesPage = lazy(() => import('./pages/FeaturesPage'));
+const WhatsAppMarketingPage = lazy(() => import('./pages/features/WhatsAppMarketingPage'));
+const LeadManagementPage = lazy(() => import('./pages/features/LeadManagementPage'));
+const ChatbotPage = lazy(() => import('./pages/features/ChatbotPage'));
+const TeamInboxPage = lazy(() => import('./pages/features/TeamInboxPage'));
+const AutomationPage = lazy(() => import('./pages/features/AutomationPage'));
+const AnalyticsPage = lazy(() => import('./pages/features/AnalyticsPage'));
+const IntegrationsPage = lazy(() => import('./pages/features/IntegrationsPage'));
 
-import PricingPage from './pages/PricingPage';
-import ResourcesPage from './pages/ResourcesPage';
-import BlogPage from './pages/BlogPage';
-import BlogPostPage from './pages/BlogPostPage';
-import FAQPage from './pages/FAQPage';
-import CaseStudiesPage from './pages/CaseStudiesPage';
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
-import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
-import TermsPage from './pages/TermsPage';
-import NotFoundPage from './pages/NotFoundPage';
+const SolutionsPage = lazy(() => import('./pages/SolutionsPage'));
+const ManufacturingPage = lazy(() => import('./pages/solutions/ManufacturingPage'));
+const EcommercePage = lazy(() => import('./pages/solutions/EcommercePage'));
+const EducationPage = lazy(() => import('./pages/solutions/EducationPage'));
+const RealEstatePage = lazy(() => import('./pages/solutions/RealEstatePage'));
+const ServicesPage = lazy(() => import('./pages/solutions/ServicesPage'));
+const HealthcarePage = lazy(() => import('./pages/solutions/HealthcarePage'));
+
+const PricingPage = lazy(() => import('./pages/PricingPage'));
+const ResourcesPage = lazy(() => import('./pages/ResourcesPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
+const FAQPage = lazy(() => import('./pages/FAQPage'));
+const CaseStudiesPage = lazy(() => import('./pages/CaseStudiesPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
+const TermsPage = lazy(() => import('./pages/TermsPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+
+// High-performance lightweight route fallback (preserves Navbar and Footer)
+function RouteLoadingFallback() {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-[60vh] py-20 px-4 select-none">
+      <div className="w-10 h-10 rounded-full border-2 border-slate-200 border-t-emerald-600 animate-spin mb-4" />
+      <div className="flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-slate-500">
+        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+        <span>Loading eBizChat...</span>
+      </div>
+    </div>
+  );
+}
 
 // Scroll to top or to hash element on route change
 function ScrollToTop() {
@@ -79,7 +94,8 @@ export default function App() {
       <Navbar onOpenDemoModal={openDemoModal} onOpenContactModal={openContactModal} />
 
       <main className="flex-1">
-        <Routes>
+        <Suspense fallback={<RouteLoadingFallback />}>
+          <Routes>
           <Route
             path="/"
             element={<HomePage onOpenDemoModal={openDemoModal} onOpenContactModal={openContactModal} />}
@@ -194,6 +210,7 @@ export default function App() {
           {/* 404 Fallback */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        </Suspense>
       </main>
 
       <Footer />

@@ -40,8 +40,9 @@ export function TeamInboxMockup() {
         </div>
       </div>
 
-      {/* 3-Column SaaS Interface */}
-      <div className="grid grid-cols-12 h-[480px]">
+      {/* 3-Column SaaS Interface with mobile horizontal scroll containment */}
+      <div className="overflow-x-auto w-full">
+        <div className="grid grid-cols-12 h-[480px] min-w-[760px] md:min-w-0">
         {/* Left Column: Conversation List */}
         <div className="col-span-12 md:col-span-4 border-r border-slate-200 flex flex-col bg-slate-50/50">
           <div className="p-3 border-b border-slate-200 bg-white">
@@ -248,7 +249,8 @@ export function TeamInboxMockup() {
         </div>
       </div>
     </div>
-  );
+  </div>
+);
 }
 
 export function KanbanMockup() {
@@ -467,36 +469,51 @@ export function CampaignAnalyticsMockup() {
 export function HeroVisualMockup() {
   return (
     <div className="relative w-full max-w-[620px] mx-auto lg:mr-0 select-none">
+      {/* Ambient Radial Backdrop Glow (matches social preview visual language) */}
+      <div className="absolute -inset-4 sm:-inset-6 bg-gradient-to-tr from-emerald-500/15 via-teal-500/10 to-transparent rounded-3xl blur-2xl -z-10 pointer-events-none" />
+
       {/* Desktop Web App Card */}
-      <div className="bg-white rounded-2xl border border-slate-200 shadow-[0_20px_50px_-15px_rgba(15,23,42,0.12)] overflow-hidden text-xs">
-        {/* Top App Header */}
-        <div className="px-4 py-3 bg-white border-b border-slate-100 flex items-center justify-between">
+      <div className="bg-white rounded-2xl border border-slate-200 shadow-[0_20px_50px_-15px_rgba(15,23,42,0.14)] overflow-hidden text-xs">
+        {/* Top App Header (Dark slate top bar matching social preview aesthetic) */}
+        <div className="px-3.5 py-2.5 bg-slate-900 border-b border-slate-800 flex items-center justify-between text-white">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
-              <span className="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
-              <span className="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
             </div>
-            <div className="flex items-center gap-2 pl-2 border-l border-slate-200">
-              <div className="w-5 h-5 rounded-md bg-emerald-600 flex items-center justify-center text-white">
-                <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12C2 13.85 2.5 15.58 3.38 17.07L2.05 21.95L7.07 20.64C8.52 21.5 10.2 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" />
-                </svg>
-              </div>
-              <span className="font-extrabold text-slate-900 tracking-tight text-xs font-sans">
-                EBIZ<span className="text-emerald-600">CHAT</span>
+            <div className="flex items-center gap-2 pl-2 border-l border-slate-700">
+              <span className="font-mono text-[11px] font-semibold text-slate-300 tracking-wider uppercase">
+                eBizChat Console
+              </span>
+              <span className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[9px] font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                PROD
               </span>
             </div>
           </div>
 
-          <div className="flex items-center gap-2.5">
-            <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100/80 text-slate-400 text-[11px]">
-              <Search className="w-3 h-3 text-slate-400" />
-              <span>Search...</span>
+          <div className="flex items-center gap-2 text-[10px] font-mono text-emerald-400">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span className="hidden sm:inline">Meta Cloud API 99.9%</span>
+          </div>
+        </div>
+
+        {/* Secondary Clean White Toolbar */}
+        <div className="px-3.5 py-2 bg-white border-b border-slate-100 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-5 h-5 rounded-md bg-emerald-600 flex items-center justify-center text-white">
+              <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12C2 13.85 2.5 15.58 3.38 17.07L2.05 21.95L7.07 20.64C8.52 21.5 10.2 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" />
+              </svg>
             </div>
-            <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-[10px]">
-              O
-            </div>
+            <span className="font-extrabold text-slate-900 tracking-tight text-xs">
+              All Inboxes <span className="font-normal text-slate-400 font-mono text-[11px]">(24 active)</span>
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 text-slate-600 border border-slate-200">
+              Orizer ERP Sync: ON
+            </span>
           </div>
         </div>
 
@@ -699,7 +716,7 @@ export function HeroVisualMockup() {
       </div>
 
       {/* iPhone 16 Pro Mockup (WhatsApp Business Verified Experience) */}
-      <div className="mt-6 sm:mt-0 sm:absolute sm:-bottom-8 sm:-right-4 lg:-right-6 xl:-right-8 w-[250px] sm:w-[255px] xl:w-[270px] mx-auto z-20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl select-none">
+      <div className="-mt-10 sm:mt-0 sm:absolute sm:-bottom-6 sm:right-0 lg:right-[-6px] xl:right-[-10px] w-[235px] sm:w-[245px] lg:w-[260px] max-w-[85vw] mx-auto sm:mx-0 z-20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl select-none">
         {/* Outer Titanium Frame with Physical Side Buttons */}
         <div className="relative bg-slate-900 rounded-[48px] p-[9px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.15)] ring-1 ring-black/40">
           {/* Physical Side Buttons (Mute / Action / Volume on Left, Power on Right) */}

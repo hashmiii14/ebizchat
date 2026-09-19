@@ -138,7 +138,7 @@ export default function HomePage({ onOpenDemoModal, onOpenContactModal }) {
               </div>
 
               {/* Main Heading: 2-3 lines, high contrast */}
-              <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-slate-900 leading-[1.12]">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold tracking-tight text-slate-900 leading-[1.14]">
                 Turn WhatsApp Conversations Into{' '}
                 <span className="text-emerald-600">Business Opportunities</span>
               </h1>

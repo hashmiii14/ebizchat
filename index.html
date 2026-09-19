@@ -42,6 +42,9 @@
   <link rel="alternate icon" type="image/png" href="/logo.png" />
   <link rel="apple-touch-icon" href="/logo.png" />
   
+  <!-- Preload Critical Logo Asset -->
+  <link rel="preload" as="image" href="/logo.png" />
+  
   <!-- Fontshare Fonts: Clash Display, Satoshi, JetBrains Mono (from orizer.netlify.app) -->
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@400,500,700&f[]=jetbrains-mono@400,500&display=swap" rel="stylesheet" />
@@ -51,7 +54,41 @@
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body class="bg-white text-slate-900 antialiased selection:bg-emerald-600 selection:text-white min-h-screen flex flex-col font-body">
-  <div id="root" class="flex flex-col min-h-screen"></div>
+  <div id="root" class="flex flex-col min-h-screen">
+    <!-- Immediate Pre-Hydration Shell: Eliminates initial white screen before React hydrates -->
+    <div id="pre-hydration-shell" style="min-height:100vh;display:flex;flex-direction:column;background:#ffffff;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+      <!-- Shell Header -->
+      <header style="height:80px;border-bottom:1px solid rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:space-between;padding:0 24px;max-width:1280px;width:100%;margin:0 auto;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <img src="/logo.png" alt="eBizChat" style="height:36px;width:auto;display:block;" onerror="this.style.display='none'" />
+          <span style="display:inline-block;padding:3px 10px;border-radius:9999px;background:#ecfdf5;border:1px solid #a7f3d0;color:#047857;font-size:10px;font-weight:700;font-family:monospace;letter-spacing:0.05em;text-transform:uppercase;">BY ORIZER</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="height:36px;width:84px;background:#f1f5f9;border-radius:10px;"></div>
+          <div style="height:36px;width:96px;background:#059669;border-radius:10px;"></div>
+        </div>
+      </header>
+      <!-- Shell Hero Body -->
+      <main style="max-width:1280px;width:100%;margin:0 auto;padding:48px 24px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px;">
+        <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:9999px;background:#ecfdf5;border:1px solid #a7f3d0;width:fit-content;">
+          <span style="width:8px;height:8px;border-radius:9999px;background:#10b981;display:inline-block;"></span>
+          <span style="font-size:12px;font-weight:600;color:#065f46;">WhatsApp Business Platform by Orizer</span>
+        </div>
+        <div style="max-width:680px;">
+          <h1 style="font-size:clamp(32px,5vw,52px);font-weight:800;color:#0f172a;line-height:1.15;margin:0 0 16px 0;letter-spacing:-0.02em;">
+            Turn WhatsApp Conversations Into <span style="color:#059669;">Business Opportunities</span>
+          </h1>
+          <p style="font-size:16px;color:#475569;line-height:1.6;margin:0 0 24px 0;max-width:560px;">
+            Manage customer conversations, capture verified leads, and automate enterprise workflows on WhatsApp with official Meta Cloud API infrastructure.
+          </p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <div style="height:44px;width:124px;background:#059669;border-radius:12px;"></div>
+            <div style="height:44px;width:136px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
