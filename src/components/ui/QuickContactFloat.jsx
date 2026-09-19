@@ -3,8 +3,8 @@ import { Phone } from 'lucide-react';
 import { ORIZER_INFO } from '../../data/orizerData';
 
 export default function QuickContactFloat() {
-  const callNumber = ORIZER_INFO.contact.helpdeskPhones[0].raw; // +919898236655
-  const callDisplay = ORIZER_INFO.contact.helpdeskPhones[0].number; // +91 98982 36655
+  const callNumber = '919624513385';
+  const callDisplay = '+91 96245 13385';
   const whatsappNumber = '919998391947';
   const whatsappDisplay = '+91 99983 91947';
 
@@ -18,19 +18,19 @@ export default function QuickContactFloat() {
       <div className="fixed bottom-6 left-4 sm:left-6 z-50 pointer-events-auto">
         <a
           href={`tel:${callNumber}`}
-          className="relative group w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#ff5500] hover:bg-[#e04a00] text-white flex items-center justify-center shadow-2xl shadow-[#ff5500]/40 transition-all hover:scale-110 active:scale-95 focus:outline-none ring-2 ring-white/80"
-          aria-label={`Call Orizer HelpDesk at ${callDisplay}`}
+          className="relative group w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#00847e] hover:bg-[#00b575] text-white flex items-center justify-center shadow-2xl shadow-teal-900/30 transition-all hover:scale-110 active:scale-95 focus:outline-none ring-2 ring-white/80"
+          aria-label={`Call Orizer Sales at ${callDisplay}`}
         >
           {/* Subtle pulse ring */}
-          <span className="absolute inset-0 rounded-full bg-[#ff5500] opacity-35 animate-ping -z-10" />
+          <span className="absolute inset-0 rounded-full bg-[#00847e] opacity-35 animate-ping -z-10" />
 
           {/* Official Phone Icon */}
           <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
 
           {/* Tooltip on hover (appears above/right) */}
           <div className="absolute bottom-full mb-2.5 left-0 px-3 py-1.5 rounded-lg bg-zinc-950 text-white text-xs font-semibold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none shadow-xl border border-zinc-800 flex items-center gap-1.5">
-            <span>Call HelpDesk:</span>
-            <span className="font-mono text-[#ff5500]">{callDisplay}</span>
+            <span>Call Orizer:</span>
+            <span className="font-mono text-[#00b575]">{callDisplay}</span>
           </div>
         </a>
       </div>

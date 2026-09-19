@@ -1,201 +1,190 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  ArrowRight,
-  CheckCircle2,
-  Linkedin,
-  Facebook,
-  Twitter,
-  Youtube,
-  Send,
-} from 'lucide-react';
-import { submitForm } from '../../services/formService';
-import BrandLogo from '../ui/BrandLogo';
+import { MapPin, Phone, Clock } from 'lucide-react';
 
 export default function Footer() {
-  const [newsletterEmail, setNewsletterEmail] = useState('');
-  const [submitting, setSubmitting] = useState(false);
-  const [subscribed, setSubscribed] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
-
-  const handleNewsletter = async (e) => {
-    e.preventDefault();
-    if (!newsletterEmail || !newsletterEmail.includes('@')) {
-      setErrorMsg('Please enter a valid email address.');
-      return;
-    }
-    setErrorMsg('');
-    setSubmitting(true);
-    try {
-      await submitForm({
-        type: 'newsletter',
-        email: newsletterEmail,
-      });
-      setSubscribed(true);
-      setNewsletterEmail('');
-    } catch (err) {
-      setErrorMsg(err.message || 'Subscription failed. Please try again.');
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
   return (
-    <footer className="bg-[#0a0a0a] text-zinc-400 border-t border-zinc-800/80 text-xs select-none">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-6">
-          {/* Brand Column */}
-          <div className="lg:col-span-4 space-y-4">
-            <Link to="/" className="inline-block">
-              <BrandLogo size="md" showTagline={true} variant="white" />
+    <footer className="border-t border-border bg-surface">
+      <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 py-14">
+        <div className="grid gap-10 lg:grid-cols-[1.3fr_repeat(4,minmax(0,1fr))]">
+          {/* Brand & Address Column */}
+          <div className="space-y-4">
+            <Link
+              to="/"
+              aria-label="Orizer eBizChat home"
+              className="flex shrink-0 items-center gap-2"
+            >
+              <img
+                src="/logo.png"
+                alt="eBizChat by Orizer"
+                className="h-8 w-auto object-contain"
+              />
             </Link>
-            <p className="text-zinc-400 text-xs leading-relaxed max-w-sm">
-              The modern conversational WhatsApp platform by Orizer. Visual no-code flow builder, multi-agent inbox, and 2-way ERP sync.
+            <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
+              eBizChat is Orizer&apos;s business communication platform for SME, MSME and manufacturing teams: WhatsApp automation, lead capture, shared inbox and CRM connected to your ERP.
             </p>
-            <div className="text-[11px] text-zinc-400 space-y-1.5 pt-2 font-mono">
-              <p className="font-semibold text-white uppercase tracking-wider text-[10px]">Orizer ERP Headquarters:</p>
-              <p className="text-zinc-300">Mohid Tower, Daman Road, Chala, Vapi, Gujarat 396191</p>
-              <p>
-                HelpDesk:{' '}
-                <a href="tel:+919898236655" className="text-[#ff5500] hover:underline font-bold">
-                  +91 98982 36655
-                </a>
-              </p>
-              <p>
-                WhatsApp Direct:{' '}
-                <a
-                  href="https://wa.me/919998391947"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#ff5500] hover:underline font-bold"
-                >
-                  +91 99983 91947
-                </a>
-              </p>
-            </div>
-            {/* Social Icons */}
-            <div className="flex items-center gap-2 pt-2">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-lg bg-zinc-900 hover:bg-[#ff5500] text-zinc-400 hover:text-white border border-zinc-800 hover:border-[#ff5500] flex items-center justify-center transition-all"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-3.5 h-3.5" />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-lg bg-zinc-900 hover:bg-[#ff5500] text-zinc-400 hover:text-white border border-zinc-800 hover:border-[#ff5500] flex items-center justify-center transition-all"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-3.5 h-3.5" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-lg bg-zinc-900 hover:bg-[#ff5500] text-zinc-400 hover:text-white border border-zinc-800 hover:border-[#ff5500] flex items-center justify-center transition-all"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-3.5 h-3.5" />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-lg bg-zinc-900 hover:bg-[#ff5500] text-zinc-400 hover:text-white border border-zinc-800 hover:border-[#ff5500] flex items-center justify-center transition-all"
-                aria-label="YouTube"
-              >
-                <Youtube className="w-3.5 h-3.5" />
-              </a>
-            </div>
-          </div>
-
-          {/* Product Column */}
-          <div className="lg:col-span-2">
-            <h4 className="font-bold text-white text-xs mb-3 font-mono uppercase tracking-wider">Product</h4>
-            <ul className="space-y-2.5 text-zinc-400">
-              <li><Link to="/features" className="hover:text-[#ff5500] transition-colors">Features</Link></li>
-              <li><Link to="/features/integrations" className="hover:text-[#ff5500] transition-colors">Integrations</Link></li>
-              <li><Link to="/features/whatsapp-marketing" className="hover:text-[#ff5500] transition-colors">WhatsApp API</Link></li>
-              <li><Link to="/about-orizer" className="hover:text-[#ff5500] transition-colors">Security & Orizer</Link></li>
-              <li><Link to="/pricing" className="hover:text-[#ff5500] transition-colors">Pricing</Link></li>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li className="flex gap-2">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <span>
+                  H.O : O-4 &amp; 5, First Floor, Beside Zudio-Westside, Mohid Tower, Daman Road, Chala, Vapi (W), 396191, Gujarat, India
+                </span>
+              </li>
+              <li className="flex gap-2">
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <span>
+                  <a href="tel:+919624513385" className="hover:text-primary font-medium text-foreground">
+                    +91 96245 13385
+                  </a>
+                  <br />
+                  HelpDesk: +91 98982 36655, +91 97379 11132
+                </span>
+              </li>
+              <li className="flex gap-2">
+                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <span>9 AM - 6 PM, Monday to Saturday</span>
+              </li>
             </ul>
           </div>
 
-          {/* Solutions Column */}
-          <div className="lg:col-span-2">
-            <h4 className="font-bold text-white text-xs mb-3 font-mono uppercase tracking-wider">Solutions</h4>
-            <ul className="space-y-2.5 text-zinc-400">
-              <li><Link to="/features/whatsapp-marketing" className="hover:text-[#ff5500] transition-colors">Marketing</Link></li>
-              <li><Link to="/features/lead-management" className="hover:text-[#ff5500] transition-colors">Sales & CRM</Link></li>
-              <li><Link to="/features/team-inbox" className="hover:text-[#ff5500] transition-colors">Support Inbox</Link></li>
-              <li><Link to="/features/automation" className="hover:text-[#ff5500] transition-colors">Automation</Link></li>
-              <li><Link to="/features/chatbot" className="hover:text-[#ff5500] transition-colors">Chatbots</Link></li>
+          {/* Product Links */}
+          <div>
+            <p className="mb-4 text-sm font-bold text-foreground">Product</p>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/features" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  Features Overview
+                </Link>
+              </li>
+              <li>
+                <Link to="/features" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  Shared Team Inbox
+                </Link>
+              </li>
+              <li>
+                <Link to="/features" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  Automation
+                </Link>
+              </li>
+              <li>
+                <Link to="/features" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  Analytics
+                </Link>
+              </li>
+              <li>
+                <Link to="/leadgen" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  LeadGen+
+                </Link>
+              </li>
+              <li>
+                <Link to="/pricing" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  Pricing
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Resources & Company Column */}
-          <div className="lg:col-span-2">
-            <h4 className="font-bold text-white text-xs mb-3 font-mono uppercase tracking-wider">Company</h4>
-            <ul className="space-y-2.5 text-zinc-400">
-              <li><Link to="/about-orizer" className="hover:text-[#ff5500] transition-colors">About Orizer</Link></li>
-              <li><Link to="/lead-generation" className="hover:text-[#ff5500] transition-colors">Lead Gen Guide</Link></li>
-              <li><Link to="/blog" className="hover:text-[#ff5500] transition-colors">Articles & Case Studies</Link></li>
-              <li><Link to="/resources" className="hover:text-[#ff5500] transition-colors">Knowledge Base</Link></li>
-              <li><Link to="/contact" className="hover:text-[#ff5500] transition-colors">Contact Us</Link></li>
+          {/* Solutions Links */}
+          <div>
+            <p className="mb-4 text-sm font-bold text-foreground">Solutions</p>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/solutions" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  Manufacturing
+                </Link>
+              </li>
+              <li>
+                <Link to="/solutions" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  E-Commerce
+                </Link>
+              </li>
+              <li>
+                <Link to="/solutions" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  Real Estate
+                </Link>
+              </li>
+              <li>
+                <Link to="/solutions" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  Education
+                </Link>
+              </li>
+              <li>
+                <Link to="/solutions" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  Services &amp; Healthcare
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Newsletter Column */}
-          <div className="lg:col-span-2">
-            <h4 className="font-bold text-white text-xs mb-2 font-mono uppercase tracking-wider">Updates</h4>
-            <p className="text-zinc-400 text-[11px] mb-3 leading-relaxed">
-              Subscribe to conversational marketing playbooks and product releases.
-            </p>
-            {subscribed ? (
-              <div className="flex items-center gap-1.5 p-2 bg-[#ff5500]/10 border border-[#ff5500]/30 rounded-lg text-[#ff5500] text-[11px] font-semibold">
-                <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0" />
-                <span>Subscribed!</span>
-              </div>
-            ) : (
-              <form onSubmit={handleNewsletter} className="flex items-center gap-1.5">
-                <input
-                  type="email"
-                  required
-                  placeholder="Enter email..."
-                  value={newsletterEmail}
-                  onChange={(e) => setNewsletterEmail(e.target.value)}
-                  className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-2.5 py-1.5 text-xs text-white placeholder:text-zinc-500 focus:outline-none focus:border-[#ff5500]"
-                />
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="w-8 h-8 rounded-lg bg-[#ff5500] hover:bg-[#e04a00] text-white flex items-center justify-center flex-shrink-0 shadow-xs transition-colors disabled:opacity-50 cursor-pointer"
-                  aria-label="Subscribe"
-                >
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </form>
-            )}
-            {errorMsg && <p className="text-[10px] text-rose-500 mt-1">{errorMsg}</p>}
+          {/* Resources Links */}
+          <div>
+            <p className="mb-4 text-sm font-bold text-foreground">Resources</p>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/resources" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  Resource Center
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link to="/faq" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link to="/features" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  Integrations
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Company Links */}
+          <div>
+            <p className="mb-4 text-sm font-bold text-foreground">Company</p>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/contact" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  Contact Sales
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  Book a Demo
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  Get Started
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  Support HelpDesk
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Bottom Sub-Footer Bar */}
-        <div className="border-t border-zinc-900 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-zinc-500 text-[11px]">
-          <div>
-            © {new Date().getFullYear()} eBizChat by Orizer Infotech Pvt. Ltd. All rights reserved.
-          </div>
-          <div className="flex items-center gap-6">
-            <Link to="/privacy" className="hover:text-zinc-300 transition-colors">
+        {/* Sub-footer bottom bar */}
+        <div className="mt-12 flex flex-col gap-3 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-muted-foreground">
+            &copy; 2026 Orizer. eBizChat is a product of Orizer. All rights reserved.
+          </p>
+          <div className="flex flex-wrap gap-4 text-xs text-muted-foreground">
+            <Link to="/faq" className="hover:text-primary transition-colors">
               Privacy Policy
             </Link>
-            <Link to="/terms" className="hover:text-zinc-300 transition-colors">
+            <Link to="/faq" className="hover:text-primary transition-colors">
               Terms of Service
+            </Link>
+            <Link to="/faq" className="hover:text-primary transition-colors">
+              Data Processing
             </Link>
           </div>
         </div>

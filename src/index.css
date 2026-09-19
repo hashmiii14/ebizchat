@@ -3,20 +3,24 @@
 @tailwind utilities;
 
 :root {
-  --bg: #f7f6f3;
-  --surface: #ffffff;
-  --headline: #0e0f10;
-  --body: #55585f;
-  --muted: #9a9da3;
-  --teal: #00a48c;
-  --teal-bright: #00d4b2;
-  --orange: #ff3b00;
-  --line: rgba(14, 15, 16, 0.08);
+  --background: #ffffff;
+  --foreground: #111921;
+  --surface: #f7fbf9;
+  --card: #ffffff;
+  --card-foreground: #111921;
+  --primary: #00b575;
+  --primary-foreground: #ffffff;
+  --brand-deep: #00847e;
+  --accent: #dff7eb;
+  --accent-foreground: #004638;
+  --muted: #f0f4f2;
+  --muted-foreground: #5f6b74;
+  --border: #e2e8f0;
 }
 
 @layer base {
   * {
-    border-color: rgba(14, 15, 16, 0.08);
+    border-color: #e2e8f0;
     box-sizing: border-box;
   }
   html {
@@ -25,9 +29,9 @@
     scroll-behavior: smooth;
   }
   body {
-    background-color: var(--bg);
-    color: var(--headline);
-    font-family: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
+    background-color: #ffffff;
+    color: #111921;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
   }
 }
@@ -63,12 +67,12 @@
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff5500;
+  background: #00b575;
 }
 
 /* Custom selection */
 ::selection {
-  background: #ff5500;
+  background: #00b575;
   color: #ffffff;
 }
 
